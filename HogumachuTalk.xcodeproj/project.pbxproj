@@ -9,13 +9,21 @@
 /* Begin PBXBuildFile section */
 		F1A2CE83273A7F1E00FCB387 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CE82273A7F1E00FCB387 /* AppDelegate.swift */; };
 		F1A2CE85273A7F1E00FCB387 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CE84273A7F1E00FCB387 /* SceneDelegate.swift */; };
-		F1A2CE87273A7F1E00FCB387 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CE86273A7F1E00FCB387 /* ViewController.swift */; };
-		F1A2CE8A273A7F1E00FCB387 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1A2CE88273A7F1E00FCB387 /* Main.storyboard */; };
 		F1A2CE8C273A7F2100FCB387 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1A2CE8B273A7F2100FCB387 /* Assets.xcassets */; };
 		F1A2CE8F273A7F2100FCB387 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1A2CE8D273A7F2100FCB387 /* LaunchScreen.storyboard */; };
 		F1A2CE9A273A7F2200FCB387 /* HogumachuTalkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CE99273A7F2200FCB387 /* HogumachuTalkTests.swift */; };
 		F1A2CEA4273A7F2200FCB387 /* HogumachuTalkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEA3273A7F2200FCB387 /* HogumachuTalkUITests.swift */; };
 		F1A2CEA6273A7F2200FCB387 /* HogumachuTalkUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEA5273A7F2200FCB387 /* HogumachuTalkUITestsLaunchTests.swift */; };
+		F1A2CEB9273A7FD000FCB387 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEB8273A7FD000FCB387 /* Coordinator.swift */; };
+		F1A2CEBB273A800000FCB387 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEBA273A800000FCB387 /* LoginViewController.swift */; };
+		F1A2CEBD273A800F00FCB387 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEBC273A800F00FCB387 /* ProfileViewController.swift */; };
+		F1A2CEBF273A801600FCB387 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEBE273A801600FCB387 /* ChatViewController.swift */; };
+		F1A2CEC1273A801F00FCB387 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEC0273A801F00FCB387 /* SettingViewController.swift */; };
+		F1A2CEC3273A806F00FCB387 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEC2273A806F00FCB387 /* LoginViewModel.swift */; };
+		F1A2CEC5273A807600FCB387 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEC4273A807600FCB387 /* ProfileViewModel.swift */; };
+		F1A2CEC7273A807C00FCB387 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEC6273A807C00FCB387 /* ChatViewModel.swift */; };
+		F1A2CEC9273A808300FCB387 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEC8273A808300FCB387 /* SettingViewModel.swift */; };
+		F1A2CECB273A80A100FCB387 /* CompositionRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CECA273A80A100FCB387 /* CompositionRoot.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +47,6 @@
 		F1A2CE7F273A7F1E00FCB387 /* HogumachuTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HogumachuTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1A2CE82273A7F1E00FCB387 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1A2CE84273A7F1E00FCB387 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F1A2CE86273A7F1E00FCB387 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F1A2CE89273A7F1E00FCB387 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F1A2CE8B273A7F2100FCB387 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F1A2CE8E273A7F2100FCB387 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F1A2CE90273A7F2100FCB387 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +55,16 @@
 		F1A2CE9F273A7F2200FCB387 /* HogumachuTalkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HogumachuTalkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1A2CEA3273A7F2200FCB387 /* HogumachuTalkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HogumachuTalkUITests.swift; sourceTree = "<group>"; };
 		F1A2CEA5273A7F2200FCB387 /* HogumachuTalkUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HogumachuTalkUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F1A2CEB8273A7FD000FCB387 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		F1A2CEBA273A800000FCB387 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F1A2CEBC273A800F00FCB387 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		F1A2CEBE273A801600FCB387 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		F1A2CEC0273A801F00FCB387 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		F1A2CEC2273A806F00FCB387 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		F1A2CEC4273A807600FCB387 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		F1A2CEC6273A807C00FCB387 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		F1A2CEC8273A808300FCB387 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		F1A2CECA273A80A100FCB387 /* CompositionRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionRoot.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +115,14 @@
 		F1A2CE81273A7F1E00FCB387 /* HogumachuTalk */ = {
 			isa = PBXGroup;
 			children = (
+				F1A2CEB7273A7FC700FCB387 /* Coordinator */,
+				F1A2CEB6273A7FC400FCB387 /* DI */,
+				F1A2CEB2273A7F5F00FCB387 /* LoginHome */,
+				F1A2CEB3273A7F9800FCB387 /* ProfileHome */,
+				F1A2CEB4273A7F9C00FCB387 /* ChatHome */,
+				F1A2CEB5273A7FA200FCB387 /* SettingHome */,
 				F1A2CE82273A7F1E00FCB387 /* AppDelegate.swift */,
 				F1A2CE84273A7F1E00FCB387 /* SceneDelegate.swift */,
-				F1A2CE86273A7F1E00FCB387 /* ViewController.swift */,
-				F1A2CE88273A7F1E00FCB387 /* Main.storyboard */,
 				F1A2CE8B273A7F2100FCB387 /* Assets.xcassets */,
 				F1A2CE8D273A7F2100FCB387 /* LaunchScreen.storyboard */,
 				F1A2CE90273A7F2100FCB387 /* Info.plist */,
@@ -125,6 +145,58 @@
 				F1A2CEA5273A7F2200FCB387 /* HogumachuTalkUITestsLaunchTests.swift */,
 			);
 			path = HogumachuTalkUITests;
+			sourceTree = "<group>";
+		};
+		F1A2CEB2273A7F5F00FCB387 /* LoginHome */ = {
+			isa = PBXGroup;
+			children = (
+				F1A2CEBA273A800000FCB387 /* LoginViewController.swift */,
+				F1A2CEC2273A806F00FCB387 /* LoginViewModel.swift */,
+			);
+			path = LoginHome;
+			sourceTree = "<group>";
+		};
+		F1A2CEB3273A7F9800FCB387 /* ProfileHome */ = {
+			isa = PBXGroup;
+			children = (
+				F1A2CEBC273A800F00FCB387 /* ProfileViewController.swift */,
+				F1A2CEC4273A807600FCB387 /* ProfileViewModel.swift */,
+			);
+			path = ProfileHome;
+			sourceTree = "<group>";
+		};
+		F1A2CEB4273A7F9C00FCB387 /* ChatHome */ = {
+			isa = PBXGroup;
+			children = (
+				F1A2CEBE273A801600FCB387 /* ChatViewController.swift */,
+				F1A2CEC6273A807C00FCB387 /* ChatViewModel.swift */,
+			);
+			path = ChatHome;
+			sourceTree = "<group>";
+		};
+		F1A2CEB5273A7FA200FCB387 /* SettingHome */ = {
+			isa = PBXGroup;
+			children = (
+				F1A2CEC0273A801F00FCB387 /* SettingViewController.swift */,
+				F1A2CEC8273A808300FCB387 /* SettingViewModel.swift */,
+			);
+			path = SettingHome;
+			sourceTree = "<group>";
+		};
+		F1A2CEB6273A7FC400FCB387 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				F1A2CECA273A80A100FCB387 /* CompositionRoot.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		F1A2CEB7273A7FC700FCB387 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				F1A2CEB8273A7FD000FCB387 /* Coordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,7 +305,6 @@
 			files = (
 				F1A2CE8F273A7F2100FCB387 /* LaunchScreen.storyboard in Resources */,
 				F1A2CE8C273A7F2100FCB387 /* Assets.xcassets in Resources */,
-				F1A2CE8A273A7F1E00FCB387 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,9 +329,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1A2CE87273A7F1E00FCB387 /* ViewController.swift in Sources */,
+				F1A2CEBB273A800000FCB387 /* LoginViewController.swift in Sources */,
 				F1A2CE83273A7F1E00FCB387 /* AppDelegate.swift in Sources */,
+				F1A2CEBD273A800F00FCB387 /* ProfileViewController.swift in Sources */,
+				F1A2CEC5273A807600FCB387 /* ProfileViewModel.swift in Sources */,
+				F1A2CECB273A80A100FCB387 /* CompositionRoot.swift in Sources */,
 				F1A2CE85273A7F1E00FCB387 /* SceneDelegate.swift in Sources */,
+				F1A2CEC3273A806F00FCB387 /* LoginViewModel.swift in Sources */,
+				F1A2CEBF273A801600FCB387 /* ChatViewController.swift in Sources */,
+				F1A2CEC1273A801F00FCB387 /* SettingViewController.swift in Sources */,
+				F1A2CEC9273A808300FCB387 /* SettingViewModel.swift in Sources */,
+				F1A2CEC7273A807C00FCB387 /* ChatViewModel.swift in Sources */,
+				F1A2CEB9273A7FD000FCB387 /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,14 +377,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		F1A2CE88273A7F1E00FCB387 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F1A2CE89273A7F1E00FCB387 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		F1A2CE8D273A7F2100FCB387 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -444,9 +516,10 @@
 				INFOPLIST_FILE = HogumachuTalk/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -456,7 +529,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -472,9 +545,10 @@
 				INFOPLIST_FILE = HogumachuTalk/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -484,7 +558,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
