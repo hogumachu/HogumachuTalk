@@ -24,6 +24,9 @@
 		F1A2CEC7273A807C00FCB387 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEC6273A807C00FCB387 /* ChatViewModel.swift */; };
 		F1A2CEC9273A808300FCB387 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEC8273A808300FCB387 /* SettingViewModel.swift */; };
 		F1A2CECB273A80A100FCB387 /* CompositionRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CECA273A80A100FCB387 /* CompositionRoot.swift */; };
+		F1A2CECE273A8B9B00FCB387 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CECD273A8B9B00FCB387 /* SignUpViewController.swift */; };
+		F1A2CED0273A8BA100FCB387 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CECF273A8BA000FCB387 /* SignUpViewModel.swift */; };
+		F1A2CED3273A93D500FCB387 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CED2273A93D500FCB387 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +68,9 @@
 		F1A2CEC6273A807C00FCB387 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		F1A2CEC8273A808300FCB387 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		F1A2CECA273A80A100FCB387 /* CompositionRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionRoot.swift; sourceTree = "<group>"; };
+		F1A2CECD273A8B9B00FCB387 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		F1A2CECF273A8BA000FCB387 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		F1A2CED2273A93D500FCB387 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +121,7 @@
 		F1A2CE81273A7F1E00FCB387 /* HogumachuTalk */ = {
 			isa = PBXGroup;
 			children = (
+				F1A2CED1273A93CF00FCB387 /* Model */,
 				F1A2CEB7273A7FC700FCB387 /* Coordinator */,
 				F1A2CEB6273A7FC400FCB387 /* DI */,
 				F1A2CEB2273A7F5F00FCB387 /* LoginHome */,
@@ -150,6 +157,7 @@
 		F1A2CEB2273A7F5F00FCB387 /* LoginHome */ = {
 			isa = PBXGroup;
 			children = (
+				F1A2CECC273A8B8F00FCB387 /* SignUpHome */,
 				F1A2CEBA273A800000FCB387 /* LoginViewController.swift */,
 				F1A2CEC2273A806F00FCB387 /* LoginViewModel.swift */,
 			);
@@ -197,6 +205,23 @@
 				F1A2CEB8273A7FD000FCB387 /* Coordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		F1A2CECC273A8B8F00FCB387 /* SignUpHome */ = {
+			isa = PBXGroup;
+			children = (
+				F1A2CECD273A8B9B00FCB387 /* SignUpViewController.swift */,
+				F1A2CECF273A8BA000FCB387 /* SignUpViewModel.swift */,
+			);
+			path = SignUpHome;
+			sourceTree = "<group>";
+		};
+		F1A2CED1273A93CF00FCB387 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F1A2CED2273A93D500FCB387 /* User.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,11 +360,14 @@
 				F1A2CEC5273A807600FCB387 /* ProfileViewModel.swift in Sources */,
 				F1A2CECB273A80A100FCB387 /* CompositionRoot.swift in Sources */,
 				F1A2CE85273A7F1E00FCB387 /* SceneDelegate.swift in Sources */,
+				F1A2CED0273A8BA100FCB387 /* SignUpViewModel.swift in Sources */,
 				F1A2CEC3273A806F00FCB387 /* LoginViewModel.swift in Sources */,
+				F1A2CED3273A93D500FCB387 /* User.swift in Sources */,
 				F1A2CEBF273A801600FCB387 /* ChatViewController.swift in Sources */,
 				F1A2CEC1273A801F00FCB387 /* SettingViewController.swift in Sources */,
 				F1A2CEC9273A808300FCB387 /* SettingViewModel.swift in Sources */,
 				F1A2CEC7273A807C00FCB387 /* ChatViewModel.swift in Sources */,
+				F1A2CECE273A8B9B00FCB387 /* SignUpViewController.swift in Sources */,
 				F1A2CEB9273A7FD000FCB387 /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -519,7 +547,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -548,7 +576,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
