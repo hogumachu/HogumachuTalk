@@ -1,0 +1,629 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F1A2CE83273A7F1E00FCB387 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CE82273A7F1E00FCB387 /* AppDelegate.swift */; };
+		F1A2CE85273A7F1E00FCB387 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CE84273A7F1E00FCB387 /* SceneDelegate.swift */; };
+		F1A2CE87273A7F1E00FCB387 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CE86273A7F1E00FCB387 /* ViewController.swift */; };
+		F1A2CE8A273A7F1E00FCB387 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1A2CE88273A7F1E00FCB387 /* Main.storyboard */; };
+		F1A2CE8C273A7F2100FCB387 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1A2CE8B273A7F2100FCB387 /* Assets.xcassets */; };
+		F1A2CE8F273A7F2100FCB387 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1A2CE8D273A7F2100FCB387 /* LaunchScreen.storyboard */; };
+		F1A2CE9A273A7F2200FCB387 /* HogumachuTalkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CE99273A7F2200FCB387 /* HogumachuTalkTests.swift */; };
+		F1A2CEA4273A7F2200FCB387 /* HogumachuTalkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEA3273A7F2200FCB387 /* HogumachuTalkUITests.swift */; };
+		F1A2CEA6273A7F2200FCB387 /* HogumachuTalkUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEA5273A7F2200FCB387 /* HogumachuTalkUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F1A2CE96273A7F2200FCB387 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F1A2CE77273A7F1E00FCB387 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F1A2CE7E273A7F1E00FCB387;
+			remoteInfo = HogumachuTalk;
+		};
+		F1A2CEA0273A7F2200FCB387 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F1A2CE77273A7F1E00FCB387 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F1A2CE7E273A7F1E00FCB387;
+			remoteInfo = HogumachuTalk;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F1A2CE7F273A7F1E00FCB387 /* HogumachuTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HogumachuTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1A2CE82273A7F1E00FCB387 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F1A2CE84273A7F1E00FCB387 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		F1A2CE86273A7F1E00FCB387 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F1A2CE89273A7F1E00FCB387 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F1A2CE8B273A7F2100FCB387 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F1A2CE8E273A7F2100FCB387 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F1A2CE90273A7F2100FCB387 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1A2CE95273A7F2200FCB387 /* HogumachuTalkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HogumachuTalkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1A2CE99273A7F2200FCB387 /* HogumachuTalkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HogumachuTalkTests.swift; sourceTree = "<group>"; };
+		F1A2CE9F273A7F2200FCB387 /* HogumachuTalkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HogumachuTalkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1A2CEA3273A7F2200FCB387 /* HogumachuTalkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HogumachuTalkUITests.swift; sourceTree = "<group>"; };
+		F1A2CEA5273A7F2200FCB387 /* HogumachuTalkUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HogumachuTalkUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F1A2CE7C273A7F1E00FCB387 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1A2CE92273A7F2200FCB387 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1A2CE9C273A7F2200FCB387 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F1A2CE76273A7F1E00FCB387 = {
+			isa = PBXGroup;
+			children = (
+				F1A2CE81273A7F1E00FCB387 /* HogumachuTalk */,
+				F1A2CE98273A7F2200FCB387 /* HogumachuTalkTests */,
+				F1A2CEA2273A7F2200FCB387 /* HogumachuTalkUITests */,
+				F1A2CE80273A7F1E00FCB387 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F1A2CE80273A7F1E00FCB387 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F1A2CE7F273A7F1E00FCB387 /* HogumachuTalk.app */,
+				F1A2CE95273A7F2200FCB387 /* HogumachuTalkTests.xctest */,
+				F1A2CE9F273A7F2200FCB387 /* HogumachuTalkUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F1A2CE81273A7F1E00FCB387 /* HogumachuTalk */ = {
+			isa = PBXGroup;
+			children = (
+				F1A2CE82273A7F1E00FCB387 /* AppDelegate.swift */,
+				F1A2CE84273A7F1E00FCB387 /* SceneDelegate.swift */,
+				F1A2CE86273A7F1E00FCB387 /* ViewController.swift */,
+				F1A2CE88273A7F1E00FCB387 /* Main.storyboard */,
+				F1A2CE8B273A7F2100FCB387 /* Assets.xcassets */,
+				F1A2CE8D273A7F2100FCB387 /* LaunchScreen.storyboard */,
+				F1A2CE90273A7F2100FCB387 /* Info.plist */,
+			);
+			path = HogumachuTalk;
+			sourceTree = "<group>";
+		};
+		F1A2CE98273A7F2200FCB387 /* HogumachuTalkTests */ = {
+			isa = PBXGroup;
+			children = (
+				F1A2CE99273A7F2200FCB387 /* HogumachuTalkTests.swift */,
+			);
+			path = HogumachuTalkTests;
+			sourceTree = "<group>";
+		};
+		F1A2CEA2273A7F2200FCB387 /* HogumachuTalkUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F1A2CEA3273A7F2200FCB387 /* HogumachuTalkUITests.swift */,
+				F1A2CEA5273A7F2200FCB387 /* HogumachuTalkUITestsLaunchTests.swift */,
+			);
+			path = HogumachuTalkUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F1A2CE7E273A7F1E00FCB387 /* HogumachuTalk */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F1A2CEA9273A7F2200FCB387 /* Build configuration list for PBXNativeTarget "HogumachuTalk" */;
+			buildPhases = (
+				F1A2CE7B273A7F1E00FCB387 /* Sources */,
+				F1A2CE7C273A7F1E00FCB387 /* Frameworks */,
+				F1A2CE7D273A7F1E00FCB387 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HogumachuTalk;
+			productName = HogumachuTalk;
+			productReference = F1A2CE7F273A7F1E00FCB387 /* HogumachuTalk.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F1A2CE94273A7F2200FCB387 /* HogumachuTalkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F1A2CEAC273A7F2200FCB387 /* Build configuration list for PBXNativeTarget "HogumachuTalkTests" */;
+			buildPhases = (
+				F1A2CE91273A7F2200FCB387 /* Sources */,
+				F1A2CE92273A7F2200FCB387 /* Frameworks */,
+				F1A2CE93273A7F2200FCB387 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F1A2CE97273A7F2200FCB387 /* PBXTargetDependency */,
+			);
+			name = HogumachuTalkTests;
+			productName = HogumachuTalkTests;
+			productReference = F1A2CE95273A7F2200FCB387 /* HogumachuTalkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F1A2CE9E273A7F2200FCB387 /* HogumachuTalkUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F1A2CEAF273A7F2200FCB387 /* Build configuration list for PBXNativeTarget "HogumachuTalkUITests" */;
+			buildPhases = (
+				F1A2CE9B273A7F2200FCB387 /* Sources */,
+				F1A2CE9C273A7F2200FCB387 /* Frameworks */,
+				F1A2CE9D273A7F2200FCB387 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F1A2CEA1273A7F2200FCB387 /* PBXTargetDependency */,
+			);
+			name = HogumachuTalkUITests;
+			productName = HogumachuTalkUITests;
+			productReference = F1A2CE9F273A7F2200FCB387 /* HogumachuTalkUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F1A2CE77273A7F1E00FCB387 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1310;
+				LastUpgradeCheck = 1310;
+				TargetAttributes = {
+					F1A2CE7E273A7F1E00FCB387 = {
+						CreatedOnToolsVersion = 13.1;
+					};
+					F1A2CE94273A7F2200FCB387 = {
+						CreatedOnToolsVersion = 13.1;
+						TestTargetID = F1A2CE7E273A7F1E00FCB387;
+					};
+					F1A2CE9E273A7F2200FCB387 = {
+						CreatedOnToolsVersion = 13.1;
+						TestTargetID = F1A2CE7E273A7F1E00FCB387;
+					};
+				};
+			};
+			buildConfigurationList = F1A2CE7A273A7F1E00FCB387 /* Build configuration list for PBXProject "HogumachuTalk" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F1A2CE76273A7F1E00FCB387;
+			productRefGroup = F1A2CE80273A7F1E00FCB387 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F1A2CE7E273A7F1E00FCB387 /* HogumachuTalk */,
+				F1A2CE94273A7F2200FCB387 /* HogumachuTalkTests */,
+				F1A2CE9E273A7F2200FCB387 /* HogumachuTalkUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F1A2CE7D273A7F1E00FCB387 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1A2CE8F273A7F2100FCB387 /* LaunchScreen.storyboard in Resources */,
+				F1A2CE8C273A7F2100FCB387 /* Assets.xcassets in Resources */,
+				F1A2CE8A273A7F1E00FCB387 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1A2CE93273A7F2200FCB387 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1A2CE9D273A7F2200FCB387 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F1A2CE7B273A7F1E00FCB387 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1A2CE87273A7F1E00FCB387 /* ViewController.swift in Sources */,
+				F1A2CE83273A7F1E00FCB387 /* AppDelegate.swift in Sources */,
+				F1A2CE85273A7F1E00FCB387 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1A2CE91273A7F2200FCB387 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1A2CE9A273A7F2200FCB387 /* HogumachuTalkTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1A2CE9B273A7F2200FCB387 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1A2CEA6273A7F2200FCB387 /* HogumachuTalkUITestsLaunchTests.swift in Sources */,
+				F1A2CEA4273A7F2200FCB387 /* HogumachuTalkUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F1A2CE97273A7F2200FCB387 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F1A2CE7E273A7F1E00FCB387 /* HogumachuTalk */;
+			targetProxy = F1A2CE96273A7F2200FCB387 /* PBXContainerItemProxy */;
+		};
+		F1A2CEA1273A7F2200FCB387 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F1A2CE7E273A7F1E00FCB387 /* HogumachuTalk */;
+			targetProxy = F1A2CEA0273A7F2200FCB387 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F1A2CE88273A7F1E00FCB387 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1A2CE89273A7F1E00FCB387 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F1A2CE8D273A7F2100FCB387 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1A2CE8E273A7F2100FCB387 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F1A2CEA7273A7F2200FCB387 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F1A2CEA8273A7F2200FCB387 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F1A2CEAA273A7F2200FCB387 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 62ZLDXLZ77;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HogumachuTalk/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hogumachu.HogumachuTalk;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F1A2CEAB273A7F2200FCB387 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 62ZLDXLZ77;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HogumachuTalk/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hogumachu.HogumachuTalk;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F1A2CEAD273A7F2200FCB387 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 62ZLDXLZ77;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hogumachu.HogumachuTalkTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HogumachuTalk.app/HogumachuTalk";
+			};
+			name = Debug;
+		};
+		F1A2CEAE273A7F2200FCB387 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 62ZLDXLZ77;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hogumachu.HogumachuTalkTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HogumachuTalk.app/HogumachuTalk";
+			};
+			name = Release;
+		};
+		F1A2CEB0273A7F2200FCB387 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 62ZLDXLZ77;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hogumachu.HogumachuTalkUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = HogumachuTalk;
+			};
+			name = Debug;
+		};
+		F1A2CEB1273A7F2200FCB387 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 62ZLDXLZ77;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hogumachu.HogumachuTalkUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = HogumachuTalk;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F1A2CE7A273A7F1E00FCB387 /* Build configuration list for PBXProject "HogumachuTalk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1A2CEA7273A7F2200FCB387 /* Debug */,
+				F1A2CEA8273A7F2200FCB387 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F1A2CEA9273A7F2200FCB387 /* Build configuration list for PBXNativeTarget "HogumachuTalk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1A2CEAA273A7F2200FCB387 /* Debug */,
+				F1A2CEAB273A7F2200FCB387 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F1A2CEAC273A7F2200FCB387 /* Build configuration list for PBXNativeTarget "HogumachuTalkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1A2CEAD273A7F2200FCB387 /* Debug */,
+				F1A2CEAE273A7F2200FCB387 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F1A2CEAF273A7F2200FCB387 /* Build configuration list for PBXNativeTarget "HogumachuTalkUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1A2CEB0273A7F2200FCB387 /* Debug */,
+				F1A2CEB1273A7F2200FCB387 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F1A2CE77273A7F1E00FCB387 /* Project object */;
+}
