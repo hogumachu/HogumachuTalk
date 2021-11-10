@@ -7,7 +7,6 @@ class FirebaseImp {
     static let shared = FirebaseImp()
     private init() {}
     
-    
     // MARK: - Login
     
     func signIn(email: String, password: String, completion: @escaping(Result<Bool, Error>) -> Void) {

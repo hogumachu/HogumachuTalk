@@ -8,8 +8,8 @@ class Coordinator {
         
         let homeTabBarController: UITabBarController
         
-        let profileNavigationController: UINavigationController
-        let profileViewControllerFactory: () -> ProfileViewController
+        let friendNavigationController: UINavigationController
+        let friendViewControllerFactory: () -> FriendViewController
         
         let chatNavigationController: UINavigationController
         let chatViewControllerFactory: () -> ChatViewController
@@ -24,8 +24,8 @@ class Coordinator {
     
     let homeTabBarController: UITabBarController
     
-    let profileNavigationController: UINavigationController
-    let profileViewControllerFactory: () -> ProfileViewController
+    let friendNavigationController: UINavigationController
+    let friendViewControllerFactory: () -> FriendViewController
     
     let chatNavigationController: UINavigationController
     let chatViewControllerFactory: () -> ChatViewController
@@ -40,8 +40,8 @@ class Coordinator {
         
         self.homeTabBarController = dependency.homeTabBarController
         
-        self.profileNavigationController = dependency.profileNavigationController
-        self.profileViewControllerFactory = dependency.profileViewControllerFactory
+        self.friendNavigationController = dependency.friendNavigationController
+        self.friendViewControllerFactory = dependency.friendViewControllerFactory
         
         self.chatNavigationController = dependency.chatNavigationController
         self.chatViewControllerFactory = dependency.chatViewControllerFactory
@@ -69,13 +69,13 @@ extension Coordinator {
     }
     
     func signIn() {
-        let profileVC = profileViewControllerFactory()
-        profileVC.coordinator = self
-        profileVC.tabBarItem = UITabBarItem(title: "프로필",
+        let friendVC = friendViewControllerFactory()
+        friendVC.coordinator = self
+        friendVC.tabBarItem = UITabBarItem(title: "친구",
                                             image: UIImage(systemName: "person"),
                                             selectedImage: UIImage(systemName: "person.fill")
         )
-        profileNavigationController.setViewControllers([profileVC], animated: false)
+        friendNavigationController.setViewControllers([friendVC], animated: false)
         
         let chatVC = chatViewControllerFactory()
         chatVC.coordinator = self
@@ -95,7 +95,7 @@ extension Coordinator {
         
         homeTabBarController.setViewControllers(
             [
-                profileNavigationController,
+                friendNavigationController,
                 chatNavigationController,
                 settingNavigationController
             ],

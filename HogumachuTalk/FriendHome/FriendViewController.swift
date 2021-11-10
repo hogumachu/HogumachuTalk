@@ -1,11 +1,11 @@
 import UIKit
 
-class ProfileViewController: UIViewController {
+class FriendViewController: UIViewController {
     struct Dependency {
-        let viewModel: ProfileViewModel
+        let viewModel: FriendViewModel
     }
     var coordinator: Coordinator?
-    let viewModel: ProfileViewModel
+    let viewModel: FriendViewModel
     
     init(dependency: Dependency) {
         self.viewModel = dependency.viewModel

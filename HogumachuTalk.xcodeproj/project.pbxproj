@@ -16,11 +16,11 @@
 		F1A2CEA6273A7F2200FCB387 /* HogumachuTalkUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEA5273A7F2200FCB387 /* HogumachuTalkUITestsLaunchTests.swift */; };
 		F1A2CEB9273A7FD000FCB387 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEB8273A7FD000FCB387 /* Coordinator.swift */; };
 		F1A2CEBB273A800000FCB387 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEBA273A800000FCB387 /* LoginViewController.swift */; };
-		F1A2CEBD273A800F00FCB387 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEBC273A800F00FCB387 /* ProfileViewController.swift */; };
+		F1A2CEBD273A800F00FCB387 /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEBC273A800F00FCB387 /* FriendViewController.swift */; };
 		F1A2CEBF273A801600FCB387 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEBE273A801600FCB387 /* ChatViewController.swift */; };
 		F1A2CEC1273A801F00FCB387 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEC0273A801F00FCB387 /* SettingViewController.swift */; };
 		F1A2CEC3273A806F00FCB387 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEC2273A806F00FCB387 /* LoginViewModel.swift */; };
-		F1A2CEC5273A807600FCB387 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEC4273A807600FCB387 /* ProfileViewModel.swift */; };
+		F1A2CEC5273A807600FCB387 /* FriendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEC4273A807600FCB387 /* FriendViewModel.swift */; };
 		F1A2CEC7273A807C00FCB387 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEC6273A807C00FCB387 /* ChatViewModel.swift */; };
 		F1A2CEC9273A808300FCB387 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEC8273A808300FCB387 /* SettingViewModel.swift */; };
 		F1A2CECB273A80A100FCB387 /* CompositionRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CECA273A80A100FCB387 /* CompositionRoot.swift */; };
@@ -68,11 +68,11 @@
 		F1A2CEA5273A7F2200FCB387 /* HogumachuTalkUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HogumachuTalkUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F1A2CEB8273A7FD000FCB387 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		F1A2CEBA273A800000FCB387 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		F1A2CEBC273A800F00FCB387 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		F1A2CEBC273A800F00FCB387 /* FriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
 		F1A2CEBE273A801600FCB387 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		F1A2CEC0273A801F00FCB387 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		F1A2CEC2273A806F00FCB387 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		F1A2CEC4273A807600FCB387 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		F1A2CEC4273A807600FCB387 /* FriendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewModel.swift; sourceTree = "<group>"; };
 		F1A2CEC6273A807C00FCB387 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		F1A2CEC8273A808300FCB387 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		F1A2CECA273A80A100FCB387 /* CompositionRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionRoot.swift; sourceTree = "<group>"; };
@@ -143,7 +143,7 @@
 				F1A2CEB7273A7FC700FCB387 /* Coordinator */,
 				F1A2CEB6273A7FC400FCB387 /* DI */,
 				F1A2CEB2273A7F5F00FCB387 /* LoginHome */,
-				F1A2CEB3273A7F9800FCB387 /* ProfileHome */,
+				F1A2CEB3273A7F9800FCB387 /* FriendHome */,
 				F1A2CEB4273A7F9C00FCB387 /* ChatHome */,
 				F1A2CEB5273A7FA200FCB387 /* SettingHome */,
 				F1A2CE82273A7F1E00FCB387 /* AppDelegate.swift */,
@@ -182,13 +182,13 @@
 			path = LoginHome;
 			sourceTree = "<group>";
 		};
-		F1A2CEB3273A7F9800FCB387 /* ProfileHome */ = {
+		F1A2CEB3273A7F9800FCB387 /* FriendHome */ = {
 			isa = PBXGroup;
 			children = (
-				F1A2CEBC273A800F00FCB387 /* ProfileViewController.swift */,
-				F1A2CEC4273A807600FCB387 /* ProfileViewModel.swift */,
+				F1A2CEBC273A800F00FCB387 /* FriendViewController.swift */,
+				F1A2CEC4273A807600FCB387 /* FriendViewModel.swift */,
 			);
-			path = ProfileHome;
+			path = FriendHome;
 			sourceTree = "<group>";
 		};
 		F1A2CEB4273A7F9C00FCB387 /* ChatHome */ = {
@@ -401,8 +401,8 @@
 			files = (
 				F1A2CEBB273A800000FCB387 /* LoginViewController.swift in Sources */,
 				F1A2CE83273A7F1E00FCB387 /* AppDelegate.swift in Sources */,
-				F1A2CEBD273A800F00FCB387 /* ProfileViewController.swift in Sources */,
-				F1A2CEC5273A807600FCB387 /* ProfileViewModel.swift in Sources */,
+				F1A2CEBD273A800F00FCB387 /* FriendViewController.swift in Sources */,
+				F1A2CEC5273A807600FCB387 /* FriendViewModel.swift in Sources */,
 				F1A2CECB273A80A100FCB387 /* CompositionRoot.swift in Sources */,
 				F1A2CE85273A7F1E00FCB387 /* SceneDelegate.swift in Sources */,
 				F1A2CED0273A8BA100FCB387 /* SignUpViewModel.swift in Sources */,

@@ -24,12 +24,12 @@ extension AppDependency {
             return tabBarController
         }()
         
-        let profileNavigationController: UINavigationController = {
+        let friendNavigationController: UINavigationController = {
             let navi = UINavigationController()
             return navi
         }()
         
-        let profileViewControllerFactory: () -> ProfileViewController = {
+        let friendViewControllerFactory: () -> FriendViewController = {
             return .init(dependency: .init(viewModel: .init()))
         }
         
@@ -55,8 +55,8 @@ extension AppDependency {
                                                           loginViewControllerFactory: loginViewControllerFactory,
                                                           signUpViewControllerFactory: signUpViewControllerFactory,
                                                           homeTabBarController: homeTabBarController,
-                                                          profileNavigationController: profileNavigationController,
-                                                          profileViewControllerFactory: profileViewControllerFactory,
+                                                          friendNavigationController: friendNavigationController,
+                                                          friendViewControllerFactory: friendViewControllerFactory,
                                                           chatNavigationController: chatNavigationController,
                                                           chatViewControllerFactory: chatViewControllerFactory,
                                                           settingNavigationController: settingNavigationController,
