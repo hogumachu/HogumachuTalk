@@ -86,8 +86,31 @@ class LoginViewController: UIViewController {
         button.addTarget(self, action: #selector(signUpButtonDidTap), for: .touchUpInside)
         return button
     }()
-    
-    
+    private let autoLoginStackView: UIStackView = {
+        let stack = UIStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .horizontal
+        stack.spacing = 1
+        stack.distribution = .fillProportionally
+        stack.alignment = .leading
+        return stack
+    }()
+    private lazy var autoLoginCheckButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.isSelected = isCheckedAutoLogin
+        button.setImage(UIImage(systemName: "checkmark.square")?.withTintColor(.systemBrown, renderingMode: .alwaysOriginal), for: .normal)
+        button.setImage(UIImage(systemName: "checkmark.square.fill")?.withTintColor(.systemBrown, renderingMode: .alwaysOriginal), for: .selected)
+        button.addTarget(self, action: #selector(autoLoginCheckButtonDidTap), for: .touchUpInside)
+        return button
+    }()
+    private let autoLoginLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "자동 로그인"
+        label.textColor = .systemBrown
+        return label
+    }()
     // MARK: - Lifecycle
     
     init(dependency: Dependency) {
@@ -111,6 +134,7 @@ class LoginViewController: UIViewController {
         
         view.addSubview(logoLabel)
         view.addSubview(emailPasswordStackView)
+        view.addSubview(autoLoginStackView)
         view.addSubview(loginButton)
         view.addSubview(signUpStackView)
         
@@ -118,6 +142,9 @@ class LoginViewController: UIViewController {
         emailPasswordStackView.addArrangedSubview(emailTextField)
         emailPasswordStackView.addArrangedSubview(passwordLabel)
         emailPasswordStackView.addArrangedSubview(passwordTextField)
+        
+        autoLoginStackView.addArrangedSubview(autoLoginCheckButton)
+        autoLoginStackView.addArrangedSubview(autoLoginLabel)
         
         signUpStackView.addArrangedSubview(signUpLabel)
         signUpStackView.addArrangedSubview(signUpButton)
@@ -130,12 +157,15 @@ class LoginViewController: UIViewController {
             emailPasswordStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             emailPasswordStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             
-            loginButton.topAnchor.constraint(equalTo: emailPasswordStackView.bottomAnchor, constant: 20),
+            autoLoginStackView.topAnchor.constraint(equalTo: emailPasswordStackView.bottomAnchor, constant: 20),
+            autoLoginStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            autoLoginStackView.trailingAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            loginButton.topAnchor.constraint(equalTo: autoLoginStackView.bottomAnchor, constant: 20),
             loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             signUpStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            signUpStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            
+            signUpStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
         ])
     }
     
@@ -143,12 +173,17 @@ class LoginViewController: UIViewController {
     
     @objc
     private func loginButtonDidTap() {
-        // TODO: Change This
         viewModel.logIn(email: emailTextField.text!, password: passwordTextField.text!)
     }
     
     @objc
     private func signUpButtonDidTap() {
         viewModel.signUp()
+    }
+    
+    @objc
+    private func autoLoginCheckButtonDidTap() {
+        autoLoginCheckButton.isSelected = !autoLoginCheckButton.isSelected
+        viewModel.autoLogin(isChecked: autoLoginCheckButton.isSelected)
     }
 }
