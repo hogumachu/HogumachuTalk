@@ -36,6 +36,8 @@
 		F1A2CEE3273A969A00FCB387 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEE2273A969A00FCB387 /* Key.swift */; };
 		F1A2CEE6273A981E00FCB387 /* FirebaseImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEE5273A981E00FCB387 /* FirebaseImp.swift */; };
 		F1A2CEE9273BD85A00FCB387 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEE8273BD85A00FCB387 /* ViewModelType.swift */; };
+		F1A2CEF0273BE79500FCB387 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1A2CEEF273BE79500FCB387 /* GoogleService-Info.plist */; };
+		F1A2CEF3273BF08600FCB387 /* UserDefaultHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEF2273BF08600FCB387 /* UserDefaultHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,8 @@
 		F1A2CEE2273A969A00FCB387 /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		F1A2CEE5273A981E00FCB387 /* FirebaseImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseImp.swift; sourceTree = "<group>"; };
 		F1A2CEE8273BD85A00FCB387 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
+		F1A2CEEF273BE79500FCB387 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F1A2CEF2273BF08600FCB387 /* UserDefaultHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,7 +143,7 @@
 		F1A2CE81273A7F1E00FCB387 /* HogumachuTalk */ = {
 			isa = PBXGroup;
 			children = (
-				F1A2CEE4273A97C200FCB387 /* Firebase */,
+				F1A2CEF1273BF06E00FCB387 /* Service */,
 				F1A2CEE1273A968500FCB387 /* Key */,
 				F1A2CED1273A93CF00FCB387 /* Model */,
 				F1A2CEB7273A7FC700FCB387 /* Coordinator */,
@@ -151,6 +155,7 @@
 				F1A2CEEA273BDA5200FCB387 /* Type */,
 				F1A2CEE7273B739600FCB387 /* SupportingFiles */,
 				F1A2CE90273A7F2100FCB387 /* Info.plist */,
+				F1A2CEEF273BE79500FCB387 /* GoogleService-Info.plist */,
 			);
 			path = HogumachuTalk;
 			sourceTree = "<group>";
@@ -277,6 +282,15 @@
 			path = Type;
 			sourceTree = "<group>";
 		};
+		F1A2CEF1273BF06E00FCB387 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				F1A2CEE4273A97C200FCB387 /* Firebase */,
+				F1A2CEF2273BF08600FCB387 /* UserDefaultHelper.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -394,6 +408,7 @@
 			files = (
 				F1A2CE8F273A7F2100FCB387 /* LaunchScreen.storyboard in Resources */,
 				F1A2CE8C273A7F2100FCB387 /* Assets.xcassets in Resources */,
+				F1A2CEF0273BE79500FCB387 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,6 +438,7 @@
 				F1A2CEBD273A800F00FCB387 /* FriendViewController.swift in Sources */,
 				F1A2CEC5273A807600FCB387 /* FriendViewModel.swift in Sources */,
 				F1A2CECB273A80A100FCB387 /* CompositionRoot.swift in Sources */,
+				F1A2CEF3273BF08600FCB387 /* UserDefaultHelper.swift in Sources */,
 				F1A2CE85273A7F1E00FCB387 /* SceneDelegate.swift in Sources */,
 				F1A2CED0273A8BA100FCB387 /* SignUpViewModel.swift in Sources */,
 				F1A2CEC3273A806F00FCB387 /* LoginViewModel.swift in Sources */,
