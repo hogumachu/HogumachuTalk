@@ -144,8 +144,9 @@ class LoginViewController: UIViewController {
     
     @objc
     private func loginButtonDidTap() {
-        // TODO: - Login Methods
-        print("Login Button Did Tap !!!")
+        // TODO: Change This
+        coordinator?.signIn()
+//        viewModel.logIn(email: emailTextField.text!, password: passwordTextField.text!)
     }
     
     @objc
