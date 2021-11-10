@@ -7,7 +7,6 @@ class LoginViewController: UIViewController {
     
     // MARK: - Properties
     
-    var coordinator: Coordinator?
     let viewModel: LoginViewModel
     private let logoLabel: UILabel = {
         let label = UILabel()
@@ -145,12 +144,11 @@ class LoginViewController: UIViewController {
     @objc
     private func loginButtonDidTap() {
         // TODO: Change This
-        coordinator?.signIn()
-//        viewModel.logIn(email: emailTextField.text!, password: passwordTextField.text!)
+        viewModel.logIn(email: emailTextField.text!, password: passwordTextField.text!)
     }
     
     @objc
     private func signUpButtonDidTap() {
-        coordinator?.signUp()
+        viewModel.signUp()
     }
 }

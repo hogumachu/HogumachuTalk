@@ -1,4 +1,7 @@
-class SignUpViewModel {
+class SignUpViewModel: ViewModelType {
+    var coordinator: Coordinator?
+    
+    
     func signUp(email: String, password: String, confirmPassword: String, userName: String) {
         // TODO: - 조건 분기 처리
         if email.isEmpty || password.isEmpty || confirmPassword.isEmpty || userName.isEmpty {

@@ -1,3 +1,5 @@
-class ChatViewModel {
+class ChatViewModel: ViewModelType {
+    var coordinator: Coordinator?
+    
     
 }

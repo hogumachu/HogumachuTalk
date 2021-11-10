@@ -4,8 +4,12 @@ class ChatViewController: UIViewController {
     struct Dependency {
         let viewModel: ChatViewModel
     }
-    var coordinator: Coordinator?
     let viewModel: ChatViewModel
+    private let chatRoomTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }()
     
     init(dependency: Dependency) {
         self.viewModel = dependency.viewModel
@@ -23,5 +27,14 @@ class ChatViewController: UIViewController {
     
     private func configureUI() {
         view.backgroundColor = .white
+        
+        view.addSubview(chatRoomTableView)
+        
+        NSLayoutConstraint.activate([
+            chatRoomTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            chatRoomTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            chatRoomTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            chatRoomTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
 }

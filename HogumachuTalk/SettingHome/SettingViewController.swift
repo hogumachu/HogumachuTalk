@@ -4,7 +4,6 @@ class SettingViewController: UIViewController {
     struct Dependency {
         let viewModel: SettingViewModel
     }
-    var coordinator: Coordinator?
     let viewModel: SettingViewModel
     
     init(dependency: Dependency) {

@@ -35,6 +35,7 @@
 		F1A2CEE0273A960800FCB387 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = F1A2CEDF273A960800FCB387 /* FirebaseStorage */; };
 		F1A2CEE3273A969A00FCB387 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEE2273A969A00FCB387 /* Key.swift */; };
 		F1A2CEE6273A981E00FCB387 /* FirebaseImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEE5273A981E00FCB387 /* FirebaseImp.swift */; };
+		F1A2CEE9273BD85A00FCB387 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEE8273BD85A00FCB387 /* ViewModelType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		F1A2CED2273A93D500FCB387 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F1A2CEE2273A969A00FCB387 /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		F1A2CEE5273A981E00FCB387 /* FirebaseImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseImp.swift; sourceTree = "<group>"; };
+		F1A2CEE8273BD85A00FCB387 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 				F1A2CEB3273A7F9800FCB387 /* FriendHome */,
 				F1A2CEB4273A7F9C00FCB387 /* ChatHome */,
 				F1A2CEB5273A7FA200FCB387 /* SettingHome */,
+				F1A2CEEA273BDA5200FCB387 /* Type */,
 				F1A2CEE7273B739600FCB387 /* SupportingFiles */,
 				F1A2CE90273A7F2100FCB387 /* Info.plist */,
 			);
@@ -264,6 +267,14 @@
 				F1A2CE8D273A7F2100FCB387 /* LaunchScreen.storyboard */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		F1A2CEEA273BDA5200FCB387 /* Type */ = {
+			isa = PBXGroup;
+			children = (
+				F1A2CEE8273BD85A00FCB387 /* ViewModelType.swift */,
+			);
+			path = Type;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -415,6 +426,7 @@
 				F1A2CE85273A7F1E00FCB387 /* SceneDelegate.swift in Sources */,
 				F1A2CED0273A8BA100FCB387 /* SignUpViewModel.swift in Sources */,
 				F1A2CEC3273A806F00FCB387 /* LoginViewModel.swift in Sources */,
+				F1A2CEE9273BD85A00FCB387 /* ViewModelType.swift in Sources */,
 				F1A2CED3273A93D500FCB387 /* User.swift in Sources */,
 				F1A2CEBF273A801600FCB387 /* ChatViewController.swift in Sources */,
 				F1A2CEC1273A801F00FCB387 /* SettingViewController.swift in Sources */,

@@ -7,7 +7,6 @@ class SignUpViewController: UIViewController {
     
     // MARK: - Properties
     
-    var coordinator: Coordinator?
     let viewModel: SignUpViewModel
     
     private let signUpLabel: UILabel = {
