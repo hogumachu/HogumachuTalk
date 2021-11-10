@@ -122,7 +122,6 @@ class FirebaseImp {
     }
 }
 
-
 enum FirebaseError: Error {
     case emailVerified
     case unknown

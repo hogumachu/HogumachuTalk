@@ -193,15 +193,10 @@ class SignUpViewController: UIViewController {
     
     @objc
     private func signUpButtonDidTap() {
-        // TODO: - SignUp Method
-        print("Sign Up Button Did Tap")
-        
-        let user = User(id: emailTextField.text!,
-                        userName: userNameTextField.text!,
-                        email: emailTextField.text!,
-                        profileImageURL: ""
+        viewModel.signUp(email: emailTextField.text!,
+                         password: passwordTextField.text!,
+                         confirmPassword: confirmPasswordTextField.text!,
+                         userName: userNameTextField.text!
         )
-        
-        print(user)
     }
 }
