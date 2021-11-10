@@ -149,7 +149,6 @@ class SignUpViewController: UIViewController {
         configureUI()
     }
     
-    
     // MARK: - Configure
     
     private func configureUI() {

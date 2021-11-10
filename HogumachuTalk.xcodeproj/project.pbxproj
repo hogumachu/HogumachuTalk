@@ -146,10 +146,7 @@
 				F1A2CEB3273A7F9800FCB387 /* FriendHome */,
 				F1A2CEB4273A7F9C00FCB387 /* ChatHome */,
 				F1A2CEB5273A7FA200FCB387 /* SettingHome */,
-				F1A2CE82273A7F1E00FCB387 /* AppDelegate.swift */,
-				F1A2CE84273A7F1E00FCB387 /* SceneDelegate.swift */,
-				F1A2CE8B273A7F2100FCB387 /* Assets.xcassets */,
-				F1A2CE8D273A7F2100FCB387 /* LaunchScreen.storyboard */,
+				F1A2CEE7273B739600FCB387 /* SupportingFiles */,
 				F1A2CE90273A7F2100FCB387 /* Info.plist */,
 			);
 			path = HogumachuTalk;
@@ -256,6 +253,17 @@
 				F1A2CEE5273A981E00FCB387 /* FirebaseImp.swift */,
 			);
 			path = Firebase;
+			sourceTree = "<group>";
+		};
+		F1A2CEE7273B739600FCB387 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				F1A2CE82273A7F1E00FCB387 /* AppDelegate.swift */,
+				F1A2CE84273A7F1E00FCB387 /* SceneDelegate.swift */,
+				F1A2CE8B273A7F2100FCB387 /* Assets.xcassets */,
+				F1A2CE8D273A7F2100FCB387 /* LaunchScreen.storyboard */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
