@@ -59,6 +59,10 @@ extension Coordinator {
         vc.viewModel.coordinator = self
         
         mainNavigationController.setViewControllers([vc], animated: false)
+        
+        if User.currentUser != nil && isCheckedAutoLogin {
+            signIn()
+        }
     }
     
     func signUp() {
@@ -103,6 +107,10 @@ extension Coordinator {
         )
         
         mainNavigationController.pushViewController(homeTabBarController, animated: true)
+    }
+    
+    func signOut() {
+        mainNavigationController.popViewController(animated: true)
     }
     
     // TODO: - Scene Enum 만들어서 진행, Method명 변경
