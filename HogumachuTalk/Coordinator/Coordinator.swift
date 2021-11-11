@@ -60,7 +60,9 @@ extension Coordinator {
         
         mainNavigationController.setViewControllers([vc], animated: false)
         
+        // 만약 User 데이터를 갖고 있고 자동 로그인이 체크되어있으면
         if User.currentUser != nil && isCheckedAutoLogin {
+            // 자동으로 로그인함
             signIn()
         }
     }

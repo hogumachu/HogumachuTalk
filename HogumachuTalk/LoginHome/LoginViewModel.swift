@@ -9,11 +9,12 @@ class LoginViewModel: ViewModelType {
         }
         FirebaseImp.shared.signIn(email: email,
                                   password: password) { [weak self] result in
-            // TODO: - Completion
+            
             switch result {
             case .success(_):
                 self?.coordinator?.signIn()
             case .failure(let err):
+                // TODO: - 에러에 대한 것을 나타낼 Alert
                 print(err.localizedDescription)
             }
         }

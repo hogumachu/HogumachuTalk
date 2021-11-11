@@ -38,6 +38,8 @@
 		F1A2CEE9273BD85A00FCB387 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEE8273BD85A00FCB387 /* ViewModelType.swift */; };
 		F1A2CEF0273BE79500FCB387 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1A2CEEF273BE79500FCB387 /* GoogleService-Info.plist */; };
 		F1A2CEF3273BF08600FCB387 /* UserDefaultHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEF2273BF08600FCB387 /* UserDefaultHelper.swift */; };
+		F1A2CEF5273CC5DB00FCB387 /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEF4273CC5DB00FCB387 /* FriendTableViewCell.swift */; };
+		F1A2CEF7273CC60400FCB387 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEF6273CC60400FCB387 /* ProfileTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +89,8 @@
 		F1A2CEE8273BD85A00FCB387 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		F1A2CEEF273BE79500FCB387 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F1A2CEF2273BF08600FCB387 /* UserDefaultHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultHelper.swift; sourceTree = "<group>"; };
+		F1A2CEF4273CC5DB00FCB387 /* FriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
+		F1A2CEF6273CC60400FCB387 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +196,8 @@
 			children = (
 				F1A2CEBC273A800F00FCB387 /* FriendViewController.swift */,
 				F1A2CEC4273A807600FCB387 /* FriendViewModel.swift */,
+				F1A2CEF6273CC60400FCB387 /* ProfileTableViewCell.swift */,
+				F1A2CEF4273CC5DB00FCB387 /* FriendTableViewCell.swift */,
 			);
 			path = FriendHome;
 			sourceTree = "<group>";
@@ -440,6 +446,7 @@
 				F1A2CECB273A80A100FCB387 /* CompositionRoot.swift in Sources */,
 				F1A2CEF3273BF08600FCB387 /* UserDefaultHelper.swift in Sources */,
 				F1A2CE85273A7F1E00FCB387 /* SceneDelegate.swift in Sources */,
+				F1A2CEF5273CC5DB00FCB387 /* FriendTableViewCell.swift in Sources */,
 				F1A2CED0273A8BA100FCB387 /* SignUpViewModel.swift in Sources */,
 				F1A2CEC3273A806F00FCB387 /* LoginViewModel.swift in Sources */,
 				F1A2CEE9273BD85A00FCB387 /* ViewModelType.swift in Sources */,
@@ -447,6 +454,7 @@
 				F1A2CEBF273A801600FCB387 /* ChatViewController.swift in Sources */,
 				F1A2CEC1273A801F00FCB387 /* SettingViewController.swift in Sources */,
 				F1A2CEC9273A808300FCB387 /* SettingViewModel.swift in Sources */,
+				F1A2CEF7273CC60400FCB387 /* ProfileTableViewCell.swift in Sources */,
 				F1A2CEC7273A807C00FCB387 /* ChatViewModel.swift in Sources */,
 				F1A2CEE3273A969A00FCB387 /* Key.swift in Sources */,
 				F1A2CECE273A8B9B00FCB387 /* SignUpViewController.swift in Sources */,
