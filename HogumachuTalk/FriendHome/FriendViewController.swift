@@ -27,6 +27,7 @@ class FriendViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpTableView()
         configureNavigationBar()
         configureUI()
     }
@@ -47,6 +48,36 @@ class FriendViewController: UIViewController {
     }
     
     private func configureNavigationBar() {
-        
+        self.navigationItem.title = "친구"
+    }
+    
+    private func setUpTableView() {
+        profileTableView.delegate = self
+        profileTableView.dataSource = self
+        profileTableView.register(ProfileTableViewCell.self, forCellReuseIdentifier: ProfileTableViewCell.identifier)
+        profileTableView.register(FriendTableViewCell.self, forCellReuseIdentifier: FriendTableViewCell.identifier)
+    }
+}
+
+extension FriendViewController: UITableViewDelegate {
+}
+
+extension FriendViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 && indexPath.row == 0 {
+            let item = User.currentUser!
+            let cell = tableView.dequeueReusableCell(withIdentifier: ProfileTableViewCell.identifier, for: indexPath) as! ProfileTableViewCell
+            cell.setItem(item: item)
+            
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: FriendTableViewCell.identifier, for: indexPath)
+            
+            return cell
+        }
     }
 }
