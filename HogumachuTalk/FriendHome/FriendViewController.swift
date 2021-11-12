@@ -64,20 +64,10 @@ extension FriendViewController: UITableViewDelegate {
 
 extension FriendViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return viewModel.tableViewNumberOfRowsInSection(section: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 && indexPath.row == 0 {
-            let item = User.currentUser!
-            let cell = tableView.dequeueReusableCell(withIdentifier: ProfileTableViewCell.identifier, for: indexPath) as! ProfileTableViewCell
-            cell.setItem(item: item)
-            
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: FriendTableViewCell.identifier, for: indexPath)
-            
-            return cell
-        }
+        return viewModel.tableViewCell(tableView, indexPath: indexPath)
     }
 }
