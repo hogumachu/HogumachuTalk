@@ -25,4 +25,11 @@ class FriendViewModel: ViewModelType {
             return cell
         }
     }
+    
+    func tableViewDidSelect(indexPath: IndexPath) {
+        if indexPath.section == 0 && indexPath.row == 0 {
+            let item = User.currentUser!
+            coordinator?.profile(user: item)
+        }
+    }
 }

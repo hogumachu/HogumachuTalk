@@ -33,6 +33,10 @@ extension AppDependency {
             return .init(dependency: .init(viewModel: .init()))
         }
         
+        let profileViewControllerFactory: (User) -> ProfileViewController = { user in
+            return .init(dependency: .init(viewModel: .init(dependency: .init(user: user))))
+        }
+        
         let chatNavigationController: UINavigationController = {
             let navi = UINavigationController()
             return navi
@@ -57,6 +61,7 @@ extension AppDependency {
                                                           homeTabBarController: homeTabBarController,
                                                           friendNavigationController: friendNavigationController,
                                                           friendViewControllerFactory: friendViewControllerFactory,
+                                                          profileViewControllerFactory: profileViewControllerFactory,
                                                           chatNavigationController: chatNavigationController,
                                                           chatViewControllerFactory: chatViewControllerFactory,
                                                           settingNavigationController: settingNavigationController,

@@ -60,6 +60,9 @@ class FriendViewController: UIViewController {
 }
 
 extension FriendViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.tableViewDidSelect(indexPath: indexPath)
+    }
 }
 
 extension FriendViewController: UITableViewDataSource {

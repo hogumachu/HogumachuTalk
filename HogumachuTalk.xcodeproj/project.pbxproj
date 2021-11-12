@@ -40,6 +40,8 @@
 		F1A2CEF3273BF08600FCB387 /* UserDefaultHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEF2273BF08600FCB387 /* UserDefaultHelper.swift */; };
 		F1A2CEF5273CC5DB00FCB387 /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEF4273CC5DB00FCB387 /* FriendTableViewCell.swift */; };
 		F1A2CEF7273CC60400FCB387 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEF6273CC60400FCB387 /* ProfileTableViewCell.swift */; };
+		F1A2CEFA273E1B2C00FCB387 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEF9273E1B2C00FCB387 /* ProfileViewController.swift */; };
+		F1A2CEFC273E7BE900FCB387 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEFB273E7BE900FCB387 /* ProfileViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +93,8 @@
 		F1A2CEF2273BF08600FCB387 /* UserDefaultHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultHelper.swift; sourceTree = "<group>"; };
 		F1A2CEF4273CC5DB00FCB387 /* FriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
 		F1A2CEF6273CC60400FCB387 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		F1A2CEF9273E1B2C00FCB387 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		F1A2CEFB273E7BE900FCB387 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +198,7 @@
 		F1A2CEB3273A7F9800FCB387 /* FriendHome */ = {
 			isa = PBXGroup;
 			children = (
+				F1A2CEF8273E1B2000FCB387 /* ProfileHome */,
 				F1A2CEBC273A800F00FCB387 /* FriendViewController.swift */,
 				F1A2CEC4273A807600FCB387 /* FriendViewModel.swift */,
 				F1A2CEF6273CC60400FCB387 /* ProfileTableViewCell.swift */,
@@ -295,6 +300,15 @@
 				F1A2CEF2273BF08600FCB387 /* UserDefaultHelper.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		F1A2CEF8273E1B2000FCB387 /* ProfileHome */ = {
+			isa = PBXGroup;
+			children = (
+				F1A2CEF9273E1B2C00FCB387 /* ProfileViewController.swift */,
+				F1A2CEFB273E7BE900FCB387 /* ProfileViewModel.swift */,
+			);
+			path = ProfileHome;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -445,6 +459,7 @@
 				F1A2CEC5273A807600FCB387 /* FriendViewModel.swift in Sources */,
 				F1A2CECB273A80A100FCB387 /* CompositionRoot.swift in Sources */,
 				F1A2CEF3273BF08600FCB387 /* UserDefaultHelper.swift in Sources */,
+				F1A2CEFA273E1B2C00FCB387 /* ProfileViewController.swift in Sources */,
 				F1A2CE85273A7F1E00FCB387 /* SceneDelegate.swift in Sources */,
 				F1A2CEF5273CC5DB00FCB387 /* FriendTableViewCell.swift in Sources */,
 				F1A2CED0273A8BA100FCB387 /* SignUpViewModel.swift in Sources */,
@@ -453,6 +468,7 @@
 				F1A2CED3273A93D500FCB387 /* User.swift in Sources */,
 				F1A2CEBF273A801600FCB387 /* ChatViewController.swift in Sources */,
 				F1A2CEC1273A801F00FCB387 /* SettingViewController.swift in Sources */,
+				F1A2CEFC273E7BE900FCB387 /* ProfileViewModel.swift in Sources */,
 				F1A2CEC9273A808300FCB387 /* SettingViewModel.swift in Sources */,
 				F1A2CEF7273CC60400FCB387 /* ProfileTableViewCell.swift in Sources */,
 				F1A2CEC7273A807C00FCB387 /* ChatViewModel.swift in Sources */,

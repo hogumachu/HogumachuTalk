@@ -10,6 +10,7 @@ class Coordinator {
         
         let friendNavigationController: UINavigationController
         let friendViewControllerFactory: () -> FriendViewController
+        let profileViewControllerFactory: (User) -> ProfileViewController
         
         let chatNavigationController: UINavigationController
         let chatViewControllerFactory: () -> ChatViewController
@@ -26,6 +27,7 @@ class Coordinator {
     
     let friendNavigationController: UINavigationController
     let friendViewControllerFactory: () -> FriendViewController
+    let profileViewControllerFactory: (User) -> ProfileViewController
     
     let chatNavigationController: UINavigationController
     let chatViewControllerFactory: () -> ChatViewController
@@ -42,6 +44,7 @@ class Coordinator {
         
         self.friendNavigationController = dependency.friendNavigationController
         self.friendViewControllerFactory = dependency.friendViewControllerFactory
+        self.profileViewControllerFactory = dependency.profileViewControllerFactory
         
         self.chatNavigationController = dependency.chatNavigationController
         self.chatViewControllerFactory = dependency.chatViewControllerFactory
@@ -86,8 +89,8 @@ extension Coordinator {
         let chatVC = chatViewControllerFactory()
         chatVC.viewModel.coordinator = self
         chatVC.tabBarItem = UITabBarItem(title: "채팅",
-                                         image: UIImage(systemName: "quote.bubble"),
-                                         selectedImage: UIImage(systemName: "quote.bubble.fill")
+                                         image: UIImage(systemName: "message"),
+                                         selectedImage: UIImage(systemName: "message.fill")
         )
         chatNavigationController.setViewControllers([chatVC], animated: false)
         
@@ -113,6 +116,17 @@ extension Coordinator {
     
     func signOut() {
         mainNavigationController.popViewController(animated: true)
+    }
+    
+    func profile(user: User) {
+        let vc = profileViewControllerFactory(user)
+        vc.viewModel.coordinator = self
+        vc.modalPresentationStyle = .fullScreen
+        homeTabBarController.present(vc, animated: true, completion: nil)
+    }
+    
+    func dismiss() {
+        homeTabBarController.dismiss(animated: true, completion: nil)
     }
     
     // TODO: - Scene Enum 만들어서 진행, Method명 변경
