@@ -65,6 +65,31 @@ class ProfileViewController: UIViewController {
         label.textColor = .white
         return label
     }()
+    private let editStackView: UIStackView = {
+        let stack = UIStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .vertical
+        stack.distribution = .equalSpacing
+        stack.alignment = .center
+        stack.spacing = 10
+        return stack
+    }()
+    private lazy var editButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(systemName: "pencil")?.withTintColor(.white, renderingMode: .alwaysOriginal), for: .normal)
+        button.contentVerticalAlignment = .fill
+        button.contentHorizontalAlignment = .fill
+        button.addTarget(self, action: #selector(chatButtonDidTap), for: .touchUpInside)
+        return button
+    }()
+    private let editLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "프로필 편집"
+        label.textColor = .white
+        return label
+    }()
     private let backgroundImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -103,6 +128,15 @@ class ProfileViewController: UIViewController {
         button.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
         return button
     }()
+    private let footerStackView: UIStackView = {
+        let stack = UIStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .horizontal
+        stack.distribution = .equalSpacing
+        stack.alignment = .center
+        stack.spacing = 30
+        return stack
+    }()
     
     // MARK: Lifecycle
     
@@ -127,8 +161,8 @@ class ProfileViewController: UIViewController {
         view.backgroundColor = .darkGray
         view.addSubview(backgroundImageView)
         view.addSubview(profileStackView)
-        view.addSubview(chatStackView)
         view.addSubview(headerBarStackView)
+        view.addSubview(footerStackView)
         
         profileStackView.addArrangedSubview(profileImageView)
         profileStackView.addArrangedSubview(userNameLabel)
@@ -137,8 +171,14 @@ class ProfileViewController: UIViewController {
         chatStackView.addArrangedSubview(chatButton)
         chatStackView.addArrangedSubview(chatLabel)
         
+        editStackView.addArrangedSubview(editButton)
+        editStackView.addArrangedSubview(editLabel)
+        
         headerBarStackView.addArrangedSubview(headerLeftBarStackView)
         headerBarStackView.addArrangedSubview(headerRightBarStackView)
+        
+        footerStackView.addArrangedSubview(chatStackView)
+        footerStackView.addArrangedSubview(editStackView)
         
         headerLeftBarStackView.addArrangedSubview(backButton)
         
@@ -148,11 +188,9 @@ class ProfileViewController: UIViewController {
             backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
-            chatStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            chatStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30),
-            
-            chatButton.widthAnchor.constraint(equalToConstant: 30),
-            chatButton.heightAnchor.constraint(equalToConstant: 30),
+            headerBarStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            headerBarStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            headerBarStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
             profileStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             profileStackView.bottomAnchor.constraint(equalTo: chatStackView.topAnchor, constant: -30),
@@ -160,9 +198,14 @@ class ProfileViewController: UIViewController {
             profileImageView.heightAnchor.constraint(equalToConstant: 80),
             profileImageView.widthAnchor.constraint(equalToConstant: 80),
             
-            headerBarStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            headerBarStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            headerBarStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+            footerStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            footerStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30),
+            
+            chatButton.widthAnchor.constraint(equalToConstant: 30),
+            chatButton.heightAnchor.constraint(equalToConstant: 30),
+            
+            editButton.widthAnchor.constraint(equalToConstant: 30),
+            editButton.heightAnchor.constraint(equalToConstant: 30)
         ])
     }
     
