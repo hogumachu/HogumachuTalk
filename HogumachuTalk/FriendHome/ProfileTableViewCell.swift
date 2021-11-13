@@ -1,4 +1,5 @@
 import UIKit
+import SnapKit
 
 class ProfileTableViewCell: UITableViewCell {
     static let identifier = "ProfileTableViewCell"
@@ -52,18 +53,19 @@ class ProfileTableViewCell: UITableViewCell {
         labelStackView.addArrangedSubview(userNameLabel)
         labelStackView.addArrangedSubview(statusLabel)
         
-        NSLayoutConstraint.activate([
-            profileImageView.topAnchor.constraint(equalTo: topAnchor, constant: 5),
-            profileImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            profileImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5),
-            profileImageView.widthAnchor.constraint(equalToConstant: 60),
-            profileImageView.heightAnchor.constraint(equalToConstant: 60),
-            
-            labelStackView.topAnchor.constraint(equalTo: profileImageView.topAnchor, constant: 5),
-            labelStackView.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 10),
-            labelStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            labelStackView.bottomAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: -5)
-        ])
+        profileImageView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(5)
+            $0.leading.equalToSuperview().offset(10)
+            $0.bottom.equalToSuperview().offset(-5)
+            $0.width.height.equalTo(60)
+        }
+        
+        labelStackView.snp.makeConstraints {
+            $0.top.equalTo(profileImageView).offset(5)
+            $0.leading.equalTo(profileImageView.snp.trailing).offset(10)
+            $0.trailing.equalToSuperview().offset(-10)
+            $0.bottom.equalTo(profileImageView.snp.bottom).offset(-5)
+        }
     }
     
     func setItem(item: User) {

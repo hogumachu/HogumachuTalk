@@ -1,4 +1,5 @@
 import UIKit
+import SnapKit
 
 class SignUpViewController: UIViewController {
     struct Dependency {
@@ -174,17 +175,21 @@ class SignUpViewController: UIViewController {
         userNameStackView.addArrangedSubview(userNameLabel)
         userNameStackView.addArrangedSubview(userNameTextField)
         
-        NSLayoutConstraint.activate([
-            signUpLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            signUpLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            
-            wrapStackView.topAnchor.constraint(equalTo: signUpLabel.bottomAnchor, constant: 10),
-            wrapStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            wrapStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            
-            signUpButton.topAnchor.constraint(equalTo: wrapStackView.bottomAnchor, constant: 20),
-            signUpButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        ])
+        signUpLabel.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(20)
+            $0.centerX.equalTo(view)
+        }
+        
+        wrapStackView.snp.makeConstraints {
+            $0.top.equalTo(signUpLabel.snp.bottom).offset(10)
+            $0.leading.equalTo(view).offset(10)
+            $0.trailing.equalTo(view).offset(-10)
+        }
+        
+        signUpButton.snp.makeConstraints {
+            $0.top.equalTo(wrapStackView.snp.bottom).offset(20)
+            $0.centerX.equalTo(view)
+        }
     }
     
     // MARK: - Action

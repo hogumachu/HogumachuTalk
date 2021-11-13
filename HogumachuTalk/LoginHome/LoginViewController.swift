@@ -1,4 +1,5 @@
 import UIKit
+import SnapKit
 
 class LoginViewController: UIViewController {
     struct Dependency {
@@ -150,24 +151,32 @@ class LoginViewController: UIViewController {
         signUpStackView.addArrangedSubview(signUpLabel)
         signUpStackView.addArrangedSubview(signUpButton)
         
-        NSLayoutConstraint.activate([
-            logoLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            logoLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            
-            emailPasswordStackView.topAnchor.constraint(equalTo: logoLabel.bottomAnchor, constant: 10),
-            emailPasswordStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            emailPasswordStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            
-            autoLoginStackView.topAnchor.constraint(equalTo: emailPasswordStackView.bottomAnchor, constant: 20),
-            autoLoginStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            autoLoginStackView.trailingAnchor.constraint(equalTo: view.centerXAnchor),
-            
-            loginButton.topAnchor.constraint(equalTo: autoLoginStackView.bottomAnchor, constant: 20),
-            loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            
-            signUpStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            signUpStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
-        ])
+        logoLabel.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(20)
+            $0.centerX.equalTo(view)
+        }
+        
+        emailPasswordStackView.snp.makeConstraints {
+            $0.top.equalTo(logoLabel.snp.bottom).offset(10)
+            $0.leading.equalTo(view).offset(10)
+            $0.trailing.equalTo(view).offset(-10)
+        }
+        
+        autoLoginStackView.snp.makeConstraints {
+            $0.top.equalTo(emailPasswordStackView.snp.bottom).offset(20)
+            $0.leading.equalTo(view).offset(10)
+            $0.trailing.equalTo(view.snp.centerX)
+        }
+        
+        loginButton.snp.makeConstraints {
+            $0.top.equalTo(autoLoginStackView.snp.bottom).offset(20)
+            $0.centerX.equalToSuperview()
+        }
+        
+        signUpStackView.snp.makeConstraints {
+            $0.centerX.equalTo(view)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-20)
+        }
     }
     
     // MARK: - Actions

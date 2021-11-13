@@ -1,4 +1,5 @@
 import UIKit
+import SnapKit
 
 class SettingViewController: UIViewController {
     struct Dependency {
@@ -33,10 +34,9 @@ class SettingViewController: UIViewController {
         view.addSubview(logOutButton)
         
         // TODO: - Layout
-        NSLayoutConstraint.activate([
-            logOutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            logOutButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ])
+        logOutButton.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
     }
     
     @objc

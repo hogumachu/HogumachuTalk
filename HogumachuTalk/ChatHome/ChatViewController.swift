@@ -1,4 +1,5 @@
 import UIKit
+import SnapKit
 
 class ChatViewController: UIViewController {
     struct Dependency {
@@ -30,11 +31,9 @@ class ChatViewController: UIViewController {
         
         view.addSubview(chatRoomTableView)
         
-        NSLayoutConstraint.activate([
-            chatRoomTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            chatRoomTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            chatRoomTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            chatRoomTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
+        chatRoomTableView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
     }
 }
