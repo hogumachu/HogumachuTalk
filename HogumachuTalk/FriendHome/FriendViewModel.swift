@@ -33,4 +33,8 @@ class FriendViewModel: ViewModelType {
             coordinator?.profile(user: item)
         }
     }
+    
+    func loadUser() {
+        FirebaseImp.shared.loadUser()
+    }
 }

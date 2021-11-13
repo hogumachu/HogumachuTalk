@@ -5,7 +5,7 @@ class ProfileViewModel: ViewModelType {
         let user: User
     }
     var coordinator: Coordinator?
-    let user: User
+    var user: User
     
     init(dependency: Dependency) {
         self.user = dependency.user
@@ -18,7 +18,18 @@ class ProfileViewModel: ViewModelType {
 //        coordinator?.dismiss()
     }
     
-    func back() {
+    func back(userName: String, status: String) {
+        if user.userName != userName || user.status != status {
+            FirebaseImp.shared.updateUser(user: user, userName: userName, status: status)
+        }
         coordinator?.dismiss()
+    }
+    
+    func loadUser() {
+        FirebaseImp.shared.loadUser()
+        
+        if let currentUser = User.currentUser {
+            user = currentUser
+        }
     }
 }

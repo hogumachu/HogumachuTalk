@@ -1,4 +1,5 @@
 import UIKit
+import SnapKit
 
 class FriendViewController: UIViewController {
     struct Dependency {
@@ -32,6 +33,13 @@ class FriendViewController: UIViewController {
         configureUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        viewModel.loadUser()
+        profileTableView.reloadData()
+    }
+    
     // MARK: - Configure
     
     private func configureUI() {
@@ -39,12 +47,10 @@ class FriendViewController: UIViewController {
         
         view.addSubview(profileTableView)
         
-        NSLayoutConstraint.activate([
-            profileTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            profileTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            profileTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            profileTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-        ])
+        profileTableView.snp.makeConstraints {
+            $0.top.bottom.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.trailing.equalTo(view)
+        }
     }
     
     private func configureNavigationBar() {

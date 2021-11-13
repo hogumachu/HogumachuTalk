@@ -117,7 +117,35 @@ class FirebaseImp {
                     completion(.failure(error))
                 }
             }
-            
+    }
+    
+    func loadUser() {
+        downloadUserFirebase(id: User.currentId) { result in
+            switch result {
+            case .success(_):
+                print("User Load 완료")
+            case .failure(let err):
+                print("User Load 실패:", err.localizedDescription)
+            }
+        }
+    }
+    
+    // MARK: - Update
+    
+    func updateUser(user: User, userName: String, status: String) {
+        var user = user
+        user.userName = userName
+        user.status = status
+        
+        saveUserLocal(user)
+        saveUserFirebase(user) { result in
+            switch result {
+            case .success(_):
+                print("User 업데이트 완료")
+            case .failure(let err):
+                print("User 업데이트 실패:", err.localizedDescription)
+            }
+        }
     }
 }
 
