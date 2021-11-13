@@ -13,6 +13,9 @@ class ProfileViewModel: ViewModelType {
     
     func chat() {
         // TODO: - chatButton Action
+        
+        // Dismiss -> Push ViewController
+//        coordinator?.dismiss()
     }
     
     func back() {

@@ -80,7 +80,7 @@ extension Coordinator {
     func signIn() {
         let friendVC = friendViewControllerFactory()
         friendVC.viewModel.coordinator = self
-        friendVC.tabBarItem = UITabBarItem(title: "친구",
+        friendVC.tabBarItem = UITabBarItem(title: "",
                                             image: UIImage(systemName: "person"),
                                             selectedImage: UIImage(systemName: "person.fill")
         )
@@ -88,7 +88,7 @@ extension Coordinator {
         
         let chatVC = chatViewControllerFactory()
         chatVC.viewModel.coordinator = self
-        chatVC.tabBarItem = UITabBarItem(title: "채팅",
+        chatVC.tabBarItem = UITabBarItem(title: "",
                                          image: UIImage(systemName: "message"),
                                          selectedImage: UIImage(systemName: "message.fill")
         )
@@ -96,7 +96,7 @@ extension Coordinator {
         
         let settingVC = settingViewControllerFactory()
         settingVC.viewModel.coordinator = self
-        settingVC.tabBarItem = UITabBarItem(title: "설정",
+        settingVC.tabBarItem = UITabBarItem(title: "",
                                             image: UIImage(systemName: "gearshape"),
                                             selectedImage: UIImage(systemName: "gearshape.fill")
         )

@@ -26,9 +26,10 @@ class FriendViewModel: ViewModelType {
         }
     }
     
-    func tableViewDidSelect(indexPath: IndexPath) {
+    func tableViewDidSelect(_ tableView: UITableView, indexPath: IndexPath) {
         if indexPath.section == 0 && indexPath.row == 0 {
             let item = User.currentUser!
+            tableView.deselectRow(at: indexPath, animated: false)
             coordinator?.profile(user: item)
         }
     }

@@ -21,6 +21,7 @@ extension AppDependency {
         
         let homeTabBarController: UITabBarController = {
             let tabBarController = UITabBarController()
+            tabBarController.tabBar.tintColor = .black
             return tabBarController
         }()
         
