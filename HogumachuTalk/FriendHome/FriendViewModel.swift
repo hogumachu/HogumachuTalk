@@ -35,6 +35,6 @@ class FriendViewModel: ViewModelType {
     }
     
     func loadUser() {
-        FirebaseImp.shared.loadUser()
+        FirebaseImp.shared.downloadCurrentUser()
     }
 }

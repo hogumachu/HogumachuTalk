@@ -1,5 +1,6 @@
 import Foundation
 import Firebase
+import UIKit
 
 class FirebaseImp {
     // 싱글톤 패턴 사용
@@ -64,7 +65,7 @@ class FirebaseImp {
                     
                     saveUserLocal(user)
                     
-                    FirebaseImp.shared.saveUserFirebase(user) { result in
+                    FirebaseImp.shared.uploadUserFirebase(user) { result in
                         switch result {
                         case .success(_):
                             completion(.success(true))
@@ -76,20 +77,6 @@ class FirebaseImp {
                     completion(.failure(FirebaseError.unknown))
                 }
             }
-    }
-    
-    // MARK: - Save
-    
-    func saveUserFirebase(_ user: User, completion: @escaping (Result<Bool, Error>) -> Void) {
-        do {
-            try Firestore.firestore()
-                .collection(firestoreCollectionUser)
-                .document(user.id)
-                .setData(from: user)
-            completion(.success(true))
-        } catch {
-            completion(.failure(error))
-        }
     }
     
     // MARK: - Download
@@ -119,7 +106,7 @@ class FirebaseImp {
             }
     }
     
-    func loadUser() {
+    func downloadCurrentUser() {
         downloadUserFirebase(id: User.currentId) { result in
             switch result {
             case .success(_):
@@ -130,21 +117,65 @@ class FirebaseImp {
         }
     }
     
-    // MARK: - Update
+    // MARK: - Upload
     
-    func updateUser(user: User, userName: String, status: String) {
+    func uploadUserFirebase(_ user: User, completion: @escaping (Result<Bool, Error>) -> Void) {
+        do {
+            try Firestore.firestore()
+                .collection(firestoreCollectionUser)
+                .document(user.id)
+                .setData(from: user)
+            completion(.success(true))
+        } catch {
+            completion(.failure(error))
+        }
+    }
+    
+    func uploadUser(_ user: User) {
         var user = user
-        user.userName = userName
-        user.status = status
+//        user.userName = userName
+//        user.status = status
         
         saveUserLocal(user)
-        saveUserFirebase(user) { result in
+        uploadUserFirebase(user) { result in
             switch result {
             case .success(_):
                 print("User 업데이트 완료")
             case .failure(let err):
                 print("User 업데이트 실패:", err.localizedDescription)
             }
+        }
+    }
+    
+    func uploadImage(image: UIImage, directory: String, completion: @escaping (_ link: String) -> Void) {
+        let reference = Storage.storage().reference(forURL: fireStorageFileURL).child(directory)
+        guard let data = image.jpegData(compressionQuality: 0.5) else {
+            print("Image Convert Error", #function)
+            return
+        }
+        var task: StorageUploadTask!
+        
+        task = reference.putData(data, metadata: nil, completion: { metaData, error in
+            task.removeAllObservers()
+            
+            if let error = error {
+                print("Upload Error (Image)", error.localizedDescription)
+                return
+            }
+            
+            reference.downloadURL { url, error in
+                guard let url = url else {
+                    completion("")
+                    return
+                }
+                
+                completion(url.absoluteString)
+            }
+            
+        })
+        
+        task.observe(.progress) { snapshot in
+            print(CGFloat(snapshot.progress!.completedUnitCount / snapshot.progress!.totalUnitCount))
         }
     }
 }

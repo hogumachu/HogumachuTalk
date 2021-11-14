@@ -21,13 +21,15 @@ class ProfileViewModel: ViewModelType {
     
     func back(userName: String, status: String) {
         if user.userName != userName || user.status != status {
-            FirebaseImp.shared.updateUser(user: user, userName: userName, status: status)
+            user.userName = userName
+            user.status = status
+            FirebaseImp.shared.uploadUser(user)
         }
         coordinator?.dismiss(nil, animated: true)
     }
     
     func loadUser() {
-        FirebaseImp.shared.loadUser()
+        FirebaseImp.shared.downloadCurrentUser()
         
         if let currentUser = User.currentUser {
             user = currentUser
@@ -48,7 +50,28 @@ class ProfileViewModel: ViewModelType {
     
     func imagePickerControllerDidFinish(_ picker: UIImagePickerController, info: [UIImagePickerController.InfoKey: Any], completion: @escaping (UIImage?) -> Void) {
         // TODO: Image View Save (Local, Firebase)
-        let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+            print("이미지를 선택할 수 없습니다")
+            return
+        }
+        
+        let directory = "ProfileImages/_\(User.currentId).jpg"
+        
+        
+        FirebaseImp.shared.uploadImage(image: image, directory: directory) { [unowned self] link in
+            user.profileImageURL = link
+            saveUserLocal(user)
+            
+            FirebaseImp.shared.uploadUser(user)
+            FirebaseImp.shared.uploadUserFirebase(user) { result in
+                switch result {
+                case .success(_):
+                    print("이미지 저장 성공")
+                case .failure(let err):
+                    print("이미지 저장 실패", err.localizedDescription)
+                }
+            }
+        }
         completion(image)
         coordinator?.dismiss(picker, animated: true)
     }
