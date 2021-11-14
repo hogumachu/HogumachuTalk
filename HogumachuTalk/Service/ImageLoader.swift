@@ -16,21 +16,24 @@ class ImageLoader {
             return
         }
         
-        print("Start Donwload")
-        do {
-            let data = try Data(contentsOf: downLoadURL)
-            let image = UIImage(data: data)
-            
-            if let image = image {
-                imageCache[url] = image
-            }
-            DispatchQueue.main.async {
-                completion(image)
-            }
-        } catch {
-            DispatchQueue.main.async {
-                completion(nil)
+        DispatchQueue.global().async {
+            do {
+                
+                let data = try Data(contentsOf: downLoadURL)
+                let image = UIImage(data: data)
+                
+                if let image = image {
+                    self.imageCache[url] = image
+                }
+                DispatchQueue.main.async {
+                    completion(image)
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    completion(nil)
+                }
             }
         }
+        
     }
 }
