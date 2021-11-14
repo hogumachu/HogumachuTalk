@@ -311,10 +311,13 @@ class ProfileViewController: UIViewController {
 }
 
 extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        viewModel.imagePickerControllerDidFinish(picker, info: info) { [weak self] image in
+            self?.profileImageView.image = image
+        }
+    }
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         viewModel.imagePickerControllerDidCancel(picker)
-    }
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        profileImageView.image = viewModel.imagePickerControllerDidFinish(picker, info: info)
     }
 }

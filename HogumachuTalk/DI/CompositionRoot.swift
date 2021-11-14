@@ -38,6 +38,10 @@ extension AppDependency {
             return .init(dependency: .init(viewModel: .init(dependency: .init(user: user))))
         }
         
+        let imagePickerControllerFactory: () -> UIImagePickerController = {
+            return .init()
+        }
+        
         let chatNavigationController: UINavigationController = {
             let navi = UINavigationController()
             return navi
@@ -63,6 +67,7 @@ extension AppDependency {
                                                           friendNavigationController: friendNavigationController,
                                                           friendViewControllerFactory: friendViewControllerFactory,
                                                           profileViewControllerFactory: profileViewControllerFactory,
+                                                          imagePickerControllerFactory: imagePickerControllerFactory,
                                                           chatNavigationController: chatNavigationController,
                                                           chatViewControllerFactory: chatViewControllerFactory,
                                                           settingNavigationController: settingNavigationController,

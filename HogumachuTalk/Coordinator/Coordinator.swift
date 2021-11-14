@@ -11,6 +11,7 @@ class Coordinator {
         let friendNavigationController: UINavigationController
         let friendViewControllerFactory: () -> FriendViewController
         let profileViewControllerFactory: (User) -> ProfileViewController
+        let imagePickerControllerFactory: () -> UIImagePickerController
         
         let chatNavigationController: UINavigationController
         let chatViewControllerFactory: () -> ChatViewController
@@ -28,6 +29,7 @@ class Coordinator {
     let friendNavigationController: UINavigationController
     let friendViewControllerFactory: () -> FriendViewController
     let profileViewControllerFactory: (User) -> ProfileViewController
+    let imagePickerControllerFactory: () -> UIImagePickerController
     
     let chatNavigationController: UINavigationController
     let chatViewControllerFactory: () -> ChatViewController
@@ -45,6 +47,7 @@ class Coordinator {
         self.friendNavigationController = dependency.friendNavigationController
         self.friendViewControllerFactory = dependency.friendViewControllerFactory
         self.profileViewControllerFactory = dependency.profileViewControllerFactory
+        self.imagePickerControllerFactory = dependency.imagePickerControllerFactory
         
         self.chatNavigationController = dependency.chatNavigationController
         self.chatViewControllerFactory = dependency.chatViewControllerFactory
@@ -125,26 +128,28 @@ extension Coordinator {
         homeTabBarController.present(vc, animated: true, completion: nil)
     }
     
-    func dismiss() {
-        homeTabBarController.dismiss(animated: true, completion: nil)
+    func dismiss(_ viewController: UIViewController?, animated: Bool) {
+        if let vc = viewController {
+            vc.dismiss(animated: animated)
+        } else {
+            currentViewController.dismiss(animated: animated)
+        }
+    }
+    
+    func imagePickerVC(_ viewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate & UIViewController,_ sourceType: UIImagePickerController.SourceType) {
+        let vc = imagePickerControllerFactory()
+        vc.delegate = viewController.self
+        vc.sourceType = sourceType
+        
+        viewController.present(vc, animated: true, completion: nil)
     }
     
     // TODO: - Scene Enum 만들어서 진행, Method명 변경
     
-    private func someSceneChage() {
-        guard let currentNavigationController = homeTabBarController.selectedViewController else {
-            return
+     private var currentViewController: UIViewController {
+        if let currentVC = homeTabBarController.selectedViewController, let lastVC = currentVC.children.last {
+            return lastVC
         }
-        
-        switch currentNavigationController {
-        case friendNavigationController:
-            print("Friend")
-        case chatNavigationController:
-            print("Chat")
-        case settingNavigationController:
-            print("Setting")
-        default:
-            print("No")
-        }
+        return homeTabBarController.selectedViewController ?? homeTabBarController
     }
 }

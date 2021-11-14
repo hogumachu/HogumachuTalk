@@ -23,7 +23,7 @@ class ProfileViewModel: ViewModelType {
         if user.userName != userName || user.status != status {
             FirebaseImp.shared.updateUser(user: user, userName: userName, status: status)
         }
-        coordinator?.dismiss()
+        coordinator?.dismiss(nil, animated: true)
     }
     
     func loadUser() {
@@ -34,23 +34,22 @@ class ProfileViewModel: ViewModelType {
         }
     }
     
-    func profileImageSetUp(_ viewController: UIViewController, _ picker: UIImagePickerController, isEditMode: Bool) {
+    func profileImageSetUp(_ viewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate & UIViewController, _ picker: UIImagePickerController, isEditMode: Bool) {
         if isEditMode {
-            picker.sourceType = .photoLibrary
-            viewController.present(picker, animated: true, completion: nil)
+            coordinator?.imagePickerVC(viewController, .photoLibrary)
         } else {
             // TODO: Image View 전체 화면으로 전환
         }
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
+        coordinator?.dismiss(picker, animated: true)
     }
     
-    func imagePickerControllerDidFinish(_ picker: UIImagePickerController, info: [UIImagePickerController.InfoKey: Any]) -> UIImage? {
+    func imagePickerControllerDidFinish(_ picker: UIImagePickerController, info: [UIImagePickerController.InfoKey: Any], completion: @escaping (UIImage?) -> Void) {
         // TODO: Image View Save (Local, Firebase)
         let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
-        picker.dismiss(animated: true, completion: nil)
-        return image
+        completion(image)
+        coordinator?.dismiss(picker, animated: true)
     }
 }
