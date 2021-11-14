@@ -18,14 +18,17 @@ class ProfileViewController: UIViewController {
         stack.alignment = .center
         return stack
     }()
-    private let profileImageView: UIImageView = {
+    private lazy var profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 20
         imageView.layer.cornerCurve = .continuous
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = .lightGray
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(profileImageViewDidTap))
+        imageView.addGestureRecognizer(gesture)
+        imageView.isUserInteractionEnabled = true
         return imageView
     }()
     private let userNameTextField: UITextField = {
@@ -141,6 +144,7 @@ class ProfileViewController: UIViewController {
         stack.spacing = 30
         return stack
     }()
+    let imagePickerController = UIImagePickerController()
     
     // MARK: Lifecycle
     
@@ -157,6 +161,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         bindViewModel()
         configureUI()
+        imagePickerController.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -276,6 +281,11 @@ class ProfileViewController: UIViewController {
     }
     
     @objc
+    private func profileImageViewDidTap() {
+        viewModel.profileImageSetUp(self, imagePickerController, isEditMode: userNameTextField.isEnabled)
+    }
+    
+    @objc
     private func keyboardWillShow(_ notification: Notification) {
         if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let height = keyboardFrame.cgRectValue.height - view.safeAreaInsets.bottom
@@ -297,5 +307,14 @@ class ProfileViewController: UIViewController {
             }
             view.layoutIfNeeded()
         }
+    }
+}
+
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        viewModel.imagePickerControllerDidCancel(picker)
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        profileImageView.image = viewModel.imagePickerControllerDidFinish(picker, info: info)
     }
 }

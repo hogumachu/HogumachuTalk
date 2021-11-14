@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 
 class ProfileViewModel: ViewModelType {
     struct Dependency {
@@ -31,5 +32,25 @@ class ProfileViewModel: ViewModelType {
         if let currentUser = User.currentUser {
             user = currentUser
         }
+    }
+    
+    func profileImageSetUp(_ viewController: UIViewController, _ picker: UIImagePickerController, isEditMode: Bool) {
+        if isEditMode {
+            picker.sourceType = .photoLibrary
+            viewController.present(picker, animated: true, completion: nil)
+        } else {
+            // TODO: Image View 전체 화면으로 전환
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidFinish(_ picker: UIImagePickerController, info: [UIImagePickerController.InfoKey: Any]) -> UIImage? {
+        // TODO: Image View Save (Local, Firebase)
+        let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        picker.dismiss(animated: true, completion: nil)
+        return image
     }
 }
