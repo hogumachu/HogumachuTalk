@@ -11,6 +11,7 @@ class Coordinator {
         let friendNavigationController: UINavigationController
         let friendViewControllerFactory: () -> FriendViewController
         let profileViewControllerFactory: (User) -> ProfileViewController
+        let profileImageViewControllerFactory: (UIImage?) -> ProfileImageViewController
         let imagePickerControllerFactory: () -> UIImagePickerController
         
         let chatNavigationController: UINavigationController
@@ -29,6 +30,7 @@ class Coordinator {
     let friendNavigationController: UINavigationController
     let friendViewControllerFactory: () -> FriendViewController
     let profileViewControllerFactory: (User) -> ProfileViewController
+    let profileImageViewControllerFactory: (UIImage?) -> ProfileImageViewController
     let imagePickerControllerFactory: () -> UIImagePickerController
     
     let chatNavigationController: UINavigationController
@@ -47,6 +49,7 @@ class Coordinator {
         self.friendNavigationController = dependency.friendNavigationController
         self.friendViewControllerFactory = dependency.friendViewControllerFactory
         self.profileViewControllerFactory = dependency.profileViewControllerFactory
+        self.profileImageViewControllerFactory = dependency.profileImageViewControllerFactory
         self.imagePickerControllerFactory = dependency.imagePickerControllerFactory
         
         self.chatNavigationController = dependency.chatNavigationController
@@ -60,6 +63,17 @@ class Coordinator {
 // MARK: - Scene Transition Methods
 
 extension Coordinator {
+    private var currentViewController: UIViewController {
+       if let currentVC = homeTabBarController.selectedViewController, let lastVC = currentVC.children.last {
+           return lastVC
+       }
+       return homeTabBarController.selectedViewController ?? homeTabBarController
+    }
+    
+    private var currentNavigationController: UINavigationController? {
+        return homeTabBarController.selectedViewController as? UINavigationController
+    }
+    
     func start() {
         let vc = loginViewControllerFactory()
         vc.viewModel.coordinator = self
@@ -136,6 +150,10 @@ extension Coordinator {
         }
     }
     
+    func pop(animated: Bool) {
+        currentNavigationController?.popViewController(animated: animated)
+    }
+    
     func imagePickerVC(_ viewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate & UIViewController,_ sourceType: UIImagePickerController.SourceType) {
         let vc = imagePickerControllerFactory()
         vc.delegate = viewController.self
@@ -144,12 +162,9 @@ extension Coordinator {
         viewController.present(vc, animated: true, completion: nil)
     }
     
-    // TODO: - Scene Enum 만들어서 진행, Method명 변경
-    
-     private var currentViewController: UIViewController {
-        if let currentVC = homeTabBarController.selectedViewController, let lastVC = currentVC.children.last {
-            return lastVC
-        }
-        return homeTabBarController.selectedViewController ?? homeTabBarController
+    func imageVC(_ viewController: UIViewController, image: UIImage?, animated: Bool) {
+        let vc = profileImageViewControllerFactory(image)
+        
+        viewController.present(vc, animated: animated, completion: nil)
     }
 }

@@ -10,7 +10,7 @@ class ProfileTableViewCell: UITableViewCell {
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 20
         imageView.layer.cornerCurve = .continuous
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = .systemGray
         return imageView
     }()
@@ -69,7 +69,10 @@ class ProfileTableViewCell: UITableViewCell {
     }
     
     func setItem(item: User) {
-//        profileImageView.image = item.profileImageURL
+        ImageLoader.shared.loadImage(item.profileImageURL) { [weak self] image in
+            self?.profileImageView.image = image
+        }
+        
         userNameLabel.text = item.userName
         statusLabel.text = item.status
         

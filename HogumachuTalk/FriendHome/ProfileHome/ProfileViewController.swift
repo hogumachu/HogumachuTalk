@@ -97,11 +97,14 @@ class ProfileViewController: UIViewController {
         label.textColor = .white
         return label
     }()
-    private let backgroundImageView: UIImageView = {
+    private lazy var backgroundImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = .darkGray
         imageView.contentMode = .scaleAspectFill
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(backgroundImageViewDidTap))
+        imageView.addGestureRecognizer(gesture)
+        imageView.isUserInteractionEnabled = true
         return imageView
     }()
     private let headerBarStackView: UIStackView = {
@@ -144,7 +147,7 @@ class ProfileViewController: UIViewController {
         stack.spacing = 30
         return stack
     }()
-    let imagePickerController = UIImagePickerController()
+    private var imageType: ProfileImageType = .profile
     
     // MARK: Lifecycle
     
@@ -161,7 +164,6 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         bindViewModel()
         configureUI()
-        imagePickerController.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -256,8 +258,12 @@ class ProfileViewController: UIViewController {
     
     private func bindViewModel() {
         // TODO: - Image Set Up
-//        profileImageView.image = viewModel.user.profileImageURL
-//        backgroundImageView.image = viewModel.user
+        ImageLoader.shared.loadImage(viewModel.user.profileImageURL) { [weak self] image in
+            self?.profileImageView.image = image
+        }
+        ImageLoader.shared.loadImage(viewModel.user.backgroundImageURL) { [weak self] image in
+            self?.backgroundImageView.image = image
+        }
         userNameTextField.text = viewModel.user.userName
         statusTextField.text = viewModel.user.status
     }
@@ -282,7 +288,16 @@ class ProfileViewController: UIViewController {
     
     @objc
     private func profileImageViewDidTap() {
-        viewModel.profileImageSetUp(self, imagePickerController, isEditMode: userNameTextField.isEnabled)
+        print("Profile")
+        imageType = .profile
+        viewModel.profileImageSetUp(self, isEditMode: userNameTextField.isEnabled, type: .profile)
+    }
+    
+    @objc
+    private func backgroundImageViewDidTap() {
+        print("Background")
+        imageType = .background
+        viewModel.profileImageSetUp(self, isEditMode: userNameTextField.isEnabled, type: .background)
     }
     
     @objc
@@ -312,8 +327,16 @@ class ProfileViewController: UIViewController {
 
 extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        viewModel.imagePickerControllerDidFinish(picker, info: info) { [weak self] image in
-            self?.profileImageView.image = image
+        
+        viewModel.imagePickerControllerDidFinish(picker, info: info, type: imageType) { [weak self] image in
+            switch self?.imageType {
+            case .profile:
+                self?.profileImageView.image = image
+            case .background:
+                self?.backgroundImageView.image = image
+            case .none:
+                return
+            }
         }
     }
     

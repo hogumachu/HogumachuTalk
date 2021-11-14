@@ -16,3 +16,4 @@ func saveAutoLoginLocal(_ isChecked: Bool) {
 var isCheckedAutoLogin: Bool {
     return UserDefaults.standard.bool(forKey: autoLoginKey)
 }
+

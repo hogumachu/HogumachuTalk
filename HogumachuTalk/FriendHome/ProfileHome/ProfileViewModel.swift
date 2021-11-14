@@ -36,11 +36,17 @@ class ProfileViewModel: ViewModelType {
         }
     }
     
-    func profileImageSetUp(_ viewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate & UIViewController, _ picker: UIImagePickerController, isEditMode: Bool) {
+    func profileImageSetUp(_ viewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate & UIViewController, isEditMode: Bool, type: ProfileImageType) {
         if isEditMode {
             coordinator?.imagePickerVC(viewController, .photoLibrary)
         } else {
-            // TODO: Image View 전체 화면으로 전환
+            let url = type == .profile ?
+            user.profileImageURL :
+            user.backgroundImageURL
+            
+            ImageLoader.shared.loadImage(url) { [weak self] image in
+                self?.coordinator?.imageVC(viewController, image: image, animated: true)
+            }
         }
     }
     
@@ -48,31 +54,36 @@ class ProfileViewModel: ViewModelType {
         coordinator?.dismiss(picker, animated: true)
     }
     
-    func imagePickerControllerDidFinish(_ picker: UIImagePickerController, info: [UIImagePickerController.InfoKey: Any], completion: @escaping (UIImage?) -> Void) {
+    func imagePickerControllerDidFinish(_ picker: UIImagePickerController, info: [UIImagePickerController.InfoKey: Any], type: ProfileImageType, completion: @escaping (UIImage?) -> Void) {
         // TODO: Image View Save (Local, Firebase)
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
             print("이미지를 선택할 수 없습니다")
             return
         }
         
-        let directory = "ProfileImages/_\(User.currentId).jpg"
         
+        let directory = type == .profile ?
+        "ProfileImages/ProfileImage/_\(User.currentId).jpg" :
+        "ProfileImages/BackgroundImage/_\(User.currentId).jpg"
         
         FirebaseImp.shared.uploadImage(image: image, directory: directory) { [unowned self] link in
-            user.profileImageURL = link
+            switch type {
+            case .profile:
+                user.profileImageURL = link
+            case .background:
+                user.backgroundImageURL = link
+            }
+            
             saveUserLocal(user)
             
             FirebaseImp.shared.uploadUser(user)
-            FirebaseImp.shared.uploadUserFirebase(user) { result in
-                switch result {
-                case .success(_):
-                    print("이미지 저장 성공")
-                case .failure(let err):
-                    print("이미지 저장 실패", err.localizedDescription)
-                }
-            }
         }
         completion(image)
         coordinator?.dismiss(picker, animated: true)
     }
+}
+
+enum ProfileImageType {
+    case profile
+    case background
 }

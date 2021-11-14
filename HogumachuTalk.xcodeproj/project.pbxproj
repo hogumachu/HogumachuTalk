@@ -43,6 +43,8 @@
 		F1A2CEFA273E1B2C00FCB387 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEF9273E1B2C00FCB387 /* ProfileViewController.swift */; };
 		F1A2CEFC273E7BE900FCB387 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CEFB273E7BE900FCB387 /* ProfileViewModel.swift */; };
 		F1A2CEFF273F89B200FCB387 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F1A2CEFE273F89B200FCB387 /* SnapKit */; };
+		F1A2CF03274103C600FCB387 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CF02274103C600FCB387 /* ImageLoader.swift */; };
+		F1A2CF052741086300FCB387 /* ProfileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CF042741086300FCB387 /* ProfileImageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +98,8 @@
 		F1A2CEF6273CC60400FCB387 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		F1A2CEF9273E1B2C00FCB387 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F1A2CEFB273E7BE900FCB387 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		F1A2CF02274103C600FCB387 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		F1A2CF042741086300FCB387 /* ProfileImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -300,6 +304,7 @@
 			children = (
 				F1A2CEE4273A97C200FCB387 /* Firebase */,
 				F1A2CEF2273BF08600FCB387 /* UserDefaultHelper.swift */,
+				F1A2CF02274103C600FCB387 /* ImageLoader.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -309,6 +314,7 @@
 			children = (
 				F1A2CEF9273E1B2C00FCB387 /* ProfileViewController.swift */,
 				F1A2CEFB273E7BE900FCB387 /* ProfileViewModel.swift */,
+				F1A2CF042741086300FCB387 /* ProfileImageViewController.swift */,
 			);
 			path = ProfileHome;
 			sourceTree = "<group>";
@@ -471,8 +477,10 @@
 				F1A2CEE9273BD85A00FCB387 /* ViewModelType.swift in Sources */,
 				F1A2CED3273A93D500FCB387 /* User.swift in Sources */,
 				F1A2CEBF273A801600FCB387 /* ChatViewController.swift in Sources */,
+				F1A2CF03274103C600FCB387 /* ImageLoader.swift in Sources */,
 				F1A2CEC1273A801F00FCB387 /* SettingViewController.swift in Sources */,
 				F1A2CEFC273E7BE900FCB387 /* ProfileViewModel.swift in Sources */,
+				F1A2CF052741086300FCB387 /* ProfileImageViewController.swift in Sources */,
 				F1A2CEC9273A808300FCB387 /* SettingViewModel.swift in Sources */,
 				F1A2CEF7273CC60400FCB387 /* ProfileTableViewCell.swift in Sources */,
 				F1A2CEC7273A807C00FCB387 /* ChatViewModel.swift in Sources */,

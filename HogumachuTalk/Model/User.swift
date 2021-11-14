@@ -7,6 +7,7 @@ struct User: Codable, Equatable {
     var userName: String
     var email: String
     var profileImageURL: String
+    var backgroundImageURL: String
     var status: String = "안녕하세요. 반갑습니다"
 }
 

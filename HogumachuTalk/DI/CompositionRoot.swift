@@ -38,6 +38,14 @@ extension AppDependency {
             return .init(dependency: .init(viewModel: .init(dependency: .init(user: user))))
         }
         
+        let profileImageViewControllerFactory: (UIImage?) -> ProfileImageViewController = { image in
+            let vc = ProfileImageViewController(dependency: .init(image: image))
+            vc.modalPresentationStyle = .fullScreen
+            vc.modalTransitionStyle = .crossDissolve
+            
+            return vc
+        }
+        
         let imagePickerControllerFactory: () -> UIImagePickerController = {
             return .init()
         }
@@ -67,6 +75,7 @@ extension AppDependency {
                                                           friendNavigationController: friendNavigationController,
                                                           friendViewControllerFactory: friendViewControllerFactory,
                                                           profileViewControllerFactory: profileViewControllerFactory,
+                                                          profileImageViewControllerFactory: profileImageViewControllerFactory,
                                                           imagePickerControllerFactory: imagePickerControllerFactory,
                                                           chatNavigationController: chatNavigationController,
                                                           chatViewControllerFactory: chatViewControllerFactory,

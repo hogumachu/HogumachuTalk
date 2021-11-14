@@ -60,7 +60,8 @@ class FirebaseImp {
                     let user = User(id: authResult.user.uid,
                                     userName: userName,
                                     email: email,
-                                    profileImageURL: ""
+                                    profileImageURL: "",
+                                    backgroundImageURL: ""
                     )
                     
                     saveUserLocal(user)
@@ -132,10 +133,6 @@ class FirebaseImp {
     }
     
     func uploadUser(_ user: User) {
-        var user = user
-//        user.userName = userName
-//        user.status = status
-        
         saveUserLocal(user)
         uploadUserFirebase(user) { result in
             switch result {
