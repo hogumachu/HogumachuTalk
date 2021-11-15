@@ -9,6 +9,7 @@ class ProfileViewController: UIViewController {
     // MARK: - Properties
     
     let viewModel: ProfileViewModel
+    private var imageType: ProfileImageType = .profile
     private let profileStackView: UIStackView = {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -84,7 +85,7 @@ class ProfileViewController: UIViewController {
     private lazy var editButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(systemName: "pencil")?.withTintColor(.white, renderingMode: .alwaysOriginal), for: .normal)
+        button.setImage(UIImage(systemName: "pencil.circle")?.withTintColor(.white, renderingMode: .alwaysOriginal), for: .normal)
         button.contentVerticalAlignment = .fill
         button.contentHorizontalAlignment = .fill
         button.addTarget(self, action: #selector(editButtonDidTap), for: .touchUpInside)
@@ -147,7 +148,6 @@ class ProfileViewController: UIViewController {
         stack.spacing = 30
         return stack
     }()
-    private var imageType: ProfileImageType = .profile
     
     // MARK: Lifecycle
     
@@ -257,13 +257,24 @@ class ProfileViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        // TODO: - Image Set Up
-        ImageLoader.shared.loadImage(viewModel.user.profileImageURL) { [weak self] image in
-            self?.profileImageView.image = image
+        FirebaseImp.shared.downloadImage(url: viewModel.user.profileImageURL, pathPrefix: ProfileImageType.profile.rawValue) { [weak self] result in
+            switch result {
+            case .success(let image):
+                self?.profileImageView.image = image
+            case .failure(let err):
+                print(err.localizedDescription)
+            }
         }
-        ImageLoader.shared.loadImage(viewModel.user.backgroundImageURL) { [weak self] image in
-            self?.backgroundImageView.image = image
+        
+        FirebaseImp.shared.downloadImage(url: viewModel.user.backgroundImageURL, pathPrefix: ProfileImageType.background.rawValue) { [weak self] result in
+            switch result {
+            case .success(let image):
+                self?.backgroundImageView.image = image
+            case .failure(let err):
+                print(err.localizedDescription)
+            }
         }
+        
         userNameTextField.text = viewModel.user.userName
         statusTextField.text = viewModel.user.status
     }
@@ -284,18 +295,31 @@ class ProfileViewController: UIViewController {
     private func editButtonDidTap() {
         userNameTextField.isEnabled = !userNameTextField.isEnabled
         statusTextField.isEnabled = !statusTextField.isEnabled
+        changeEditProperties(userNameTextField.isEnabled)
+    }
+    
+    func changeEditProperties(_ isEditMode: Bool) {
+        UIView.animate(withDuration: 0.3) { [unowned self] in
+            if isEditMode {
+                editLabel.text = "편집 모드"
+                editButton.setImage(UIImage(systemName: "pencil.circle.fill")?.withTintColor(.white, renderingMode: .alwaysOriginal), for: .normal)
+            } else {
+                editLabel.text = "프로필 편집"
+                editButton.setImage(UIImage(systemName: "pencil.circle")?.withTintColor(.white, renderingMode: .alwaysOriginal), for: .normal)
+            }
+            view.layoutIfNeeded()
+        }
+        
     }
     
     @objc
     private func profileImageViewDidTap() {
-        print("Profile")
         imageType = .profile
         viewModel.profileImageSetUp(self, isEditMode: userNameTextField.isEnabled, type: .profile)
     }
     
     @objc
     private func backgroundImageViewDidTap() {
-        print("Background")
         imageType = .background
         viewModel.profileImageSetUp(self, isEditMode: userNameTextField.isEnabled, type: .background)
     }

@@ -118,6 +118,49 @@ class FirebaseImp {
         }
     }
     
+    func downloadImage(url: String, pathPrefix: String, completion: @escaping (Result<UIImage, Error>) -> Void) {
+        DispatchQueue.global().async {
+            let fileName = fileName(fileURL: url)
+            
+            let exist = pathPrefix.isEmpty ?
+            existsFileInFileManager(fileName: fileName) :
+            existsFileInFileManager(fileName: fileName, pathPrefix: pathPrefix)
+            
+            let contentOfFile = pathPrefix.isEmpty ?
+            documentDirectoryURLPath(fileName: fileName) :
+            documentDirectoryURLPath(fileName: fileName, pathPrefix: pathPrefix)
+            
+            if exist, let image = UIImage(contentsOfFile: contentOfFile) {
+                print("Local 에서 Image 다운")
+                DispatchQueue.main.async {
+                    completion(.success(image))
+                }
+                
+            } else {
+                // Firebase 에서 downLoad
+                print("Firebase 에서 Image 다운")
+                ImageLoader.shared.loadImage(url) { image in
+                    if let image = image {
+                        // Local 에 Image 저장 (원본 데이터로 저장함)
+                        
+                        saveFileLocal(
+                            file: image.jpegData(compressionQuality: 1.0)! as NSData,
+                            fileName: User.currentId, pathPrefix: pathPrefix
+                        )
+                        
+                        DispatchQueue.main.async {
+                            completion(.success(image))
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            completion(.failure(FirebaseError.download))
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     // MARK: - Upload
     
     func uploadUserFirebase(_ user: User, completion: @escaping (Result<Bool, Error>) -> Void) {

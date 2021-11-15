@@ -12,6 +12,7 @@ class FriendViewController: UIViewController {
     private let profileTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.separatorStyle = .none
         return tableView
     }()
     

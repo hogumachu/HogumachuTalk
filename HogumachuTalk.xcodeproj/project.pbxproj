@@ -45,6 +45,7 @@
 		F1A2CEFF273F89B200FCB387 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F1A2CEFE273F89B200FCB387 /* SnapKit */; };
 		F1A2CF03274103C600FCB387 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CF02274103C600FCB387 /* ImageLoader.swift */; };
 		F1A2CF052741086300FCB387 /* ProfileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CF042741086300FCB387 /* ProfileImageViewController.swift */; };
+		F1A2CF092741FD2600FCB387 /* FileManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CF082741FD2600FCB387 /* FileManagerHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,7 @@
 		F1A2CEFB273E7BE900FCB387 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		F1A2CF02274103C600FCB387 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		F1A2CF042741086300FCB387 /* ProfileImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageViewController.swift; sourceTree = "<group>"; };
+		F1A2CF082741FD2600FCB387 /* FileManagerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,6 +306,7 @@
 			children = (
 				F1A2CEE4273A97C200FCB387 /* Firebase */,
 				F1A2CEF2273BF08600FCB387 /* UserDefaultHelper.swift */,
+				F1A2CF082741FD2600FCB387 /* FileManagerHelper.swift */,
 				F1A2CF02274103C600FCB387 /* ImageLoader.swift */,
 			);
 			path = Service;
@@ -486,6 +489,7 @@
 				F1A2CEC7273A807C00FCB387 /* ChatViewModel.swift in Sources */,
 				F1A2CEE3273A969A00FCB387 /* Key.swift in Sources */,
 				F1A2CECE273A8B9B00FCB387 /* SignUpViewController.swift in Sources */,
+				F1A2CF092741FD2600FCB387 /* FileManagerHelper.swift in Sources */,
 				F1A2CEE6273A981E00FCB387 /* FirebaseImp.swift in Sources */,
 				F1A2CEB9273A7FD000FCB387 /* Coordinator.swift in Sources */,
 			);

@@ -69,10 +69,14 @@ class ProfileTableViewCell: UITableViewCell {
     }
     
     func setItem(item: User) {
-        ImageLoader.shared.loadImage(item.profileImageURL) { [weak self] image in
-            self?.profileImageView.image = image
+        FirebaseImp.shared.downloadImage(url: item.profileImageURL, pathPrefix: ProfileImageType.profile.rawValue) { [weak self] result in
+            switch result {
+            case .success(let image):
+                self?.profileImageView.image = image
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
         }
-        
         userNameLabel.text = item.userName
         statusLabel.text = item.status
         

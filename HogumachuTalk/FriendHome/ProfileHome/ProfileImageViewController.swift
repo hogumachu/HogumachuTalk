@@ -5,6 +5,9 @@ class ProfileImageViewController: UIViewController {
     struct Dependency {
         let image: UIImage?
     }
+    
+    // MARK: - Properies
+    
     let image: UIImage?
     
     private lazy var backButton: UIButton = {
@@ -22,6 +25,7 @@ class ProfileImageViewController: UIViewController {
         return imageView
     }()
     
+    // MARK: - Lifecycle
     
     init(dependency: Dependency) {
         self.image = dependency.image
@@ -37,6 +41,8 @@ class ProfileImageViewController: UIViewController {
         configureUI()
     }
     
+    // MARK: - Configure
+    
     private func configureUI() {
         view.backgroundColor = .black
         view.addSubview(imageView)
@@ -47,11 +53,12 @@ class ProfileImageViewController: UIViewController {
         }
         
         backButton.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(30)
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
             $0.leading.equalToSuperview().offset(20)
         }
     }
     
+    // MARK: - Action
     
     @objc
     private func backButtonDidTap() {
