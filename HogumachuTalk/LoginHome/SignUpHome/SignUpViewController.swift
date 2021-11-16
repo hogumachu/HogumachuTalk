@@ -196,7 +196,8 @@ class SignUpViewController: UIViewController {
     
     @objc
     private func signUpButtonDidTap() {
-        viewModel.signUp(email: emailTextField.text!,
+        viewModel.signUp(self,
+                         email: emailTextField.text!,
                          password: passwordTextField.text!,
                          confirmPassword: confirmPasswordTextField.text!,
                          userName: userNameTextField.text!

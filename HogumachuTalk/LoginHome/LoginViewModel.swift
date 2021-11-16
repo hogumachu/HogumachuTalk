@@ -1,15 +1,24 @@
 class LoginViewModel: ViewModelType {
     var coordinator: Coordinator?
+    private var loading = false
     
     func logIn(email: String, password: String) {
+        if loading {
+            return
+        }
+        
+        loading = true
+        
         if email.isEmpty || password.isEmpty {
             // TODO: - 텍스트필드 다 채우라는 Alert
             print("텍스트 다 채워라잉")
+            loading = false
             return
         }
+        
         FirebaseImp.shared.signIn(email: email,
                                   password: password) { [weak self] result in
-            
+            self?.loading = false
             switch result {
             case .success(_):
                 self?.coordinator?.signIn()
