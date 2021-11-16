@@ -8,7 +8,7 @@ class FirebaseImp {
     static let shared = FirebaseImp()
     private init() {}
     
-    // MARK: - Login
+    // MARK: - SignIn
     
     func signIn(email: String, password: String, completion: @escaping(Result<Bool, Error>) -> Void) {
         Auth.auth()
@@ -30,7 +30,7 @@ class FirebaseImp {
             }
     }
     
-    // MARK: - Logout
+    // MARK: - SignOut
     
     func signOut(completion: @escaping(Result<Bool, Error>) -> Void) {
         do {
@@ -53,7 +53,7 @@ class FirebaseImp {
                 } else if let authResult = authResult {
                     authResult.user.sendEmailVerification { error in
                         if let verificationError = error?.localizedDescription, !verificationError.isEmpty {
-                            print("이메일 인증 에러:", verificationError)
+                            print("이메일 인증 에러:", #function, verificationError)
                         }
                     }
                     
@@ -83,37 +83,39 @@ class FirebaseImp {
     // MARK: - Download
     
     func downloadUserFirebase(id: String, completion: @escaping (Result<Bool, Error>) -> Void) {
-        Firestore.firestore()
-            .collection(firestoreCollectionUser)
-            .document(id)
-            .getDocument { document, error in
-                guard let document = document else {
-                    completion(.failure(FirebaseError.emptyDocument))
-                    return
-                }
-                
-                do {
-                    let user = try document.data(as: User.self)
-                    
-                    guard let user = user else {
-                        completion(.failure(FirebaseError.download))
+        DispatchQueue.global().async {
+            Firestore.firestore()
+                .collection(firestoreCollectionUser)
+                .document(id)
+                .getDocument { document, error in
+                    guard let document = document else {
+                        completion(.failure(FirebaseError.emptyDocument))
                         return
                     }
-                    saveUserLocal(user)
-                    completion(.success(true))
-                } catch {
-                    completion(.failure(error))
+                    
+                    do {
+                        let user = try document.data(as: User.self)
+                        
+                        guard let user = user else {
+                            completion(.failure(FirebaseError.download))
+                            return
+                        }
+                        saveUserLocal(user)
+                        completion(.success(true))
+                    } catch {
+                        completion(.failure(error))
+                    }
                 }
-            }
+        }
     }
     
     func downloadCurrentUser() {
         downloadUserFirebase(id: User.currentId) { result in
             switch result {
             case .success(_):
-                print("User Load 완료")
+                print("User Load 완료", #function)
             case .failure(let err):
-                print("User Load 실패:", err.localizedDescription)
+                print("User Load 실패", #function, err.localizedDescription)
             }
         }
     }
@@ -131,18 +133,13 @@ class FirebaseImp {
             documentDirectoryURLPath(fileName: fileName, pathPrefix: pathPrefix)
             
             if exist, let image = UIImage(contentsOfFile: contentOfFile) {
-                print("Local 에서 Image 다운")
                 DispatchQueue.main.async {
                     completion(.success(image))
                 }
-                
             } else {
-                // Firebase 에서 downLoad
-                print("Firebase 에서 Image 다운")
                 ImageLoader.shared.loadImage(url) { image in
                     if let image = image {
                         // Local 에 Image 저장 (원본 데이터로 저장함)
-                        
                         saveFileLocal(
                             file: image.jpegData(compressionQuality: 1.0)! as NSData,
                             fileName: User.currentId, pathPrefix: pathPrefix
@@ -164,14 +161,16 @@ class FirebaseImp {
     // MARK: - Upload
     
     func uploadUserFirebase(_ user: User, completion: @escaping (Result<Bool, Error>) -> Void) {
-        do {
-            try Firestore.firestore()
-                .collection(firestoreCollectionUser)
-                .document(user.id)
-                .setData(from: user)
-            completion(.success(true))
-        } catch {
-            completion(.failure(error))
+        DispatchQueue.global().async {
+            do {
+                try Firestore.firestore()
+                    .collection(firestoreCollectionUser)
+                    .document(user.id)
+                    .setData(from: user)
+                completion(.success(true))
+            } catch {
+                completion(.failure(error))
+            }
         }
     }
     
@@ -188,34 +187,39 @@ class FirebaseImp {
     }
     
     func uploadImage(image: UIImage, directory: String, completion: @escaping (_ link: String) -> Void) {
-        let reference = Storage.storage().reference(forURL: fireStorageFileURL).child(directory)
-        guard let data = image.jpegData(compressionQuality: 0.5) else {
-            print("Image Convert Error", #function)
-            return
-        }
-        var task: StorageUploadTask!
-        
-        task = reference.putData(data, metadata: nil, completion: { metaData, error in
-            task.removeAllObservers()
-            
-            if let error = error {
-                print("Upload Error (Image)", error.localizedDescription)
+        DispatchQueue.global().async {
+            let reference = Storage.storage().reference(forURL: fireStorageFileURL).child(directory)
+            guard let data = image.jpegData(compressionQuality: 0.5) else {
+                print("Image Convert Error", #function)
                 return
             }
+            var task: StorageUploadTask!
             
-            reference.downloadURL { url, error in
-                guard let url = url else {
-                    completion("")
+            task = reference.putData(data, metadata: nil, completion: { metaData, error in
+                task.removeAllObservers()
+                
+                if let error = error {
+                    print("Upload Error (Image)", error.localizedDescription)
                     return
                 }
                 
-                completion(url.absoluteString)
-            }
+                reference.downloadURL { url, error in
+                    guard let url = url else {
+                        DispatchQueue.main.async {
+                            completion("")
+                        }
+                        return
+                    }
+                    DispatchQueue.main.async {
+                        completion(url.absoluteString)
+                    }
+                }
+                
+            })
             
-        })
-        
-        task.observe(.progress) { snapshot in
-            print(CGFloat(snapshot.progress!.completedUnitCount / snapshot.progress!.totalUnitCount))
+            task.observe(.progress) { snapshot in
+                print(CGFloat(snapshot.progress!.completedUnitCount / snapshot.progress!.totalUnitCount))
+            }
         }
     }
 }

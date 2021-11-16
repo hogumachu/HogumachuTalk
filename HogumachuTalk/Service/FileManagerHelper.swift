@@ -34,11 +34,12 @@ func saveFileLocal(file: NSData, fileName: String, pathPrefix: String) {
 }
 
 func fileName(fileURL: String) -> String {
+    // fileURL 에 User ID 앞에 _ 추가
     return ((fileURL.components(separatedBy: "_").last)?
                 .components(separatedBy: "?").first)?
                 .components(separatedBy: ".").first ?? ""
 }
 
-func jpegExtensionName(fileName: String) -> String {
-    return fileName + ".jpeg"
+func jpgExtensionName(fileName: String) -> String {
+    return fileName + ".jpg"
 }

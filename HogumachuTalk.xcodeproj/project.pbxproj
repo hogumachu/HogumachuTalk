@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F1A122A82743585000DAEE14 /* ChatRoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A122A72743585000DAEE14 /* ChatRoomTableViewCell.swift */; };
 		F1A2CE83273A7F1E00FCB387 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CE82273A7F1E00FCB387 /* AppDelegate.swift */; };
 		F1A2CE85273A7F1E00FCB387 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CE84273A7F1E00FCB387 /* SceneDelegate.swift */; };
 		F1A2CE8C273A7F2100FCB387 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1A2CE8B273A7F2100FCB387 /* Assets.xcassets */; };
@@ -66,6 +67,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F1A122A72743585000DAEE14 /* ChatRoomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomTableViewCell.swift; sourceTree = "<group>"; };
 		F1A2CE7F273A7F1E00FCB387 /* HogumachuTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HogumachuTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1A2CE82273A7F1E00FCB387 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1A2CE84273A7F1E00FCB387 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				F1A2CEBE273A801600FCB387 /* ChatViewController.swift */,
+				F1A122A72743585000DAEE14 /* ChatRoomTableViewCell.swift */,
 				F1A2CEC6273A807C00FCB387 /* ChatViewModel.swift */,
 			);
 			path = ChatHome;
@@ -488,6 +491,7 @@
 				F1A2CEF7273CC60400FCB387 /* ProfileTableViewCell.swift in Sources */,
 				F1A2CEC7273A807C00FCB387 /* ChatViewModel.swift in Sources */,
 				F1A2CEE3273A969A00FCB387 /* Key.swift in Sources */,
+				F1A122A82743585000DAEE14 /* ChatRoomTableViewCell.swift in Sources */,
 				F1A2CECE273A8B9B00FCB387 /* SignUpViewController.swift in Sources */,
 				F1A2CF092741FD2600FCB387 /* FileManagerHelper.swift in Sources */,
 				F1A2CEE6273A981E00FCB387 /* FirebaseImp.swift in Sources */,

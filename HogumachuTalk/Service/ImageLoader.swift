@@ -11,7 +11,6 @@ class ImageLoader {
         
         DispatchQueue.global().async {
             do {
-                
                 let data = try Data(contentsOf: downLoadURL)
                 let image = UIImage(data: data)
                 

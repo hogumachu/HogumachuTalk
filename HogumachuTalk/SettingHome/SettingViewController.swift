@@ -5,6 +5,9 @@ class SettingViewController: UIViewController {
     struct Dependency {
         let viewModel: SettingViewModel
     }
+    
+    // MARK: - Properties
+    
     let viewModel: SettingViewModel
     private lazy var logOutButton: UIButton = {
         let button = UIButton()
@@ -14,6 +17,9 @@ class SettingViewController: UIViewController {
         button.addTarget(self, action: #selector(logOutButtonDidTap), for: .touchUpInside)
         return button
     }()
+    
+    // MARK: - Lifecycle
+    
     init(dependency: Dependency) {
         self.viewModel = dependency.viewModel
         super.init(nibName: nil, bundle: nil)
@@ -26,7 +32,10 @@ class SettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        configureNavigationBar()
     }
+    
+    // MARK: - Configure
     
     private func configureUI() {
         view.backgroundColor = .white
@@ -38,6 +47,12 @@ class SettingViewController: UIViewController {
             $0.center.equalToSuperview()
         }
     }
+    
+    private func configureNavigationBar() {
+        self.navigationItem.title = "설정"
+    }
+    
+    // MARK: - Action
     
     @objc
     private func logOutButtonDidTap() {

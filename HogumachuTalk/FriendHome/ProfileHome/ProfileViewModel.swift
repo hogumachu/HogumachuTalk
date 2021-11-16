@@ -66,18 +66,27 @@ class ProfileViewModel: ViewModelType {
         "ProfileImages/ProfileImage/_\(User.currentId).jpg" :
         "ProfileImages/BackgroundImage/_\(User.currentId).jpg"
         
-        FirebaseImp.shared.uploadImage(image: image, directory: directory) { [unowned self] link in
+        FirebaseImp.shared.uploadImage(image: image, directory: directory) { [weak self] link in
             switch type {
             case .profile:
-                user.profileImageURL = link
+                self?.user.profileImageURL = link
             case .background:
-                user.backgroundImageURL = link
+                self?.user.backgroundImageURL = link
             }
             
-            saveUserLocal(user)
+            if let user = self?.user {
+                saveUserLocal(user)
+                FirebaseImp.shared.uploadUser(user)
+            }
             
-            FirebaseImp.shared.uploadUser(user)
+            
         }
+        
+        saveFileLocal(
+            file: image.jpegData(compressionQuality: 1.0)! as NSData,
+            fileName: User.currentId,
+            pathPrefix: type.rawValue
+        )
         completion(image)
         coordinator?.dismiss(picker, animated: true)
     }
