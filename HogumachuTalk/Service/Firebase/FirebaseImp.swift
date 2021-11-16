@@ -33,13 +33,20 @@ class FirebaseImp {
     // MARK: - SignOut
     
     func signOut(completion: @escaping(Result<Bool, Error>) -> Void) {
-        do {
-            try Auth.auth().signOut() // 로그아웃 실행
-            UserDefaults.standard.removeObject(forKey: currentUserKey) // UserDefaults 에 저장된 값도 지우기
-            UserDefaults.standard.synchronize()
-            completion(.success(true))
-        } catch {
-            completion(.failure(error))
+        DispatchQueue.global().async {
+            do {
+                try Auth.auth().signOut() // 로그아웃 실행
+                UserDefaults.standard.removeObject(forKey: currentUserKey) // UserDefaults 에 저장된 값도 지우기
+                UserDefaults.standard.synchronize()
+                DispatchQueue.main.async {
+                    completion(.success(true))
+                }
+                
+            } catch {
+                DispatchQueue.main.async {
+                    completion(.failure(error))
+                }
+            }
         }
     }
     
@@ -49,7 +56,9 @@ class FirebaseImp {
         Auth.auth()
             .createUser(withEmail: email, password: password) { authResult, error in
                 if let error = error {
-                    completion(.failure(error))
+                    DispatchQueue.main.async {
+                        completion(.failure(error))
+                    }
                 } else if let authResult = authResult {
                     authResult.user.sendEmailVerification { error in
                         if let verificationError = error?.localizedDescription, !verificationError.isEmpty {
@@ -69,13 +78,19 @@ class FirebaseImp {
                     FirebaseImp.shared.uploadUserFirebase(user) { result in
                         switch result {
                         case .success(_):
-                            completion(.success(true))
+                            DispatchQueue.main.async {
+                                completion(.success(true))
+                            }
                         case .failure(let err):
-                            completion(.failure(err))
+                            DispatchQueue.main.async {
+                                completion(.failure(err))
+                            }
                         }
                     }
                 } else {
-                    completion(.failure(FirebaseError.unknown))
+                    DispatchQueue.main.async {
+                        completion(.failure(FirebaseError.unknown))
+                    }
                 }
             }
     }
