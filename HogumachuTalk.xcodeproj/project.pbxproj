@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F18E98B2274541BE004F484E /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18E98B1274541BE004F484E /* AlertView.swift */; };
 		F1A122A82743585000DAEE14 /* ChatRoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A122A72743585000DAEE14 /* ChatRoomTableViewCell.swift */; };
 		F1A2CE83273A7F1E00FCB387 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CE82273A7F1E00FCB387 /* AppDelegate.swift */; };
 		F1A2CE85273A7F1E00FCB387 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CE84273A7F1E00FCB387 /* SceneDelegate.swift */; };
@@ -67,6 +68,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F18E98B1274541BE004F484E /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		F1A122A72743585000DAEE14 /* ChatRoomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomTableViewCell.swift; sourceTree = "<group>"; };
 		F1A2CE7F273A7F1E00FCB387 /* HogumachuTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HogumachuTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1A2CE82273A7F1E00FCB387 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +140,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F18E98B0274541B7004F484E /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				F18E98B1274541BE004F484E /* AlertView.swift */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
 		F1A2CE76273A7F1E00FCB387 = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +171,7 @@
 		F1A2CE81273A7F1E00FCB387 /* HogumachuTalk */ = {
 			isa = PBXGroup;
 			children = (
+				F18E98B0274541B7004F484E /* Alert */,
 				F1A2CEF1273BF06E00FCB387 /* Service */,
 				F1A2CEE1273A968500FCB387 /* Key */,
 				F1A2CED1273A93CF00FCB387 /* Model */,
@@ -478,6 +489,7 @@
 				F1A2CEFA273E1B2C00FCB387 /* ProfileViewController.swift in Sources */,
 				F1A2CE85273A7F1E00FCB387 /* SceneDelegate.swift in Sources */,
 				F1A2CEF5273CC5DB00FCB387 /* FriendTableViewCell.swift in Sources */,
+				F18E98B2274541BE004F484E /* AlertView.swift in Sources */,
 				F1A2CED0273A8BA100FCB387 /* SignUpViewModel.swift in Sources */,
 				F1A2CEC3273A806F00FCB387 /* LoginViewModel.swift in Sources */,
 				F1A2CEE9273BD85A00FCB387 /* ViewModelType.swift in Sources */,
