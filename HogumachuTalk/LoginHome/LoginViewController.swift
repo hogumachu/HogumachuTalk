@@ -58,9 +58,13 @@ class LoginViewController: UIViewController {
     private lazy var loginButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("로그인", for: .normal)
-        button.setTitleColor(.systemBlue, for: .normal)
+        button.setTitle("  로그인  ", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .systemBrown
+        button.titleLabel?.font = .systemFont(ofSize: 20, weight: .heavy)
         button.addTarget(self, action: #selector(loginButtonDidTap), for: .touchUpInside)
+        button.layer.cornerRadius = 8
+        button.layer.cornerCurve = .continuous
         return button
     }()
     private let signUpStackView: UIStackView = {
@@ -83,7 +87,7 @@ class LoginViewController: UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("회원가입", for: .normal)
-        button.setTitleColor(.systemBlue, for: .normal)
+        button.setTitleColor(.systemBrown, for: .normal)
         button.addTarget(self, action: #selector(signUpButtonDidTap), for: .touchUpInside)
         return button
     }()

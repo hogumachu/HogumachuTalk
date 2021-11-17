@@ -124,9 +124,10 @@ class SignUpViewController: UIViewController {
     private lazy var signUpButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(" 회원가입 ", for: .normal)
+        button.setTitle("  회원가입  ", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .systemBrown
+        button.titleLabel?.font = .systemFont(ofSize: 20, weight: .heavy)
         button.layer.cornerCurve = .continuous
         button.layer.cornerRadius = 8
         button.addTarget(self , action: #selector(signUpButtonDidTap), for: .touchUpInside)
