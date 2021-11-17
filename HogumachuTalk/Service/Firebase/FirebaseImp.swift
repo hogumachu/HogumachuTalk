@@ -63,6 +63,9 @@ class FirebaseImp {
                     authResult.user.sendEmailVerification { error in
                         if let verificationError = error?.localizedDescription, !verificationError.isEmpty {
                             print("이메일 인증 에러:", #function, verificationError)
+                            DispatchQueue.main.async {
+                                completion(.failure(FirebaseError.emailVerified))
+                            }
                         }
                     }
                     
@@ -239,9 +242,9 @@ class FirebaseImp {
     }
 }
 
-enum FirebaseError: Error {
-    case emailVerified
-    case unknown
-    case emptyDocument
-    case download
+enum FirebaseError: String, Error {
+    case emailVerified = "이메일 인증이 되지 않았습니다"
+    case unknown = "알 수 없는 오류가 발생하였습니다."
+    case emptyDocument = "문서에 정보가 없습니다"
+    case download = "다운로드할 수 없습니다"
 }
