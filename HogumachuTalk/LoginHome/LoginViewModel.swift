@@ -12,6 +12,8 @@ class LoginViewModel: ViewModelType {
         if email.isEmpty || password.isEmpty {
             // TODO: - 텍스트필드 다 채우라는 Alert
             print("텍스트 다 채워라잉")
+            
+            AlertView.show("텍스트를 모두 채워야 합니다")
             loading = false
             return
         }
@@ -25,6 +27,12 @@ class LoginViewModel: ViewModelType {
             case .failure(let err):
                 // TODO: - 에러에 대한 것을 나타낼 Alert
                 print(err.localizedDescription)
+                if let err = err as? FirebaseError {
+                    AlertView.show(err.rawValue)
+                } else {
+                    AlertView.show(err.localizedDescription)
+                }
+                
             }
         }
     }
