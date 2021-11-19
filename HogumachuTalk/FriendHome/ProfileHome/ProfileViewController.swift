@@ -168,32 +168,13 @@ class ProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         viewModel.loadUser()
-        
-        NotificationCenter
-            .default
-            .addObserver(
-                self,
-                selector: #selector(keyboardWillShow),
-                name: UIResponder.keyboardWillShowNotification,
-                object: nil
-            )
-        NotificationCenter
-            .default
-            .addObserver(
-                self,
-                selector: #selector(keyboardWillHide),
-                name: UIResponder.keyboardWillHideNotification,
-                object: nil
-            )
+        addNotificationObserver()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        removeNotificationObserver()
     }
     
     // MARK: Configure
@@ -347,11 +328,31 @@ class ProfileViewController: UIViewController {
             view.layoutIfNeeded()
         }
     }
+    
+    // MARK: - Helper
+    private func addNotificationObserver() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+    }
+    
+    private func removeNotificationObserver() {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
 
 extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
         viewModel.imagePickerControllerDidFinish(picker, info: info, type: imageType) { [weak self] image in
             switch self?.imageType {
             case .profile:
