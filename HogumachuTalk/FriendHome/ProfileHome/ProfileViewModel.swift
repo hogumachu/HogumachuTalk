@@ -14,9 +14,7 @@ class ProfileViewModel: ViewModelType {
     
     func chat() {
         // TODO: - chatButton Action
-        
         // Dismiss -> Push ViewController
-//        coordinator?.dismiss()
     }
     
     func back(userName: String, status: String) {
@@ -55,12 +53,10 @@ class ProfileViewModel: ViewModelType {
     }
     
     func imagePickerControllerDidFinish(_ picker: UIImagePickerController, info: [UIImagePickerController.InfoKey: Any], type: ProfileImageType, completion: @escaping (UIImage?) -> Void) {
-        // TODO: Image View Save (Local, Firebase)
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
             print("이미지를 선택할 수 없습니다")
             return
         }
-        
         
         let directory = type == .profile ?
         "ProfileImages/ProfileImage/_\(User.currentId).jpg" :
@@ -90,9 +86,4 @@ class ProfileViewModel: ViewModelType {
         completion(image)
         coordinator?.dismiss(picker, animated: true)
     }
-}
-
-enum ProfileImageType: String {
-    case profile = "Profile"
-    case background = "Background"
 }
