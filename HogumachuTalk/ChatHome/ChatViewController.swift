@@ -58,9 +58,13 @@ class ChatViewController: UIViewController {
     }
 }
 
+// MARK: TableView Delegate
+
 extension ChatViewController: UITableViewDelegate {
     
 }
+
+// MARK: - TableView DataSource
 
 extension ChatViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

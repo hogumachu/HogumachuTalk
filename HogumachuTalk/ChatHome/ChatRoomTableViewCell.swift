@@ -2,7 +2,11 @@ import UIKit
 import SnapKit
 
 class ChatRoomTableViewCell: UITableViewCell {
+    
+    // MARK: - Properties
+    
     static let identifier = "ChatRoomTableViewCell"
+    
     private let chatRoomImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -35,6 +39,8 @@ class ChatRoomTableViewCell: UITableViewCell {
     }()
     
     
+    // MARK: - Initialize
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configureUI()
@@ -43,6 +49,8 @@ class ChatRoomTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Configure
     
     private func configureUI() {
         addSubview(chatRoomImageView)
