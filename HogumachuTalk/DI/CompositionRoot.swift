@@ -11,12 +11,12 @@ extension AppDependency {
             return navi
         }()
         
-        let loginViewControllerFactory: () -> LoginViewController = {
-            return .init(dependency: .init(viewModel: .init()))
+        let loginViewControllerFactory: (LoginViewController.Dependency) -> LoginViewController = { dependency in
+            return .init(dependency: dependency)
         }
         
-        let signUpViewControllerFactory: () -> SignUpViewController = {
-            return .init(dependency: .init(viewModel: .init()))
+        let signUpViewControllerFactory: (SignUpViewController.Dependency) -> SignUpViewController = { dependency in
+            return .init(dependency: dependency)
         }
         
         let homeTabBarController: UITabBarController = {
@@ -30,16 +30,16 @@ extension AppDependency {
             return navi
         }()
         
-        let friendViewControllerFactory: () -> FriendViewController = {
-            return .init(dependency: .init(viewModel: .init()))
+        let friendViewControllerFactory: (FriendViewController.Dependency) -> FriendViewController = { dependency in
+            return .init(dependency: dependency)
         }
         
-        let profileViewControllerFactory: (User) -> ProfileViewController = { user in
-            return .init(dependency: .init(viewModel: .init(dependency: .init(user: user))))
+        let profileViewControllerFactory: (ProfileViewController.Dependency) -> ProfileViewController = { dependency in
+            return .init(dependency: dependency)
         }
         
-        let profileImageViewControllerFactory: (UIImage?) -> ProfileImageViewController = { image in
-            let vc = ProfileImageViewController(dependency: .init(image: image))
+        let profileImageViewControllerFactory: (ProfileImageViewController.Dependency) -> ProfileImageViewController = { dependency in
+            let vc = ProfileImageViewController(dependency: dependency)
             vc.modalPresentationStyle = .fullScreen
             vc.modalTransitionStyle = .crossDissolve
             
@@ -55,8 +55,8 @@ extension AppDependency {
             return navi
         }()
         
-        let chatViewControllerFactory: () -> ChatViewController = {
-            return .init(dependency: .init(viewModel: .init()))
+        let chatViewControllerFactory: (ChatViewController.Dependency) -> ChatViewController = { dependency in
+            return .init(dependency: dependency)
         }
         
         let settingNavigationController: UINavigationController = {
@@ -64,8 +64,8 @@ extension AppDependency {
             return navi
         }()
         
-        let settingViewControllerFactory: () -> SettingViewController = {
-            return .init(dependency: .init(viewModel: .init()))
+        let settingViewControllerFactory: (SettingViewController.Dependency) -> SettingViewController = { dependency in
+            return .init(dependency: dependency)
         }
         
         return .init(coordinator: .init(dependency: .init(mainNavigationController: mainNavigationController,

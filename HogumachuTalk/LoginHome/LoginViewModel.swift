@@ -1,7 +1,20 @@
 class LoginViewModel: ViewModelType {
-    var coordinator: Coordinator?
+    struct Dependency {
+        let coordinator: Coordinator
+    }
+    
+    // MARK: - Properties
+    
+    var coordinator: Coordinator
     private var loading = false
     
+    // MARK: - Initialize
+    
+    init(depedency: Dependency) {
+        self.coordinator = depedency.coordinator
+    }
+    
+    // MARK: - Helper
     func logIn(email: String, password: String) {
         if loading {
             return
@@ -23,7 +36,7 @@ class LoginViewModel: ViewModelType {
             self?.loading = false
             switch result {
             case .success(_):
-                self?.coordinator?.signIn()
+                self?.coordinator.signIn()
             case .failure(let err):
                 // TODO: - 에러에 대한 것을 나타낼 Alert
                 print(err.localizedDescription)
@@ -38,7 +51,7 @@ class LoginViewModel: ViewModelType {
     }
     
     func signUp() {
-        coordinator?.signUp()
+        coordinator.signUp()
     }
     
     func autoLogin(isChecked: Bool) {

@@ -1,7 +1,22 @@
 import UIKit
 
 class FriendViewModel: ViewModelType {
-    var coordinator: Coordinator?
+    struct Dependency {
+        let coordinator: Coordinator
+    }
+    
+    // MARK: - Properties
+    
+    var coordinator: Coordinator
+    
+    
+    // MARK: - Initialize
+    
+    init(dependency: Dependency) {
+        self.coordinator = dependency.coordinator
+    }
+    
+    // MARK: - TableView
     
     func tableViewNumberOfRowsInSection(section: Int) -> Int {
         if section == 0 {
@@ -30,9 +45,11 @@ class FriendViewModel: ViewModelType {
         if indexPath.section == 0 && indexPath.row == 0 {
             let item = User.currentUser!
             tableView.deselectRow(at: indexPath, animated: false)
-            coordinator?.profile(user: item)
+            coordinator.profile(user: item)
         }
     }
+    
+    // MARK: - Helper
     
     func loadUser() {
         FirebaseImp.shared.downloadCurrentUser()

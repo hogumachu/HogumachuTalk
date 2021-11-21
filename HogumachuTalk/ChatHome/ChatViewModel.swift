@@ -1,7 +1,20 @@
 import UIKit
 class ChatViewModel: ViewModelType {
-    var coordinator: Coordinator?
+    struct Dependency {
+        let coordinator: Coordinator
+    }
     
+    // MARK: - Properties
+    
+    var coordinator: Coordinator
+    
+    // MARK: - Initialize
+    
+    init(dependency: Dependency) {
+        self.coordinator = dependency.coordinator
+    }
+    
+    // MARK: - TableView
     
     func tableViewNumberOfRowsInSection(section: Int) -> Int {
         return 1

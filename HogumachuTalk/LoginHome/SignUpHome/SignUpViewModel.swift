@@ -1,7 +1,21 @@
 import UIKit
 
 class SignUpViewModel: ViewModelType {
-    var coordinator: Coordinator?
+    struct Dependency {
+        let coordinator: Coordinator
+    }
+    
+    // MARK: - Properties
+    
+    var coordinator: Coordinator
+    
+    // MARK: - Initialize
+    
+    init(dependency: Dependency) {
+        self.coordinator = dependency.coordinator
+    }
+    
+    // MARK: - Helper
     
     func signUp(_ viewController: UIViewController, email: String, password: String, confirmPassword: String, userName: String) {
         // TODO: - 조건 분기 처리
@@ -29,7 +43,7 @@ class SignUpViewModel: ViewModelType {
                                메일을 인증해주세요.
                                """
                 )
-                self?.coordinator?.dismiss(viewController, animated: true)
+                self?.coordinator.dismiss(viewController, animated: true)
             case .failure(let err):
                 print(err.localizedDescription)
                 AlertView.show(err.localizedDescription)

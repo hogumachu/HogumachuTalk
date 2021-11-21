@@ -3,14 +3,23 @@ import UIKit
 
 class ProfileViewModel: ViewModelType {
     struct Dependency {
+        let coordinator: Coordinator
         let user: User
     }
-    var coordinator: Coordinator?
+    
+    // MARK: - Properties
+    
+    var coordinator: Coordinator
     var user: User
     
+    // MARK: - Initialize
+    
     init(dependency: Dependency) {
+        self.coordinator = dependency.coordinator
         self.user = dependency.user
     }
+    
+    // MARK: - Helper
     
     func chat() {
         // TODO: - chatButton Action
@@ -23,7 +32,7 @@ class ProfileViewModel: ViewModelType {
             user.status = status
             FirebaseImp.shared.uploadUser(user)
         }
-        coordinator?.dismiss(nil, animated: true)
+        coordinator.dismiss(nil, animated: true)
     }
     
     func loadUser() {
@@ -36,20 +45,20 @@ class ProfileViewModel: ViewModelType {
     
     func profileImageSetUp(_ viewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate & UIViewController, isEditMode: Bool, type: ProfileImageType) {
         if isEditMode {
-            coordinator?.imagePickerVC(viewController, .photoLibrary)
+            coordinator.imagePickerVC(viewController, .photoLibrary)
         } else {
             let url = type == .profile ?
             user.profileImageURL :
             user.backgroundImageURL
             
             ImageLoader.shared.loadImage(url) { [weak self] image in
-                self?.coordinator?.imageVC(viewController, image: image, animated: true)
+                self?.coordinator.imageVC(viewController, image: image, animated: true)
             }
         }
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        coordinator?.dismiss(picker, animated: true)
+        coordinator.dismiss(picker, animated: true)
     }
     
     func imagePickerControllerDidFinish(_ picker: UIImagePickerController, info: [UIImagePickerController.InfoKey: Any], type: ProfileImageType, completion: @escaping (UIImage?) -> Void) {
@@ -74,8 +83,6 @@ class ProfileViewModel: ViewModelType {
                 saveUserLocal(user)
                 FirebaseImp.shared.uploadUser(user)
             }
-            
-            
         }
         
         saveFileLocal(
@@ -84,6 +91,6 @@ class ProfileViewModel: ViewModelType {
             pathPrefix: type.rawValue
         )
         completion(image)
-        coordinator?.dismiss(picker, animated: true)
+        coordinator.dismiss(picker, animated: true)
     }
 }

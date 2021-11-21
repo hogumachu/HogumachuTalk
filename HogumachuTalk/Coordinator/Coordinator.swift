@@ -3,41 +3,41 @@ import UIKit
 class Coordinator {
     struct Dependency {
         let mainNavigationController: UINavigationController
-        let loginViewControllerFactory: () -> LoginViewController
-        let signUpViewControllerFactory: () -> SignUpViewController
+        let loginViewControllerFactory: (LoginViewController.Dependency) -> LoginViewController
+        let signUpViewControllerFactory: (SignUpViewController.Dependency) -> SignUpViewController
         
         let homeTabBarController: UITabBarController
         
         let friendNavigationController: UINavigationController
-        let friendViewControllerFactory: () -> FriendViewController
-        let profileViewControllerFactory: (User) -> ProfileViewController
-        let profileImageViewControllerFactory: (UIImage?) -> ProfileImageViewController
+        let friendViewControllerFactory: (FriendViewController.Dependency) -> FriendViewController
+        let profileViewControllerFactory: (ProfileViewController.Dependency) -> ProfileViewController
+        let profileImageViewControllerFactory: (ProfileImageViewController.Dependency) -> ProfileImageViewController
         let imagePickerControllerFactory: () -> UIImagePickerController
         
         let chatNavigationController: UINavigationController
-        let chatViewControllerFactory: () -> ChatViewController
+        let chatViewControllerFactory: (ChatViewController.Dependency) -> ChatViewController
         
         let settingNavigationController: UINavigationController
-        let settingViewControllerFactory: () -> SettingViewController
+        let settingViewControllerFactory: (SettingViewController.Dependency) -> SettingViewController
     }
     
     let mainNavigationController: UINavigationController
-    let loginViewControllerFactory: () -> LoginViewController
-    let signUpViewControllerFactory: () -> SignUpViewController
+    let loginViewControllerFactory: (LoginViewController.Dependency) -> LoginViewController
+    let signUpViewControllerFactory: (SignUpViewController.Dependency) -> SignUpViewController
     
     let homeTabBarController: UITabBarController
     
     let friendNavigationController: UINavigationController
-    let friendViewControllerFactory: () -> FriendViewController
-    let profileViewControllerFactory: (User) -> ProfileViewController
-    let profileImageViewControllerFactory: (UIImage?) -> ProfileImageViewController
+    let friendViewControllerFactory: (FriendViewController.Dependency) -> FriendViewController
+    let profileViewControllerFactory: (ProfileViewController.Dependency) -> ProfileViewController
+    let profileImageViewControllerFactory: (ProfileImageViewController.Dependency) -> ProfileImageViewController
     let imagePickerControllerFactory: () -> UIImagePickerController
     
     let chatNavigationController: UINavigationController
-    let chatViewControllerFactory: () -> ChatViewController
+    let chatViewControllerFactory: (ChatViewController.Dependency) -> ChatViewController
     
     let settingNavigationController: UINavigationController
-    let settingViewControllerFactory: () -> SettingViewController
+    let settingViewControllerFactory: (SettingViewController.Dependency) -> SettingViewController
     
     init(dependency: Dependency) {
         self.mainNavigationController = dependency.mainNavigationController
@@ -75,8 +75,7 @@ extension Coordinator {
     }
     
     func start() {
-        let vc = loginViewControllerFactory()
-        vc.viewModel.coordinator = self
+        let vc = loginViewControllerFactory(.init(viewModel: .init(depedency: .init(coordinator: self))))
         
         mainNavigationController.setViewControllers([vc], animated: false)
         
@@ -88,31 +87,29 @@ extension Coordinator {
     }
     
     func signUp() {
-        let vc = signUpViewControllerFactory()
-        vc.viewModel.coordinator = self
+        let vc = signUpViewControllerFactory(.init(viewModel: .init(dependency: .init(coordinator: self))))
         
         mainNavigationController.present(vc, animated: true, completion: nil)
     }
     
     func signIn() {
-        let friendVC = friendViewControllerFactory()
-        friendVC.viewModel.coordinator = self
+        let friendVC = friendViewControllerFactory(.init(viewModel: .init(dependency: .init(coordinator: self))))
         friendVC.tabBarItem = UITabBarItem(title: "",
                                             image: UIImage(systemName: "person"),
                                             selectedImage: UIImage(systemName: "person.fill")
         )
         friendNavigationController.setViewControllers([friendVC], animated: false)
         
-        let chatVC = chatViewControllerFactory()
-        chatVC.viewModel.coordinator = self
+        let chatVC = chatViewControllerFactory(.init(viewModel: .init(dependency: .init(coordinator: self))))
+        
         chatVC.tabBarItem = UITabBarItem(title: "",
                                          image: UIImage(systemName: "message"),
                                          selectedImage: UIImage(systemName: "message.fill")
         )
         chatNavigationController.setViewControllers([chatVC], animated: false)
         
-        let settingVC = settingViewControllerFactory()
-        settingVC.viewModel.coordinator = self
+        let settingVC = settingViewControllerFactory(.init(viewModel: .init(dependency: .init(coordinator: self))))
+        
         settingVC.tabBarItem = UITabBarItem(title: "",
                                             image: UIImage(systemName: "gearshape"),
                                             selectedImage: UIImage(systemName: "gearshape.fill")
@@ -136,8 +133,7 @@ extension Coordinator {
     }
     
     func profile(user: User) {
-        let vc = profileViewControllerFactory(user)
-        vc.viewModel.coordinator = self
+        let vc = profileViewControllerFactory(.init(viewModel: .init(dependency: .init(coordinator: self, user: user))))
         vc.modalPresentationStyle = .fullScreen
         homeTabBarController.present(vc, animated: true, completion: nil)
     }
@@ -163,7 +159,7 @@ extension Coordinator {
     }
     
     func imageVC(_ viewController: UIViewController, image: UIImage?, animated: Bool) {
-        let vc = profileImageViewControllerFactory(image)
+        let vc = profileImageViewControllerFactory(.init(image: image))
         
         viewController.present(vc, animated: animated, completion: nil)
     }
