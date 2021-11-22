@@ -9,10 +9,26 @@ class ImageLoader {
             return
         }
         
+        if let image = ImageCacheManager.shared.loadImage(url) {
+            DispatchQueue.main.async {
+                completion(image)
+            }
+            return
+        }
+        
         DispatchQueue.global().async {
             do {
                 let data = try Data(contentsOf: downLoadURL)
                 let image = UIImage(data: data)
+                
+                guard let image = image else {
+                    DispatchQueue.main.async {
+                        completion(nil)
+                    }
+                    return
+                }
+                
+                ImageCacheManager.shared.setImage(url, image: image)
                 
                 DispatchQueue.main.async {
                     completion(image)
