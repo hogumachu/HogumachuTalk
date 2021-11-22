@@ -3,8 +3,6 @@ import Firebase
 import UIKit
 
 class FirebaseImp {
-    // 싱글톤 패턴 사용
-    // init 막고 shared 로 이용
     static let shared = FirebaseImp()
     private init() {}
     
