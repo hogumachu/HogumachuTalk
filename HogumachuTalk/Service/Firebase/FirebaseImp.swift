@@ -98,7 +98,7 @@ class FirebaseImp {
     
     // MARK: - Download
     
-    func downloadUserFirebase(id: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+    func downloadUserFirebase(id: String, completion: @escaping (Result<User, Error>) -> Void) {
         DispatchQueue.global().async {
             Firestore.firestore()
                 .collection(_firestoreCollectionUser)
@@ -117,7 +117,7 @@ class FirebaseImp {
                             return
                         }
                         saveUserLocal(user)
-                        completion(.success(true))
+                        completion(.success(user))
                     } catch {
                         completion(.failure(error))
                     }
@@ -125,11 +125,11 @@ class FirebaseImp {
         }
     }
     
-    func downloadCurrentUser() {
+    func downloadCurrentUser(completion: @escaping (User?) -> Void) {
         downloadUserFirebase(id: User.currentId) { result in
             switch result {
-            case .success(_):
-                print("User Load 완료", #function)
+            case .success(let user):
+                completion(user)
             case .failure(let err):
                 print("User Load 실패", #function, err.localizedDescription)
             }
@@ -191,6 +191,7 @@ class FirebaseImp {
     }
     
     // Upload User (Local + Firebase)
+    
     func uploadUser(_ user: User) {
         saveUserLocal(user)
         uploadUserFirebase(user) { result in
