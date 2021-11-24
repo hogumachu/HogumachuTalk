@@ -7,7 +7,7 @@ class FriendViewModel: ViewModelType {
     
     // MARK: - Properties
     
-    var coordinator: Coordinator
+    let coordinator: Coordinator
     
     
     // MARK: - Initialize
@@ -43,9 +43,8 @@ class FriendViewModel: ViewModelType {
     
     func tableViewDidSelect(_ tableView: UITableView, indexPath: IndexPath) {
         if indexPath.section == 0 && indexPath.row == 0 {
-            let item = User.currentUser!
             tableView.deselectRow(at: indexPath, animated: false)
-            coordinator.profile(user: item)
+            coordinator.profile()
         }
     }
     

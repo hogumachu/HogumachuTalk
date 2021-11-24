@@ -6,7 +6,7 @@ class ChatViewModel: ViewModelType {
     
     // MARK: - Properties
     
-    var coordinator: Coordinator
+    let coordinator: Coordinator
     
     // MARK: - Initialize
     

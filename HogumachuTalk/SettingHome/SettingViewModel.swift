@@ -5,7 +5,7 @@ class SettingViewModel: ViewModelType {
     
     // MARK: - Properties
     
-    var coordinator: Coordinator
+    let coordinator: Coordinator
     private var loading = false
     
     // MARK: - Initialize
