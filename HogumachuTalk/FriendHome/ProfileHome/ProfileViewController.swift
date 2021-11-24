@@ -1,5 +1,7 @@
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 class ProfileViewController: UIViewController {
     struct Dependency {
@@ -9,6 +11,7 @@ class ProfileViewController: UIViewController {
     // MARK: - Properties
     
     let viewModel: ProfileViewModel
+    private let disposeBag = DisposeBag()
     private var imageType: ProfileImageType = .profile
     private let profileStackView: UIStackView = {
         let stack = UIStackView()
@@ -57,13 +60,12 @@ class ProfileViewController: UIViewController {
         stack.spacing = 10
         return stack
     }()
-    private lazy var chatButton: UIButton = {
+    private let chatButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(systemName: "message.fill")?.withTintColor(.white, renderingMode: .alwaysOriginal), for: .normal)
+        button.setImage(_messageFill, for: .normal)
         button.contentVerticalAlignment = .fill
         button.contentHorizontalAlignment = .fill
-        button.addTarget(self, action: #selector(chatButtonDidTap), for: .touchUpInside)
         return button
     }()
     private let chatLabel: UILabel = {
@@ -82,13 +84,12 @@ class ProfileViewController: UIViewController {
         stack.spacing = 10
         return stack
     }()
-    private lazy var editButton: UIButton = {
+    private let editButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(systemName: "pencil.circle")?.withTintColor(.white, renderingMode: .alwaysOriginal), for: .normal)
+        button.setImage(_pencilCircle, for: .normal)
         button.contentVerticalAlignment = .fill
         button.contentHorizontalAlignment = .fill
-        button.addTarget(self, action: #selector(editButtonDidTap), for: .touchUpInside)
         return button
     }()
     private let editLabel: UILabel = {
@@ -132,11 +133,10 @@ class ProfileViewController: UIViewController {
         stack.alignment = .fill
         return stack
     }()
-    private lazy var backButton: UIButton = {
+    private let backButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(systemName: "xmark")?.withTintColor(.white, renderingMode: .alwaysOriginal), for: .normal)
-        button.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+        button.setImage(_xMark, for: .normal)
         return button
     }()
     private let footerStackView: UIStackView = {
@@ -238,60 +238,46 @@ class ProfileViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        FirebaseImp.shared.downloadImage(url: viewModel.user.profileImageURL, pathPrefix: ProfileImageType.profile.rawValue) { [weak self] result in
-            switch result {
-            case .success(let image):
-                self?.profileImageView.image = image
-            case .failure(let err):
-                print(err.localizedDescription)
-            }
-        }
+        viewModel.storage.userObservable()
+            .subscribe(onNext: { [weak self] user in
+                FirebaseImp.shared.downloadImage(url: user.profileImageURL, pathPrefix: ProfileImageType.profile.rawValue) { result in
+                    switch result {
+                    case .success(let image):
+                        self?.profileImageView.image = image
+                    case .failure(let err):
+                        print(err.localizedDescription)
+                    }
+                }
+                
+                FirebaseImp.shared.downloadImage(url: user.backgroundImageURL, pathPrefix: ProfileImageType.background.rawValue) { result in
+                    switch result {
+                    case .success(let image):
+                        self?.backgroundImageView.image = image
+                    case .failure(let err):
+                        print(err.localizedDescription)
+                    }
+                }
+                
+                self?.userNameTextField.text = user.userName
+                self?.statusTextField.text = user.status
+            })
+            .disposed(by: disposeBag)
         
-        FirebaseImp.shared.downloadImage(url: viewModel.user.backgroundImageURL, pathPrefix: ProfileImageType.background.rawValue) { [weak self] result in
-            switch result {
-            case .success(let image):
-                self?.backgroundImageView.image = image
-            case .failure(let err):
-                print(err.localizedDescription)
-            }
-        }
+        chatButton.rx.tap
+            .bind(onNext: viewModel.chat)
+            .disposed(by: disposeBag)
         
-        userNameTextField.text = viewModel.user.userName
-        statusTextField.text = viewModel.user.status
+        backButton.rx.tap
+            .bind(onNext: back)
+            .disposed(by: disposeBag)
+        
+        editButton.rx.tap
+            .bind(onNext: edit)
+            .disposed(by: disposeBag)
+        
     }
     
     // MARK: - Actions
-    
-    @objc
-    private func chatButtonDidTap() {
-        viewModel.chat()
-    }
-    
-    @objc
-    private func backButtonDidTap() {
-        viewModel.back(userName: userNameTextField.text!, status: statusTextField.text!)
-    }
-    
-    @objc
-    private func editButtonDidTap() {
-        userNameTextField.isEnabled = !userNameTextField.isEnabled
-        statusTextField.isEnabled = !statusTextField.isEnabled
-        changeEditProperties(userNameTextField.isEnabled)
-    }
-    
-    func changeEditProperties(_ isEditMode: Bool) {
-        UIView.animate(withDuration: 0.3) { [unowned self] in
-            if isEditMode {
-                editLabel.text = "편집 모드"
-                editButton.setImage(UIImage(systemName: "pencil.circle.fill")?.withTintColor(.white, renderingMode: .alwaysOriginal), for: .normal)
-            } else {
-                editLabel.text = "프로필 편집"
-                editButton.setImage(UIImage(systemName: "pencil.circle")?.withTintColor(.white, renderingMode: .alwaysOriginal), for: .normal)
-            }
-            view.layoutIfNeeded()
-        }
-        
-    }
     
     @objc
     private func profileImageViewDidTap() {
@@ -330,6 +316,30 @@ class ProfileViewController: UIViewController {
     }
     
     // MARK: - Helper
+    
+    private func back() {
+        viewModel.back(userName: userNameTextField.text, status: statusTextField.text)
+    }
+    
+    private func edit() {
+        userNameTextField.isEnabled = !userNameTextField.isEnabled
+        statusTextField.isEnabled = !statusTextField.isEnabled
+        changeEditProperties(userNameTextField.isEnabled)
+    }
+    
+    private func changeEditProperties(_ isEditMode: Bool) {
+        UIView.animate(withDuration: 0.3) { [unowned self] in
+            if isEditMode {
+                editLabel.text = "편집 모드"
+                editButton.setImage(_pencilCircleFill, for: .normal)
+            } else {
+                editLabel.text = "프로필 편집"
+                editButton.setImage(_pencilCircle, for: .normal)
+            }
+            view.layoutIfNeeded()
+        }
+    }
+    
     private func addNotificationObserver() {
         NotificationCenter.default.addObserver(
             self,

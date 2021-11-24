@@ -4,19 +4,19 @@ import UIKit
 class ProfileViewModel: ViewModelType {
     struct Dependency {
         let coordinator: Coordinator
-        let user: User
+        let storage: FirebaseUserStorageType
     }
     
     // MARK: - Properties
     
-    var coordinator: Coordinator
-    var user: User
+    let coordinator: Coordinator
+    let storage: FirebaseUserStorageType
     
     // MARK: - Initialize
     
     init(dependency: Dependency) {
         self.coordinator = dependency.coordinator
-        self.user = dependency.user
+        self.storage = dependency.storage
     }
     
     // MARK: - Helper
@@ -24,32 +24,24 @@ class ProfileViewModel: ViewModelType {
     func chat() {
         // TODO: - chatButton Action
         // Dismiss -> Push ViewController
+        
+        print("ChatButtonDidTap")
     }
     
-    func back(userName: String, status: String) {
-        if user.userName != userName || user.status != status {
-            user.userName = userName
-            user.status = status
-            FirebaseImp.shared.uploadUser(user)
-        }
+    func back(userName: String?, status: String?) {
+        storage.updateUser(name: userName ?? "", status: status ?? "", profileImageURL: "", backgroundImageURL: "")
         coordinator.dismiss(nil, animated: true)
     }
     
     func loadUser() {
         FirebaseImp.shared.downloadCurrentUser()
-        
-        if let currentUser = User.currentUser {
-            user = currentUser
-        }
     }
     
     func profileImageSetUp(_ viewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate & UIViewController, isEditMode: Bool, type: ProfileImageType) {
         if isEditMode {
             coordinator.imagePickerVC(viewController, .photoLibrary)
         } else {
-            let url = type == .profile ?
-            user.profileImageURL :
-            user.backgroundImageURL
+            let url = storage.loadImageURL(type: type)
             
             ImageLoader.shared.loadImage(url) { [weak self] image in
                 self?.coordinator.imageVC(viewController, image: image, animated: true)
@@ -74,14 +66,10 @@ class ProfileViewModel: ViewModelType {
         FirebaseImp.shared.uploadImage(image: image, directory: directory) { [weak self] link in
             switch type {
             case .profile:
-                self?.user.profileImageURL = link
+                self?.storage.updateUser(name: "", status: "", profileImageURL: link, backgroundImageURL: "")
+                
             case .background:
-                self?.user.backgroundImageURL = link
-            }
-            
-            if let user = self?.user {
-                saveUserLocal(user)
-                FirebaseImp.shared.uploadUser(user)
+                self?.storage.updateUser(name: "", status: "", profileImageURL: "", backgroundImageURL: link)
             }
         }
         
@@ -90,6 +78,7 @@ class ProfileViewModel: ViewModelType {
             fileName: User.currentId,
             pathPrefix: type.rawValue
         )
+        
         completion(image)
         coordinator.dismiss(picker, animated: true)
     }

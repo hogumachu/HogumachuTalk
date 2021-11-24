@@ -5,6 +5,8 @@ struct AppDependency {
 
 extension AppDependency {
     static func resolve() -> AppDependency {
+        let storage: FirebaseUserStorageType = FirebaseUserStorage()
+        
         let mainNavigationController: UINavigationController = {
             let navi = UINavigationController()
             navi.isNavigationBarHidden = true
@@ -68,19 +70,27 @@ extension AppDependency {
             return .init(dependency: dependency)
         }
         
-        return .init(coordinator: .init(dependency: .init(mainNavigationController: mainNavigationController,
-                                                          loginViewControllerFactory: loginViewControllerFactory,
-                                                          signUpViewControllerFactory: signUpViewControllerFactory,
-                                                          homeTabBarController: homeTabBarController,
-                                                          friendNavigationController: friendNavigationController,
-                                                          friendViewControllerFactory: friendViewControllerFactory,
-                                                          profileViewControllerFactory: profileViewControllerFactory,
-                                                          profileImageViewControllerFactory: profileImageViewControllerFactory,
-                                                          imagePickerControllerFactory: imagePickerControllerFactory,
-                                                          chatNavigationController: chatNavigationController,
-                                                          chatViewControllerFactory: chatViewControllerFactory,
-                                                          settingNavigationController: settingNavigationController,
-                                                          settingViewControllerFactory: settingViewControllerFactory
-                                                         )))
+        return .init(
+            coordinator:
+                    .init(
+                        dependency:
+                                .init(
+                                    storage: storage,
+                                    mainNavigationController: mainNavigationController,
+                                    loginViewControllerFactory: loginViewControllerFactory,
+                                    signUpViewControllerFactory: signUpViewControllerFactory,
+                                    homeTabBarController: homeTabBarController,
+                                    friendNavigationController: friendNavigationController,
+                                    friendViewControllerFactory: friendViewControllerFactory,
+                                    profileViewControllerFactory: profileViewControllerFactory,
+                                    profileImageViewControllerFactory: profileImageViewControllerFactory,
+                                    imagePickerControllerFactory: imagePickerControllerFactory,
+                                    chatNavigationController: chatNavigationController,
+                                    chatViewControllerFactory: chatViewControllerFactory,
+                                    settingNavigationController: settingNavigationController,
+                                    settingViewControllerFactory: settingViewControllerFactory
+                                )
+                    )
+        )
     }
 }

@@ -2,6 +2,8 @@ import UIKit
 
 class Coordinator {
     struct Dependency {
+        let storage: FirebaseUserStorageType
+        
         let mainNavigationController: UINavigationController
         let loginViewControllerFactory: (LoginViewController.Dependency) -> LoginViewController
         let signUpViewControllerFactory: (SignUpViewController.Dependency) -> SignUpViewController
@@ -20,6 +22,8 @@ class Coordinator {
         let settingNavigationController: UINavigationController
         let settingViewControllerFactory: (SettingViewController.Dependency) -> SettingViewController
     }
+    
+    let storage: FirebaseUserStorageType
     
     let mainNavigationController: UINavigationController
     let loginViewControllerFactory: (LoginViewController.Dependency) -> LoginViewController
@@ -40,6 +44,8 @@ class Coordinator {
     let settingViewControllerFactory: (SettingViewController.Dependency) -> SettingViewController
     
     init(dependency: Dependency) {
+        self.storage = dependency.storage
+        
         self.mainNavigationController = dependency.mainNavigationController
         self.loginViewControllerFactory = dependency.loginViewControllerFactory
         self.signUpViewControllerFactory = dependency.signUpViewControllerFactory
@@ -132,8 +138,8 @@ extension Coordinator {
         mainNavigationController.popViewController(animated: true)
     }
     
-    func profile(user: User) {
-        let vc = profileViewControllerFactory(.init(viewModel: .init(dependency: .init(coordinator: self, user: user))))
+    func profile() {
+        let vc = profileViewControllerFactory(.init(viewModel: .init(dependency: .init(coordinator: self, storage: storage))))
         vc.modalPresentationStyle = .fullScreen
         homeTabBarController.present(vc, animated: true, completion: nil)
     }
