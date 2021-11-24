@@ -48,6 +48,14 @@
 		F1A2CF03274103C600FCB387 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CF02274103C600FCB387 /* ImageLoader.swift */; };
 		F1A2CF052741086300FCB387 /* ProfileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CF042741086300FCB387 /* ProfileImageViewController.swift */; };
 		F1A2CF092741FD2600FCB387 /* FileManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CF082741FD2600FCB387 /* FileManagerHelper.swift */; };
+		F1E19D43274BE710004B4299 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E19D42274BE710004B4299 /* ImageCacheManager.swift */; };
+		F1E19D57274DE08C004B4299 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = F1E19D56274DE08C004B4299 /* RxCocoa */; };
+		F1E19D59274DE08D004B4299 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F1E19D58274DE08C004B4299 /* RxSwift */; };
+		F1E19D5B274DE120004B4299 /* FirebaseUserStorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E19D5A274DE120004B4299 /* FirebaseUserStorageType.swift */; };
+		F1E19D5D274DE128004B4299 /* FirebaseUserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E19D5C274DE128004B4299 /* FirebaseUserStorage.swift */; };
+		F1E19D60274DE247004B4299 /* UserStorableViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E19D5F274DE247004B4299 /* UserStorableViewModelType.swift */; };
+		F1E19D63274DED98004B4299 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E19D62274DED98004B4299 /* Image.swift */; };
+		F1F180A42747EE330023D13F /* ProfileImageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F180A32747EE330023D13F /* ProfileImageType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +114,12 @@
 		F1A2CF02274103C600FCB387 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		F1A2CF042741086300FCB387 /* ProfileImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageViewController.swift; sourceTree = "<group>"; };
 		F1A2CF082741FD2600FCB387 /* FileManagerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerHelper.swift; sourceTree = "<group>"; };
+		F1E19D42274BE710004B4299 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
+		F1E19D5A274DE120004B4299 /* FirebaseUserStorageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserStorageType.swift; sourceTree = "<group>"; };
+		F1E19D5C274DE128004B4299 /* FirebaseUserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserStorage.swift; sourceTree = "<group>"; };
+		F1E19D5F274DE247004B4299 /* UserStorableViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorableViewModelType.swift; sourceTree = "<group>"; };
+		F1E19D62274DED98004B4299 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		F1F180A32747EE330023D13F /* ProfileImageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,12 +127,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1E19D59274DE08D004B4299 /* RxSwift in Frameworks */,
 				F1A2CED6273A960800FCB387 /* FirebaseAnalytics in Frameworks */,
 				F1A2CEDC273A960800FCB387 /* FirebaseFirestoreSwift-Beta in Frameworks */,
 				F1A2CEDE273A960800FCB387 /* FirebaseMessaging in Frameworks */,
 				F1A2CEFF273F89B200FCB387 /* SnapKit in Frameworks */,
 				F1A2CED8273A960800FCB387 /* FirebaseAuth in Frameworks */,
 				F1A2CEDA273A960800FCB387 /* FirebaseFirestore in Frameworks */,
+				F1E19D57274DE08C004B4299 /* RxCocoa in Frameworks */,
 				F1A2CEE0273A960800FCB387 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -171,9 +187,9 @@
 		F1A2CE81273A7F1E00FCB387 /* HogumachuTalk */ = {
 			isa = PBXGroup;
 			children = (
+				F1E19D61274DED8E004B4299 /* Constant */,
 				F18E98B0274541B7004F484E /* Alert */,
 				F1A2CEF1273BF06E00FCB387 /* Service */,
-				F1A2CEE1273A968500FCB387 /* Key */,
 				F1A2CED1273A93CF00FCB387 /* Model */,
 				F1A2CEB7273A7FC700FCB387 /* Coordinator */,
 				F1A2CEB6273A7FC400FCB387 /* DI */,
@@ -280,17 +296,10 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		F1A2CEE1273A968500FCB387 /* Key */ = {
-			isa = PBXGroup;
-			children = (
-				F1A2CEE2273A969A00FCB387 /* Key.swift */,
-			);
-			path = Key;
-			sourceTree = "<group>";
-		};
 		F1A2CEE4273A97C200FCB387 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
+				F1E19D5E274DE228004B4299 /* Storage */,
 				F1A2CEE5273A981E00FCB387 /* FirebaseImp.swift */,
 			);
 			path = Firebase;
@@ -311,6 +320,8 @@
 			isa = PBXGroup;
 			children = (
 				F1A2CEE8273BD85A00FCB387 /* ViewModelType.swift */,
+				F1F180A32747EE330023D13F /* ProfileImageType.swift */,
+				F1E19D5F274DE247004B4299 /* UserStorableViewModelType.swift */,
 			);
 			path = Type;
 			sourceTree = "<group>";
@@ -322,6 +333,7 @@
 				F1A2CEF2273BF08600FCB387 /* UserDefaultHelper.swift */,
 				F1A2CF082741FD2600FCB387 /* FileManagerHelper.swift */,
 				F1A2CF02274103C600FCB387 /* ImageLoader.swift */,
+				F1E19D42274BE710004B4299 /* ImageCacheManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -334,6 +346,24 @@
 				F1A2CF042741086300FCB387 /* ProfileImageViewController.swift */,
 			);
 			path = ProfileHome;
+			sourceTree = "<group>";
+		};
+		F1E19D5E274DE228004B4299 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				F1E19D5A274DE120004B4299 /* FirebaseUserStorageType.swift */,
+				F1E19D5C274DE128004B4299 /* FirebaseUserStorage.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		F1E19D61274DED8E004B4299 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				F1A2CEE2273A969A00FCB387 /* Key.swift */,
+				F1E19D62274DED98004B4299 /* Image.swift */,
+			);
+			path = Constant;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -360,6 +390,8 @@
 				F1A2CEDD273A960800FCB387 /* FirebaseMessaging */,
 				F1A2CEDF273A960800FCB387 /* FirebaseStorage */,
 				F1A2CEFE273F89B200FCB387 /* SnapKit */,
+				F1E19D56274DE08C004B4299 /* RxCocoa */,
+				F1E19D58274DE08C004B4299 /* RxSwift */,
 			);
 			productName = HogumachuTalk;
 			productReference = F1A2CE7F273A7F1E00FCB387 /* HogumachuTalk.app */;
@@ -436,6 +468,7 @@
 			packageReferences = (
 				F1A2CED4273A960700FCB387 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				F1A2CEFD273F89B200FCB387 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				F1E19D55274DE08C004B4299 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = F1A2CE80273A7F1E00FCB387 /* Products */;
 			projectDirPath = "";
@@ -481,10 +514,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1A2CEBB273A800000FCB387 /* LoginViewController.swift in Sources */,
+				F1E19D63274DED98004B4299 /* Image.swift in Sources */,
 				F1A2CE83273A7F1E00FCB387 /* AppDelegate.swift in Sources */,
+				F1E19D43274BE710004B4299 /* ImageCacheManager.swift in Sources */,
 				F1A2CEBD273A800F00FCB387 /* FriendViewController.swift in Sources */,
 				F1A2CEC5273A807600FCB387 /* FriendViewModel.swift in Sources */,
 				F1A2CECB273A80A100FCB387 /* CompositionRoot.swift in Sources */,
+				F1E19D5D274DE128004B4299 /* FirebaseUserStorage.swift in Sources */,
 				F1A2CEF3273BF08600FCB387 /* UserDefaultHelper.swift in Sources */,
 				F1A2CEFA273E1B2C00FCB387 /* ProfileViewController.swift in Sources */,
 				F1A2CE85273A7F1E00FCB387 /* SceneDelegate.swift in Sources */,
@@ -493,17 +529,20 @@
 				F1A2CED0273A8BA100FCB387 /* SignUpViewModel.swift in Sources */,
 				F1A2CEC3273A806F00FCB387 /* LoginViewModel.swift in Sources */,
 				F1A2CEE9273BD85A00FCB387 /* ViewModelType.swift in Sources */,
+				F1F180A42747EE330023D13F /* ProfileImageType.swift in Sources */,
 				F1A2CED3273A93D500FCB387 /* User.swift in Sources */,
 				F1A2CEBF273A801600FCB387 /* ChatViewController.swift in Sources */,
 				F1A2CF03274103C600FCB387 /* ImageLoader.swift in Sources */,
 				F1A2CEC1273A801F00FCB387 /* SettingViewController.swift in Sources */,
 				F1A2CEFC273E7BE900FCB387 /* ProfileViewModel.swift in Sources */,
 				F1A2CF052741086300FCB387 /* ProfileImageViewController.swift in Sources */,
+				F1E19D5B274DE120004B4299 /* FirebaseUserStorageType.swift in Sources */,
 				F1A2CEC9273A808300FCB387 /* SettingViewModel.swift in Sources */,
 				F1A2CEF7273CC60400FCB387 /* ProfileTableViewCell.swift in Sources */,
 				F1A2CEC7273A807C00FCB387 /* ChatViewModel.swift in Sources */,
 				F1A2CEE3273A969A00FCB387 /* Key.swift in Sources */,
 				F1A122A82743585000DAEE14 /* ChatRoomTableViewCell.swift in Sources */,
+				F1E19D60274DE247004B4299 /* UserStorableViewModelType.swift in Sources */,
 				F1A2CECE273A8B9B00FCB387 /* SignUpViewController.swift in Sources */,
 				F1A2CF092741FD2600FCB387 /* FileManagerHelper.swift in Sources */,
 				F1A2CEE6273A981E00FCB387 /* FirebaseImp.swift in Sources */,
@@ -883,6 +922,14 @@
 				kind = branch;
 			};
 		};
+		F1E19D55274DE08C004B4299 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -920,6 +967,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F1A2CEFD273F89B200FCB387 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		F1E19D56274DE08C004B4299 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F1E19D55274DE08C004B4299 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		F1E19D58274DE08C004B4299 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F1E19D55274DE08C004B4299 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

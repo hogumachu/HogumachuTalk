@@ -201,3 +201,4 @@ class LoginViewController: UIViewController {
         viewModel.autoLogin(isChecked: autoLoginCheckButton.isSelected)
     }
 }
+

@@ -2,10 +2,7 @@ import UIKit
 import SnapKit
 
 class AlertView: UIView {
-    static let shared: AlertView = {
-        let instace = AlertView()
-        return instace
-    }()
+    static let shared = AlertView()
     
     // MARK: - Properties
     
@@ -100,6 +97,7 @@ class AlertView: UIView {
     }
     
     // MARK: - Cancel Action
+    
     @objc
     private func cancelButtonDidTap() {
         self.removeFromSuperview()
