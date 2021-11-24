@@ -29,8 +29,10 @@ func existsFileInFileManager(fileName: String, pathPrefix: String) -> Bool {
 }
 
 func saveFileLocal(file: NSData, fileName: String, pathPrefix: String) {
-    let documentURL = documentDirectoryURL().appendingPathComponent(pathPrefix + "_" + fileName, isDirectory: false)
-    file.write(to: documentURL, atomically: true) // Atomically -> 덮어쓰기
+    DispatchQueue.global().async {
+        let documentURL = documentDirectoryURL().appendingPathComponent(pathPrefix + "_" + fileName, isDirectory: false)
+        file.write(to: documentURL, atomically: true) // Atomically -> 덮어쓰기
+    }
 }
 
 func fileName(fileURL: String) -> String {
