@@ -81,7 +81,7 @@ extension Coordinator {
     }
     
     func start() {
-        let vc = loginViewControllerFactory(.init(viewModel: .init(depedency: .init(coordinator: self))))
+        let vc = loginViewControllerFactory(.init(viewModel: .init(depedency: .init(coordinator: self, storage: storage))))
         
         mainNavigationController.setViewControllers([vc], animated: false)
         

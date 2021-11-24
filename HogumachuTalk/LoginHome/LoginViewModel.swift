@@ -1,17 +1,20 @@
-class LoginViewModel: ViewModelType {
+class LoginViewModel: UserStorableViewModelType {
     struct Dependency {
         let coordinator: Coordinator
+        let storage: FirebaseUserStorageType
     }
     
     // MARK: - Properties
     
-    var coordinator: Coordinator
+    let coordinator: Coordinator
+    let storage: FirebaseUserStorageType
     private var loading = false
     
     // MARK: - Initialize
     
     init(depedency: Dependency) {
         self.coordinator = depedency.coordinator
+        self.storage = depedency.storage
     }
     
     // MARK: - Helper
@@ -23,23 +26,18 @@ class LoginViewModel: ViewModelType {
         loading = true
         
         if email.isEmpty || password.isEmpty {
-            // TODO: - 텍스트필드 다 채우라는 Alert
-            print("텍스트 다 채워라잉")
-            
             AlertView.show("텍스트를 모두 채워야 합니다")
             loading = false
             return
         }
         
-        FirebaseImp.shared.signIn(email: email,
-                                  password: password) { [weak self] result in
+        FirebaseImp.shared.signIn(email: email, password: password) { [weak self] result in
             self?.loading = false
             switch result {
             case .success(_):
+                self?.storage.setCurrentUser()
                 self?.coordinator.signIn()
             case .failure(let err):
-                // TODO: - 에러에 대한 것을 나타낼 Alert
-                print(err.localizedDescription)
                 if let err = err as? FirebaseError {
                     AlertView.show(err.rawValue)
                 } else {
