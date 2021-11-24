@@ -34,7 +34,7 @@ class FirebaseImp {
         DispatchQueue.global().async {
             do {
                 try Auth.auth().signOut() // 로그아웃 실행
-                UserDefaults.standard.removeObject(forKey: currentUserKey) // UserDefaults 에 저장된 값도 지우기
+                UserDefaults.standard.removeObject(forKey: _currentUserKey) // UserDefaults 에 저장된 값도 지우기
                 UserDefaults.standard.synchronize()
                 DispatchQueue.main.async {
                     completion(.success(true))
@@ -101,7 +101,7 @@ class FirebaseImp {
     func downloadUserFirebase(id: String, completion: @escaping (Result<Bool, Error>) -> Void) {
         DispatchQueue.global().async {
             Firestore.firestore()
-                .collection(firestoreCollectionUser)
+                .collection(_firestoreCollectionUser)
                 .document(id)
                 .getDocument { document, error in
                     guard let document = document else {
@@ -180,7 +180,7 @@ class FirebaseImp {
         DispatchQueue.global().async {
             do {
                 try Firestore.firestore()
-                    .collection(firestoreCollectionUser)
+                    .collection(_firestoreCollectionUser)
                     .document(user.id)
                     .setData(from: user)
                 completion(.success(true))
@@ -190,6 +190,7 @@ class FirebaseImp {
         }
     }
     
+    // Upload User (Local + Firebase)
     func uploadUser(_ user: User) {
         saveUserLocal(user)
         uploadUserFirebase(user) { result in
@@ -204,7 +205,7 @@ class FirebaseImp {
     
     func uploadImage(image: UIImage, directory: String, completion: @escaping (_ link: String) -> Void) {
         DispatchQueue.global().async {
-            let reference = Storage.storage().reference(forURL: fireStorageFileURL).child(directory)
+            let reference = Storage.storage().reference(forURL: _fireStorageFileURL).child(directory)
             guard let data = image.jpegData(compressionQuality: 0.5) else {
                 print("Image Convert Error", #function)
                 return

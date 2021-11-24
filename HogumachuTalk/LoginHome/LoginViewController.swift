@@ -104,8 +104,8 @@ class LoginViewController: UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.isSelected = isCheckedAutoLogin
-        button.setImage(UIImage(systemName: "checkmark.square")?.withTintColor(.systemBrown, renderingMode: .alwaysOriginal), for: .normal)
-        button.setImage(UIImage(systemName: "checkmark.square.fill")?.withTintColor(.systemBrown, renderingMode: .alwaysOriginal), for: .selected)
+        button.setImage(_checkMarkSquare, for: .normal)
+        button.setImage(_checkMarkSquareFill, for: .selected)
         button.addTarget(self, action: #selector(autoLoginCheckButtonDidTap), for: .touchUpInside)
         return button
     }()

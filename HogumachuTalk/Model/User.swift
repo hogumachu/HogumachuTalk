@@ -22,7 +22,7 @@ extension User {
     
     static var currentUser: User? {
         if Auth.auth().currentUser != nil {
-            if let jsonData = UserDefaults.standard.data(forKey: currentUserKey) {
+            if let jsonData = UserDefaults.standard.data(forKey: _currentUserKey) {
                 do {
                     let object = try JSONDecoder().decode(User.self, from: jsonData)
                     return object
@@ -35,4 +35,6 @@ extension User {
         
         return nil
     }
+    
+    static let empty = User.init(id: "", userName: "", email: "", profileImageURL: "", backgroundImageURL: "")
 }
