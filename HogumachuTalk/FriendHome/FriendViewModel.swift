@@ -47,10 +47,4 @@ class FriendViewModel: ViewModelType {
             coordinator.profile()
         }
     }
-    
-    // MARK: - Helper
-    
-    func loadUser() {
-        FirebaseImp.shared.downloadCurrentUser()
-    }
 }

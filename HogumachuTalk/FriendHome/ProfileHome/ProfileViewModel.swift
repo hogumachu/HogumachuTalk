@@ -29,12 +29,10 @@ class ProfileViewModel: ViewModelType {
     }
     
     func back(userName: String?, status: String?) {
-        storage.updateUser(name: userName ?? "", status: status ?? "", profileImageURL: "", backgroundImageURL: "")
+        storage.updateUserName(name: userName ?? "")
+        storage.updateUserStatus(status: status ?? "")
+        
         coordinator.dismiss(nil, animated: true)
-    }
-    
-    func loadUser() {
-        FirebaseImp.shared.downloadCurrentUser()
     }
     
     func profileImageSetUp(_ viewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate & UIViewController, isEditMode: Bool, type: ProfileImageType) {
@@ -66,10 +64,9 @@ class ProfileViewModel: ViewModelType {
         FirebaseImp.shared.uploadImage(image: image, directory: directory) { [weak self] link in
             switch type {
             case .profile:
-                self?.storage.updateUser(name: "", status: "", profileImageURL: link, backgroundImageURL: "")
-                
+                self?.storage.updateUserProfileImageURL(url: link)
             case .background:
-                self?.storage.updateUser(name: "", status: "", profileImageURL: "", backgroundImageURL: link)
+                self?.storage.updateUserBackgroundImageURL(url: link)
             }
         }
         
