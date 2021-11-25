@@ -176,7 +176,7 @@ class ProfileViewController: UIViewController {
         removeNotificationObserver()
     }
     
-    // MARK: Configure
+    // MARK: - Configure
     
     private func configureUI() {
         view.backgroundColor = .darkGray
@@ -235,6 +235,8 @@ class ProfileViewController: UIViewController {
             $0.width.height.equalTo(30)
         }
     }
+    
+    // MARK: - Bind
     
     private func bindViewModel() {
         viewModel.storage.userObservable()
