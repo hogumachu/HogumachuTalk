@@ -1,5 +1,7 @@
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 class LoginViewController: UIViewController {
     struct Dependency {
@@ -9,6 +11,7 @@ class LoginViewController: UIViewController {
     // MARK: - Properties
     
     let viewModel: LoginViewModel
+    private let disposeBag = DisposeBag()
     private let logoLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -55,14 +58,13 @@ class LoginViewController: UIViewController {
         textField.isSecureTextEntry = true
         return textField
     }()
-    private lazy var loginButton: UIButton = {
+    private let loginButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("  로그인  ", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .systemBrown
         button.titleLabel?.font = .systemFont(ofSize: 20, weight: .heavy)
-        button.addTarget(self, action: #selector(loginButtonDidTap), for: .touchUpInside)
         button.layer.cornerRadius = 8
         button.layer.cornerCurve = .continuous
         return button
@@ -83,12 +85,11 @@ class LoginViewController: UIViewController {
         label.textColor = .systemGray
         return label
     }()
-    private lazy var signUpButton: UIButton = {
+    private let signUpButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("회원가입", for: .normal)
         button.setTitleColor(.systemBrown, for: .normal)
-        button.addTarget(self, action: #selector(signUpButtonDidTap), for: .touchUpInside)
         return button
     }()
     private let autoLoginStackView: UIStackView = {
@@ -100,13 +101,12 @@ class LoginViewController: UIViewController {
         stack.alignment = .leading
         return stack
     }()
-    private lazy var autoLoginCheckButton: UIButton = {
+    private let autoLoginCheckButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.isSelected = isCheckedAutoLogin
         button.setImage(_checkMarkSquare, for: .normal)
         button.setImage(_checkMarkSquareFill, for: .selected)
-        button.addTarget(self, action: #selector(autoLoginCheckButtonDidTap), for: .touchUpInside)
         return button
     }()
     private let autoLoginLabel: UILabel = {
@@ -131,9 +131,10 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        bindViewModel()
     }
     
-    // MARK: Configure
+    // MARK: - Configure
     
     private func configureUI() {
         view.backgroundColor = .white
@@ -183,20 +184,29 @@ class LoginViewController: UIViewController {
         }
     }
     
+    // MARK: - Bind
+    
+    private func bindViewModel() {
+        loginButton.rx.tap
+            .bind(onNext: login)
+            .disposed(by: disposeBag)
+        
+        signUpButton.rx.tap
+            .bind(onNext: viewModel.signUp)
+            .disposed(by: disposeBag)
+        
+        autoLoginCheckButton.rx.tap
+            .bind(onNext: autoLogin)
+            .disposed(by: disposeBag)
+    }
+    
     // MARK: - Actions
     
-    @objc
-    private func loginButtonDidTap() {
+    private func login() {
         viewModel.logIn(email: emailTextField.text!, password: passwordTextField.text!)
     }
     
-    @objc
-    private func signUpButtonDidTap() {
-        viewModel.signUp()
-    }
-    
-    @objc
-    private func autoLoginCheckButtonDidTap() {
+    private func autoLogin() {
         autoLoginCheckButton.isSelected = !autoLoginCheckButton.isSelected
         viewModel.autoLogin(isChecked: autoLoginCheckButton.isSelected)
     }
