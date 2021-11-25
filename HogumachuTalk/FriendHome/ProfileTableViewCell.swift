@@ -11,7 +11,7 @@ class ProfileTableViewCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 20
+        imageView.layer.cornerRadius = 25
         imageView.layer.cornerCurve = .continuous
         imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = .systemGray
@@ -29,13 +29,13 @@ class ProfileTableViewCell: UITableViewCell {
     private let userNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 20, weight: .semibold)
+        label.font = .systemFont(ofSize: 22, weight: .bold)
         return label
     }()
     private let statusLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 15, weight: .medium)
+        label.font = .systemFont(ofSize: 17, weight: .medium)
         label.textColor = .lightGray
         return label
     }()
@@ -64,7 +64,7 @@ class ProfileTableViewCell: UITableViewCell {
             $0.top.equalToSuperview().offset(5)
             $0.leading.equalToSuperview().offset(10)
             $0.bottom.equalToSuperview().offset(-5)
-            $0.width.height.equalTo(60)
+            $0.width.height.equalTo(70)
         }
         
         labelStackView.snp.makeConstraints {
