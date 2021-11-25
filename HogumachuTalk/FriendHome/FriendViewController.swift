@@ -53,6 +53,7 @@ class FriendViewController: UIViewController {
     }
     
     private func configureNavigationBar() {
+        // TODO: - NavigationItem Set Up
         self.navigationItem.title = "친구"
     }
     
@@ -77,5 +78,13 @@ extension FriendViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return viewModel.tableViewCell(tableView, indexPath: indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return viewModel.tableViewHeader(section: section)
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
     }
 }
