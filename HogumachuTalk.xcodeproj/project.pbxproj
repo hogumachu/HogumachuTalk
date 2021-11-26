@@ -10,6 +10,7 @@
 		F15CA9DC2750967D00CFAC4D /* FirebaseFriendStorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15CA9DB2750967D00CFAC4D /* FirebaseFriendStorageType.swift */; };
 		F15CA9DE2750968A00CFAC4D /* FirebaseFriendStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15CA9DD2750968A00CFAC4D /* FirebaseFriendStorage.swift */; };
 		F15CA9E02750991600CFAC4D /* FriendStorableViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15CA9DF2750991600CFAC4D /* FriendStorableViewModelType.swift */; };
+		F15CA9E327509B3E00CFAC4D /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = F15CA9E227509B3E00CFAC4D /* RxDataSources */; };
 		F18E98B2274541BE004F484E /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18E98B1274541BE004F484E /* AlertView.swift */; };
 		F1A122A82743585000DAEE14 /* ChatRoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A122A72743585000DAEE14 /* ChatRoomTableViewCell.swift */; };
 		F1A2CE83273A7F1E00FCB387 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2CE82273A7F1E00FCB387 /* AppDelegate.swift */; };
@@ -136,6 +137,7 @@
 				F1E19D59274DE08D004B4299 /* RxSwift in Frameworks */,
 				F1A2CED6273A960800FCB387 /* FirebaseAnalytics in Frameworks */,
 				F1A2CEDC273A960800FCB387 /* FirebaseFirestoreSwift-Beta in Frameworks */,
+				F15CA9E327509B3E00CFAC4D /* RxDataSources in Frameworks */,
 				F1A2CEDE273A960800FCB387 /* FirebaseMessaging in Frameworks */,
 				F1A2CEFF273F89B200FCB387 /* SnapKit in Frameworks */,
 				F1A2CED8273A960800FCB387 /* FirebaseAuth in Frameworks */,
@@ -417,6 +419,7 @@
 				F1A2CEFE273F89B200FCB387 /* SnapKit */,
 				F1E19D56274DE08C004B4299 /* RxCocoa */,
 				F1E19D58274DE08C004B4299 /* RxSwift */,
+				F15CA9E227509B3E00CFAC4D /* RxDataSources */,
 			);
 			productName = HogumachuTalk;
 			productReference = F1A2CE7F273A7F1E00FCB387 /* HogumachuTalk.app */;
@@ -494,6 +497,7 @@
 				F1A2CED4273A960700FCB387 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				F1A2CEFD273F89B200FCB387 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				F1E19D55274DE08C004B4299 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				F15CA9E127509B3E00CFAC4D /* XCRemoteSwiftPackageReference "RxDataSources" */,
 			);
 			productRefGroup = F1A2CE80273A7F1E00FCB387 /* Products */;
 			projectDirPath = "";
@@ -934,6 +938,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F15CA9E127509B3E00CFAC4D /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		F1A2CED4273A960700FCB387 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -961,6 +973,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F15CA9E227509B3E00CFAC4D /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F15CA9E127509B3E00CFAC4D /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
+		};
 		F1A2CED5273A960800FCB387 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F1A2CED4273A960700FCB387 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
