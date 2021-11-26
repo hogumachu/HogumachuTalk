@@ -1,4 +1,5 @@
 import UIKit
+import RxSwift
 import SnapKit
 
 class FriendViewController: UIViewController {
@@ -9,6 +10,7 @@ class FriendViewController: UIViewController {
     // MARK: - Properties
     
     let viewModel: FriendViewModel
+    private let disposeBag = DisposeBag()
     private let profileTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -32,6 +34,7 @@ class FriendViewController: UIViewController {
         setUpTableView()
         configureNavigationBar()
         configureUI()
+        bindViewModel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,34 +60,22 @@ class FriendViewController: UIViewController {
         self.navigationItem.title = "친구"
     }
     
+    private func bindViewModel() {
+        
+        // TODO: - RxDataSource
+        
+        viewModel.friendStorage.friendObservable()
+            .bind(to: profileTableView.rx.items(cellIdentifier: FriendTableViewCell.identifier, cellType: FriendTableViewCell.self)) { index, item, cell in
+                cell.setItem(item: item)
+            }.disposed(by: disposeBag)
+        
+    }
+    
     private func setUpTableView() {
-        profileTableView.delegate = self
-        profileTableView.dataSource = self
+        _ = profileTableView.rx.setDelegate(self)
         profileTableView.register(ProfileTableViewCell.self, forCellReuseIdentifier: ProfileTableViewCell.identifier)
         profileTableView.register(FriendTableViewCell.self, forCellReuseIdentifier: FriendTableViewCell.identifier)
     }
 }
 
-extension FriendViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.tableViewDidSelect(tableView, indexPath: indexPath)
-    }
-}
-
-extension FriendViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.tableViewNumberOfRowsInSection(section: section)
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return viewModel.tableViewCell(tableView, indexPath: indexPath)
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return viewModel.tableViewHeader(section: section)
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-}
+extension FriendViewController: UIScrollViewDelegate {} 
