@@ -61,14 +61,15 @@ class FriendViewController: UIViewController {
     }
     
     private func bindViewModel() {
+        viewModel.friendList
+            .bind(to: profileTableView.rx.items(dataSource: viewModel.dataSource))
+            .disposed(by: disposeBag)
         
-        // TODO: - RxDataSource
         
-        viewModel.friendStorage.friendObservable()
-            .bind(to: profileTableView.rx.items(cellIdentifier: FriendTableViewCell.identifier, cellType: FriendTableViewCell.self)) { index, item, cell in
-                cell.setItem(item: item)
-            }.disposed(by: disposeBag)
-        
+        // TODO: - IndexPath 별 다른 ModelSelect Action
+        profileTableView.rx.modelSelected(User.self)
+            .bind(onNext: viewModel.modelSelected)
+            .disposed(by: disposeBag)
     }
     
     private func setUpTableView() {
