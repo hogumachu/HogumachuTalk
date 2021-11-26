@@ -102,7 +102,7 @@ extension Coordinator {
     }
     
     func signIn() {
-        let friendVC = friendViewControllerFactory(.init(viewModel: .init(dependency: .init(coordinator: self, storage: storage, friendStorage: friendStorage))))
+        let friendVC = friendViewControllerFactory(.init(viewModel: .init(dependency: .init(coordinator: self, storage: friendStorage))))
         friendVC.tabBarItem = UITabBarItem(title: "",
                                             image: UIImage(systemName: "person"),
                                             selectedImage: UIImage(systemName: "person.fill")
