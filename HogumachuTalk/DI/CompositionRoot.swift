@@ -6,6 +6,7 @@ struct AppDependency {
 extension AppDependency {
     static func resolve() -> AppDependency {
         let storage: FirebaseUserStorageType = FirebaseUserStorage()
+        let friendStorage: FirebaseFriendStorageType = FirebaseFriendStorage()
         
         let mainNavigationController: UINavigationController = {
             let navi = UINavigationController()
@@ -76,6 +77,7 @@ extension AppDependency {
                         dependency:
                                 .init(
                                     storage: storage,
+                                    friendStorage: friendStorage,
                                     mainNavigationController: mainNavigationController,
                                     loginViewControllerFactory: loginViewControllerFactory,
                                     signUpViewControllerFactory: signUpViewControllerFactory,

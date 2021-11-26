@@ -3,6 +3,7 @@ import UIKit
 class Coordinator {
     struct Dependency {
         let storage: FirebaseUserStorageType
+        let friendStorage: FirebaseFriendStorageType
         
         let mainNavigationController: UINavigationController
         let loginViewControllerFactory: (LoginViewController.Dependency) -> LoginViewController
@@ -24,6 +25,7 @@ class Coordinator {
     }
     
     let storage: FirebaseUserStorageType
+    let friendStorage: FirebaseFriendStorageType
     
     let mainNavigationController: UINavigationController
     let loginViewControllerFactory: (LoginViewController.Dependency) -> LoginViewController
@@ -45,6 +47,7 @@ class Coordinator {
     
     init(dependency: Dependency) {
         self.storage = dependency.storage
+        self.friendStorage = dependency.friendStorage
         
         self.mainNavigationController = dependency.mainNavigationController
         self.loginViewControllerFactory = dependency.loginViewControllerFactory
@@ -99,7 +102,7 @@ extension Coordinator {
     }
     
     func signIn() {
-        let friendVC = friendViewControllerFactory(.init(viewModel: .init(dependency: .init(coordinator: self))))
+        let friendVC = friendViewControllerFactory(.init(viewModel: .init(dependency: .init(coordinator: self, storage: storage, friendStorage: friendStorage))))
         friendVC.tabBarItem = UITabBarItem(title: "",
                                             image: UIImage(systemName: "person"),
                                             selectedImage: UIImage(systemName: "person.fill")
