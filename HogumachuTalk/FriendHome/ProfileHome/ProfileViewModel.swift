@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-class ProfileViewModel: ViewModelType {
+class ProfileViewModel: UserStorableViewModelType {
     struct Dependency {
         let coordinator: Coordinator
         let storage: FirebaseUserStorageType
