@@ -67,7 +67,7 @@ class FirebaseImp {
                         }
                     }
                     
-                    let user = User(id: authResult.user.uid,
+                    let user = User(identity: authResult.user.uid,
                                     userName: userName,
                                     email: email,
                                     profileImageURL: "",
@@ -181,7 +181,7 @@ class FirebaseImp {
             do {
                 try Firestore.firestore()
                     .collection(_firestoreCollectionUser)
-                    .document(user.id)
+                    .document(user.identity)
                     .setData(from: user)
                 completion(.success(true))
             } catch {

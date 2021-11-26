@@ -1,19 +1,31 @@
 import Foundation
 import Firebase
 import FirebaseFirestoreSwift
+import RxDataSources
 
-struct User: Codable, Equatable {
-    let id: String
+struct User: Codable, Equatable, IdentifiableType {
+    typealias Identity = String
+    
+    let identity: String
     var userName: String
     var email: String
     var profileImageURL: String
     var backgroundImageURL: String
     var status: String = "안녕하세요. 반갑습니다"
+    
+    enum CodingKeys: String, CodingKey {
+        case identity = "id"
+        case userName
+        case email
+        case profileImageURL
+        case backgroundImageURL
+        case status
+    }
 }
 
 extension User {
     static func == (lhs: User, rhs: User) -> Bool {
-        return lhs.id == rhs.id
+        return lhs.identity == rhs.identity
     }
     
     static var currentId: String {
@@ -36,5 +48,5 @@ extension User {
         return nil
     }
     
-    static let empty = User.init(id: "", userName: "", email: "", profileImageURL: "", backgroundImageURL: "")
+    static let empty = User.init(identity: "", userName: "", email: "", profileImageURL: "", backgroundImageURL: "")
 }
