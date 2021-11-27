@@ -14,6 +14,9 @@ class FriendViewModel: FriendStorableViewModelType {
     
     let coordinator: Coordinator
     let storage: FirebaseFriendStorageType
+    var friendList: Observable<[UserSectionModel]> {
+        return storage.setionModelObservable
+    }
     
     // MARK: - Initialize
     
@@ -22,12 +25,12 @@ class FriendViewModel: FriendStorableViewModelType {
         self.storage = dependency.storage
     }
     
-    // TODO: - TableView DataSource
+    // MARK: - TableView DataSource
     
     let dataSource: RxTableViewSectionedAnimatedDataSource<UserSectionModel> = {
         let ds = RxTableViewSectionedAnimatedDataSource<UserSectionModel> { dataSource, tableView, indexPath, user -> UITableViewCell in
             if indexPath.section == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: ProfileTableViewCell.identifier) as! ProfileTableViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: ProfileTableViewCell.identifier, for: indexPath) as! ProfileTableViewCell
                 cell.setItem(item: user)
                 return cell
             } else {
@@ -40,12 +43,11 @@ class FriendViewModel: FriendStorableViewModelType {
         return ds
     }()
     
-    var friendList: Observable<[UserSectionModel]> {
-        return storage.setionModelObservable
-    }
     
-    // TODO: - IndexPath 별 다른 ModelSelect Action
-    func modelSelected(_ user: User) {
-        coordinator.profile()
+    // TODO: - IndexPath 별 다른 ItemSelected Action
+    func itemSelected(_ indexPath: IndexPath) {
+        if indexPath.section == 0 && indexPath.row == 0 {
+            coordinator.profile()
+        }
     }
 }

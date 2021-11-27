@@ -65,10 +65,8 @@ class FriendViewController: UIViewController {
             .bind(to: profileTableView.rx.items(dataSource: viewModel.dataSource))
             .disposed(by: disposeBag)
         
-        
-        // TODO: - IndexPath 별 다른 ModelSelect Action
-        profileTableView.rx.modelSelected(User.self)
-            .bind(onNext: viewModel.modelSelected)
+        profileTableView.rx.itemSelected
+            .bind(onNext: viewModel.itemSelected)
             .disposed(by: disposeBag)
     }
     
