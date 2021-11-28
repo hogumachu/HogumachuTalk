@@ -50,4 +50,12 @@ class FriendViewModel: FriendStorableViewModelType {
             coordinator.profile()
         }
     }
+    
+    // MARK: - Helper
+    
+    func search() {
+        print("TODO : Use Search View Controller")
+        
+        coordinator.searchVC()
+    }
 }

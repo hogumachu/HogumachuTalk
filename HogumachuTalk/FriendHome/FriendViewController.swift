@@ -17,6 +17,10 @@ class FriendViewController: UIViewController {
         tableView.separatorStyle = .none
         return tableView
     }()
+    private let searchButton: UIBarButtonItem = {
+        let barButton = UIBarButtonItem(image: _magnifyingglass, style: .plain, target: self, action: nil)
+        return barButton
+    }()
     
     // MARK: - Lifecycle
     
@@ -57,7 +61,8 @@ class FriendViewController: UIViewController {
     
     private func configureNavigationBar() {
         // TODO: - NavigationItem Set Up
-        self.navigationItem.title = "친구"
+        navigationItem.title = "친구"
+        navigationItem.setRightBarButton(searchButton, animated: false)
     }
     
     private func bindViewModel() {
@@ -67,6 +72,10 @@ class FriendViewController: UIViewController {
         
         profileTableView.rx.itemSelected
             .bind(onNext: viewModel.itemSelected)
+            .disposed(by: disposeBag)
+        
+        searchButton.rx.tap
+            .bind(onNext: viewModel.search)
             .disposed(by: disposeBag)
     }
     

@@ -15,6 +15,7 @@ class Coordinator {
         let friendViewControllerFactory: (FriendViewController.Dependency) -> FriendViewController
         let profileViewControllerFactory: (ProfileViewController.Dependency) -> ProfileViewController
         let profileImageViewControllerFactory: (ProfileImageViewController.Dependency) -> ProfileImageViewController
+        let searchViewControllerFactory: (SearchViewController.Dependency) -> SearchViewController
         let imagePickerControllerFactory: () -> UIImagePickerController
         
         let chatNavigationController: UINavigationController
@@ -37,6 +38,7 @@ class Coordinator {
     let friendViewControllerFactory: (FriendViewController.Dependency) -> FriendViewController
     let profileViewControllerFactory: (ProfileViewController.Dependency) -> ProfileViewController
     let profileImageViewControllerFactory: (ProfileImageViewController.Dependency) -> ProfileImageViewController
+    let searchViewControllerFactory: (SearchViewController.Dependency) -> SearchViewController
     let imagePickerControllerFactory: () -> UIImagePickerController
     
     let chatNavigationController: UINavigationController
@@ -59,6 +61,7 @@ class Coordinator {
         self.friendViewControllerFactory = dependency.friendViewControllerFactory
         self.profileViewControllerFactory = dependency.profileViewControllerFactory
         self.profileImageViewControllerFactory = dependency.profileImageViewControllerFactory
+        self.searchViewControllerFactory = dependency.searchViewControllerFactory
         self.imagePickerControllerFactory = dependency.imagePickerControllerFactory
         
         self.chatNavigationController = dependency.chatNavigationController
@@ -159,6 +162,19 @@ extension Coordinator {
         currentNavigationController?.popViewController(animated: animated)
     }
     
+    func pop(from navigation: Navigation, animated: Bool) {
+        switch navigation {
+        case .main:
+            mainNavigationController.popViewController(animated: animated)
+        case .friend:
+            friendNavigationController.popViewController(animated: animated)
+        case .chat:
+            chatNavigationController.popViewController(animated: animated)
+        case .setting:
+            settingNavigationController.popViewController(animated: animated)
+        }
+    }
+    
     func imagePickerVC(_ viewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate & UIViewController,_ sourceType: UIImagePickerController.SourceType) {
         let vc = imagePickerControllerFactory()
         vc.delegate = viewController.self
@@ -172,4 +188,17 @@ extension Coordinator {
         
         viewController.present(vc, animated: animated, completion: nil)
     }
+    
+    func searchVC() {
+        let vc = searchViewControllerFactory(.init(viewModel: .init(dependency: .init(coordinator: self, storage: friendStorage))))
+        
+        mainNavigationController.pushViewController(vc, animated: true)
+    }
+}
+
+enum Navigation {
+    case main
+    case friend
+    case chat
+    case setting
 }

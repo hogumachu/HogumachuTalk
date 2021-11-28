@@ -49,6 +49,10 @@ extension AppDependency {
             return vc
         }
         
+        let searchViewControllerFactory: (SearchViewController.Dependency) -> SearchViewController = { dependency in
+            return .init(dependency: dependency)
+        }
+        
         let imagePickerControllerFactory: () -> UIImagePickerController = {
             return .init()
         }
@@ -86,6 +90,7 @@ extension AppDependency {
                                     friendViewControllerFactory: friendViewControllerFactory,
                                     profileViewControllerFactory: profileViewControllerFactory,
                                     profileImageViewControllerFactory: profileImageViewControllerFactory,
+                                    searchViewControllerFactory: searchViewControllerFactory,
                                     imagePickerControllerFactory: imagePickerControllerFactory,
                                     chatNavigationController: chatNavigationController,
                                     chatViewControllerFactory: chatViewControllerFactory,
