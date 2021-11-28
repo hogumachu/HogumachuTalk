@@ -13,7 +13,7 @@ class ProfileImageViewController: UIViewController {
     private lazy var backButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(_xMark, for: .normal)
+        button.setImage(_xMarkWhite, for: .normal)
         button.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
         return button
     }()
