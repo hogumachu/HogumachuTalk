@@ -188,15 +188,24 @@ class LoginViewController: UIViewController {
     
     private func bindViewModel() {
         loginButton.rx.tap
-            .bind(onNext: login)
+            .bind(
+                with: self,
+                onNext: { vc, _ in vc.login() }
+            )
             .disposed(by: disposeBag)
         
         signUpButton.rx.tap
-            .bind(onNext: viewModel.signUp)
+            .bind(
+                with: viewModel,
+                onNext: { vm, _ in vm.signUp() }
+            )
             .disposed(by: disposeBag)
         
         autoLoginCheckButton.rx.tap
-            .bind(onNext: autoLogin)
+            .bind(
+                with: self,
+                onNext: { vc, _ in vc.autoLogin() }
+            )
             .disposed(by: disposeBag)
     }
     

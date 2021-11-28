@@ -17,8 +17,12 @@ class FriendViewController: UIViewController {
         tableView.separatorStyle = .none
         return tableView
     }()
-    private let searchButton: UIBarButtonItem = {
+    private let searchBarButton: UIBarButtonItem = {
         let barButton = UIBarButtonItem(image: _magnifyingglass, style: .plain, target: self, action: nil)
+        return barButton
+    }()
+    private let addFriendBarButton: UIBarButtonItem = {
+        let barButton = UIBarButtonItem(image: _personPlus, style: .plain, target: self, action: nil)
         return barButton
     }()
     
@@ -62,7 +66,7 @@ class FriendViewController: UIViewController {
     private func configureNavigationBar() {
         // TODO: - NavigationItem Set Up
         navigationItem.title = "친구"
-        navigationItem.setRightBarButton(searchButton, animated: false)
+        navigationItem.setRightBarButtonItems([addFriendBarButton, searchBarButton], animated: false)
     }
     
     private func bindViewModel() {
@@ -71,11 +75,24 @@ class FriendViewController: UIViewController {
             .disposed(by: disposeBag)
         
         profileTableView.rx.itemSelected
-            .bind(onNext: viewModel.itemSelected)
+            .bind(
+                with: viewModel,
+                onNext: { vm, indexPath in vm.itemSelected(indexPath) }
+            )
             .disposed(by: disposeBag)
         
-        searchButton.rx.tap
-            .bind(onNext: viewModel.search)
+        searchBarButton.rx.tap
+            .bind(
+                with: viewModel,
+                onNext: { vm, _ in vm.search() }
+            )
+            .disposed(by: disposeBag)
+        
+        addFriendBarButton.rx.tap
+            .bind(
+                with: viewModel,
+                onNext: { vm, _ in vm.emailSearch() }
+            )
             .disposed(by: disposeBag)
     }
     

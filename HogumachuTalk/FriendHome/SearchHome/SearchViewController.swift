@@ -37,7 +37,7 @@ class SearchViewController: UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(_xMarkCircleFill, for: .normal)
-        button.isHidden
+        button.isHidden = true
         return button
     }()
     private let cancelButton: UIButton = {
@@ -48,6 +48,7 @@ class SearchViewController: UIViewController {
         button.setTitleColor(.systemGray, for: .highlighted)
         return button
     }()
+    
     init(dependency: Dependency) {
         self.viewModel = dependency.viewModel
         super.init(nibName: nil, bundle: nil)
@@ -104,15 +105,24 @@ class SearchViewController: UIViewController {
     
     private func bindViewModel() {
         cancelButton.rx.tap
-            .bind(onNext: viewModel.cancel)
+            .bind(
+                with: viewModel,
+                onNext: { vm, _ in vm.cancel() }
+            )
             .disposed(by: disposeBag)
         
         searchTextField.rx.text
-            .bind(onNext: searchTextFieldHasText)
+            .bind(
+                with: self,
+                onNext: { vc, text in vc.searchTextFieldHasText(text) }
+            )
             .disposed(by: disposeBag)
         
         removeTextButton.rx.tap
-            .bind(onNext: removeTextFieldText)
+            .bind(
+                with: self,
+                onNext: { vc, _ in vc.removeTextFieldText() }
+            )
             .disposed(by: disposeBag)
     }
     

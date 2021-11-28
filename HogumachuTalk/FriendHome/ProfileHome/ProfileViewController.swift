@@ -136,7 +136,7 @@ class ProfileViewController: UIViewController {
     private let backButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(_xMark, for: .normal)
+        button.setImage(_xMarkWhite, for: .normal)
         return button
     }()
     private let footerStackView: UIStackView = {
@@ -265,15 +265,24 @@ class ProfileViewController: UIViewController {
             .disposed(by: disposeBag)
         
         chatButton.rx.tap
-            .bind(onNext: viewModel.chat)
+            .bind(
+                with: viewModel,
+                onNext: { vm, _ in vm.chat() }
+            )
             .disposed(by: disposeBag)
         
         backButton.rx.tap
-            .bind(onNext: back)
+            .bind(
+                with: self,
+                onNext: { vc, _ in vc.back() }
+            )
             .disposed(by: disposeBag)
         
         editButton.rx.tap
-            .bind(onNext: edit)
+            .bind(
+                with: self,
+                onNext: { vc, _ in vc.edit() }
+            )
             .disposed(by: disposeBag)
         
     }
