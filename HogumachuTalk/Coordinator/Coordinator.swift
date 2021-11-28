@@ -16,6 +16,7 @@ class Coordinator {
         let profileViewControllerFactory: (ProfileViewController.Dependency) -> ProfileViewController
         let profileImageViewControllerFactory: (ProfileImageViewController.Dependency) -> ProfileImageViewController
         let searchViewControllerFactory: (SearchViewController.Dependency) -> SearchViewController
+        let emailSearchViewControllerFactory: (EmailSearchViewController.Dependency) -> EmailSearchViewController
         let imagePickerControllerFactory: () -> UIImagePickerController
         
         let chatNavigationController: UINavigationController
@@ -39,6 +40,7 @@ class Coordinator {
     let profileViewControllerFactory: (ProfileViewController.Dependency) -> ProfileViewController
     let profileImageViewControllerFactory: (ProfileImageViewController.Dependency) -> ProfileImageViewController
     let searchViewControllerFactory: (SearchViewController.Dependency) -> SearchViewController
+    let emailSearchViewControllerFactory: (EmailSearchViewController.Dependency) -> EmailSearchViewController
     let imagePickerControllerFactory: () -> UIImagePickerController
     
     let chatNavigationController: UINavigationController
@@ -62,6 +64,7 @@ class Coordinator {
         self.profileViewControllerFactory = dependency.profileViewControllerFactory
         self.profileImageViewControllerFactory = dependency.profileImageViewControllerFactory
         self.searchViewControllerFactory = dependency.searchViewControllerFactory
+        self.emailSearchViewControllerFactory = dependency.emailSearchViewControllerFactory
         self.imagePickerControllerFactory = dependency.imagePickerControllerFactory
         
         self.chatNavigationController = dependency.chatNavigationController
@@ -142,6 +145,10 @@ extension Coordinator {
     
     func signOut() {
         mainNavigationController.popViewController(animated: true)
+        homeTabBarController.viewControllers = []
+        friendNavigationController.viewControllers = []
+        chatNavigationController.viewControllers = []
+        settingNavigationController.viewControllers = []
     }
     
     func profile() {
@@ -155,6 +162,19 @@ extension Coordinator {
             vc.dismiss(animated: animated)
         } else {
             currentViewController.dismiss(animated: animated)
+        }
+    }
+    
+    func dismiss(from navigation: Navigation, animated: Bool) {
+        switch navigation {
+        case .main:
+            mainNavigationController.dismiss(animated: animated, completion: nil)
+        case .friend:
+            friendNavigationController.dismiss(animated: animated, completion: nil)
+        case .chat:
+            chatNavigationController.dismiss(animated: animated, completion: nil)
+        case .setting:
+            settingNavigationController.dismiss(animated: animated, completion: nil)
         }
     }
     
@@ -193,6 +213,14 @@ extension Coordinator {
         let vc = searchViewControllerFactory(.init(viewModel: .init(dependency: .init(coordinator: self, storage: friendStorage))))
         
         mainNavigationController.pushViewController(vc, animated: true)
+    }
+    
+    func emailVC() {
+        let vc = emailSearchViewControllerFactory(.init(viewModel: .init(dependency: .init(coordinator: self, storage: friendStorage))))
+        
+        let emailNavi = UINavigationController(rootViewController: vc)
+        emailNavi.modalPresentationStyle = .overFullScreen
+        mainNavigationController.present(emailNavi, animated: true, completion: nil)
     }
 }
 

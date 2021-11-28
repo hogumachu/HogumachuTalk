@@ -58,4 +58,8 @@ class FriendViewModel: FriendStorableViewModelType {
         
         coordinator.searchVC()
     }
+    
+    func emailSearch() {
+        coordinator.emailVC()
+    }
 }

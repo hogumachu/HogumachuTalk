@@ -53,6 +53,10 @@ extension AppDependency {
             return .init(dependency: dependency)
         }
         
+        let emailSearchViewControllerFactory: (EmailSearchViewController.Dependency) -> EmailSearchViewController = { dependency in
+            return .init(dependency: dependency)
+        }
+        
         let imagePickerControllerFactory: () -> UIImagePickerController = {
             return .init()
         }
@@ -91,6 +95,7 @@ extension AppDependency {
                                     profileViewControllerFactory: profileViewControllerFactory,
                                     profileImageViewControllerFactory: profileImageViewControllerFactory,
                                     searchViewControllerFactory: searchViewControllerFactory,
+                                    emailSearchViewControllerFactory: emailSearchViewControllerFactory,
                                     imagePickerControllerFactory: imagePickerControllerFactory,
                                     chatNavigationController: chatNavigationController,
                                     chatViewControllerFactory: chatViewControllerFactory,
